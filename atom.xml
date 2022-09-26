@@ -8,13 +8,1786 @@
     <author>
       <name>wlp</name>
     </author>
-    <updated>2022-09-23T12:21:57.035Z</updated>
+    <updated>2022-09-26T15:16:28.661Z</updated>
     <category term="随笔" />
     <entry>
-        <id>https://wlp1231.github.io.git/2022/09/23/GitHub%E5%91%BD%E4%BB%A4/</id>
-        <title>Github命令</title>
-        <link rel="alternate" href="https://wlp1231.github.io.git/2022/09/23/GitHub%E5%91%BD%E4%BB%A4/"/>
-        <content type="html">&lt;p&gt;GitHub 命令&lt;/p&gt;
+        <id>https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BB%BF%E7%9C%9F/</id>
+        <title>机器人仿真</title>
+        <link rel="alternate" href="https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BB%BF%E7%9C%9F/"/>
+        <content type="html">&lt;h1 id=&#34;机器人仿真&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#机器人仿真&#34;&gt;#&lt;/a&gt; 机器人仿真&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3d3dy5hdXRvbGFib3IuY29tLmNuL2Jvb2svUk9TVHV0b3JpYWxzLw==&#34;&gt;课件&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;目标&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#目标&#34;&gt;#&lt;/a&gt; 目标&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;能够使用 URDF 创建机器人模型，并在 Rviz (感知环境) 和 Gazebo (创建仿真环境) 分别显示&lt;/li&gt;
+&lt;li&gt;能够使用 Gazebo 搭建仿真环境&lt;/li&gt;
+&lt;li&gt;能够使用机器人模型中的传感器 (雷达、摄像头...) 获取仿真环境参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;工具介绍&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#工具介绍&#34;&gt;#&lt;/a&gt; 工具介绍&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;URDF&lt;/strong&gt;：URDF 是 Unified Robot Description Format 的首字母缩写，直译为&lt;strong&gt;统一 (标准化) 机器人描述格式&lt;/strong&gt;，可以以一种 XML 的方式描述机器人的部分结构，比如底盘、摄像头、激光雷达、机械臂以及不同关节的自由度....., 该文件可以被 C++ 内置的解释器转换成可视化的机器人模型，是 ROS 中实现机器人仿真的重要组件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Rviz&lt;/strong&gt;:RViz 是 ROS Visualization Tool 的首字母缩写，直译为&lt;strong&gt; ROS 的三维可视化工具&lt;/strong&gt;。它的主要目的是以三维方式显示 ROS 消息，可以将 数据进行可视化表达。例如：可以显示机器人模型，可以无需编程就能表达激光测距仪（LRF）传感器中的传感 器到障碍物的距离，RealSense、Kinect 或 Xtion 等三维距离传感器的点云数据（PCD， Point Cloud Data），从相机获取的图像值等&lt;/p&gt;
+&lt;p&gt;以 “ros- [ROS_DISTRO] -desktop-full” 命令安装 ROS 时，RViz 会默认被安装。&lt;/p&gt;
+&lt;p&gt;运行使用命令 &lt;code&gt;rviz&lt;/code&gt;  或 &lt;code&gt;rosrun rviz rviz&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sudo apt install ros&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;ROS_DISTRO&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;rviz&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Gazebo&lt;/strong&gt;：Gazebo 是一款 3D 动态模拟器，用于显示机器人模型并创建仿真环境，能够在复杂的室内和室外环境中准确有效地模拟机器人。与游戏引擎提供高保真度的视觉模拟类似，Gazebo 提供高保真度的物理模拟，其提供一整套传感器模型，以及对用户和程序非常友好的交互方式。&lt;/p&gt;
+&lt;p&gt;以 “ros- [ROS_DISTRO] -desktop-full” 命令安装 ROS 时，gzebo 会默认被安装。&lt;/p&gt;
+&lt;p&gt;运行使用命令 &lt;code&gt;gazebo&lt;/code&gt;  或 &lt;code&gt;rosrun gazebo_ros gazebo&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;urdf语法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#urdf语法&#34;&gt;#&lt;/a&gt; URDF 语法&lt;/h2&gt;
+&lt;h3 id=&#34;robot&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#robot&#34;&gt;#&lt;/a&gt; robot&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;robot:urdf 中为了保证 xml 语法的完整性，使用了 &lt;code&gt;robot&lt;/code&gt;  标签作为根标签，所有的 link 和 joint 以及其他标签都必须包含在 robot 标签内，在该标签内可以通过 name 属性设置机器人模型的名称&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;name: 指定机器人模型的名称&lt;/p&gt;
+&lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;robot&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;mycar&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    ......&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    ......&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;robot&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;link&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#link&#34;&gt;#&lt;/a&gt; link&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;liink：urdf 中的 link 标签用于描述机器人某个部件 (也即刚体部分) 的外观和物理属性，比如：机器人底座、轮子、激光雷达、摄像头... 每一个部件都对应一个 link, 在 link 标签内，可以设计该部件的形状、尺寸、颜色、惯性矩阵、碰撞参数等一系列属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;name ---&amp;gt; 为连杆命名 (配对出现)&lt;/p&gt;
+&lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;link&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;base_link&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;link&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;子标签&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;visual ---&amp;gt; 描述外观 (对应的数据是可视的)
+&lt;ul&gt;
+&lt;li&gt;geometry 设置连杆的形状
+&lt;ul&gt;
+&lt;li&gt;标签 1: box (盒状)
+&lt;ul&gt;
+&lt;li&gt;属性:size = 长 (x) 宽 (y) 高 (z)=abc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;标签 2: cylinder (圆柱)
+&lt;ul&gt;
+&lt;li&gt;属性:radius = 半径， length = 高度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;标签 3: sphere (球体)
+&lt;ul&gt;
+&lt;li&gt;属性:radius = 半径&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;标签 4: mesh (为连杆添加皮肤)
+&lt;ul&gt;
+&lt;li&gt;属性: filename = 资源路径 (格式:&lt;strong&gt;package://&lt;packagename&gt;/&lt;path&gt;/ 文件&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;origin 设置偏移量与倾斜弧度
+&lt;ul&gt;
+&lt;li&gt;属性 1: xyz=x 偏移 y 偏移 z 偏移&lt;/li&gt;
+&lt;li&gt;属性 2: rpy=x 翻滚 y 俯仰 z 偏航 (单位是弧度)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;metrial 设置材料属性 (颜色)
+&lt;ul&gt;
+&lt;li&gt;属性: name&lt;/li&gt;
+&lt;li&gt;标签: color
+&lt;ul&gt;
+&lt;li&gt;属性: rgba = 红绿蓝权重值与透明度 (每个权重值以及透明度取值 [0,1])&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;collision ---&amp;gt; 连杆的碰撞属性&lt;/li&gt;
+&lt;li&gt;Inertial ---&amp;gt; 连杆的惯性矩阵&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;joint&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#joint&#34;&gt;#&lt;/a&gt; joint&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;joint:urdf 中的 joint 标签用于描述机器人关节的运动学和动力学属性，还可以指定关节运动的安全极限，机器人的两个部件 (分别称之为 parent link 与 child link) 以 &amp;quot;关节&amp;quot; 的形式相连接，不同的关节有不同的运动形式：旋转、滑动、固定、旋转速度、旋转角度限制...., 比如：安装在底座上的轮子可以 360 度旋转，而摄像头则可能是完全固定在底座上。joint 标签对应的数据在模型中是不可见的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;name ---&amp;gt; 为关节命名&lt;/p&gt;
+&lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;joint&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;1_joint&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;joint&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;type ---&amp;gt; 关节运动形式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;continuous: 旋转关节，可以绕单轴无限旋转&lt;/li&gt;
+&lt;li&gt;revolute: 旋转关节，类似于 continues, 但是有旋转角度限制&lt;/li&gt;
+&lt;li&gt;prismatic: 滑动关节，沿某一轴线移动的关节，有位置极限&lt;/li&gt;
+&lt;li&gt;planer: 平面关节，允许在平面正交方向上平移或旋转&lt;/li&gt;
+&lt;li&gt;floating: 浮动关节，允许进行平移、旋转运动&lt;/li&gt;
+&lt;li&gt;fixed: 固定关节，不允许运动的特殊关节&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;子标签&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;parent (必需)&lt;/p&gt;
+&lt;p&gt;parent link 的名字是一个强制的属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;link: 父级连杆的名字，是这个 link 在机器人结构树中的名字。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;child (必需)&lt;/p&gt;
+&lt;p&gt;child link 的名字是一个强制的属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;link: 子级连杆的名字，是这个 link 在机器人结构树中的名字。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;origin&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;属性: xyz = 各轴线上的偏移量 rpy = 各轴线上的偏移弧度。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;axis&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;属性: xyz 用于设置围绕哪个关节轴运动。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;urdf与rviz初步配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#urdf与rviz初步配置&#34;&gt;#&lt;/a&gt; URDF 与 Rviz 初步配置&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;安装功能包&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;catkin_create_pkg urdf01_rviz urdf xacro&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在当前功能包新建目录&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/rviz1.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 urdf 子文件新建 01.urdf 文档并输入&lt;/p&gt;
+&lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;robot&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;mycar&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;link&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;base_link&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;visual&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;geometry&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;box&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0.5 0.2 0.1&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;geometry&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;visual&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;link&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;robot&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 launch 目录下新建 01.launch 文档并输入&lt;/p&gt;
+&lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;launch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 设置参数 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;param&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;robot_description&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;textfile&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;$(find 包名)/urdf/urdf/urdf01_HelloWorld.urdf&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 启动 rviz --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;node&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;pkg&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;rviz&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;rviz&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;rviz&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;launch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 包名：urdf01_rviz --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- urdf01_HelloWorld:01 , 根据 1 自己的文档名 --&gt;&lt;/span&gt;？&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行 Rviz 后 add——robotmodel，axes&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将当前配置保存到 config 目录下，命名为 show_mycar.rviz，之后更改 launch 文档的内容&lt;/p&gt;
+&lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;launch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;param&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;robot_description&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;textfile&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;$(find 包名)/urdf/urdf/01.urdf&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;node&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;pkg&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;rviz&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;rviz&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;rviz&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;-d $(find 包名)/config/rviz/show_mycar.rviz&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;launch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;source ./devel/setup.bash&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;roslaunch urdf01_rviz 01.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;xacro&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#xacro&#34;&gt;#&lt;/a&gt; xacro&lt;/h2&gt;
+&lt;p&gt;在 urdf/xacro 目录下进行&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;编写 Xacro 文件，以变量的方式封装属性 (常量半径、高度、车轮半径...)，以函数的方式封装重复实现 (车轮的添加)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;命令行进入 xacro 文件 所属目录，执行: &lt;code&gt;rosrun xacro xacro xxx.xacro &amp;gt; xxx.urdf&lt;/code&gt; , 会将 xacro 文件解析为 urdf 文件&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rosrun xacro xacro 03_car_base.urdf.xacro &amp;gt; 03_car_base.urdf&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检查代码是否正确&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;check_urdf 文件名.urdf&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;小车实现 (仅实现)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/rviz2.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加雷达和摄像头&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/rviz3.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;urdf与gazebo学习&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#urdf与gazebo学习&#34;&gt;#&lt;/a&gt; URDF 与 Gazebo 学习&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/gazebo2.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;创建功能包，添加依赖&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;urdf xacro gazebo_ros gazebo_ros_control gazebo_plugins&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建立相关目录，如 rviz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 urdf 子文件新建 11.urdf 文档并输入&lt;/p&gt;
+&lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    创建一个机器人模型 (盒状即可，box)，显示在 Gazebo 中 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;--&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;robot&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;mycar&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;link&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;base_link&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 可视化部分 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;visual&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 几何标签 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;geometry&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;box&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0.5 0.2 0.1&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;geometry&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 使用默认值 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;origin&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;xyz&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0.0 0.0 0.0&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;rpy&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0.0 0.0 0.0&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 颜色标签，子标签 color 中第四个为透明度，在 gazebo 中不再生效 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;material&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;yellow&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;color&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;rgba&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0.5 0.3 0.0 1&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;material&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;visual&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 设置碰撞参数，如果是标准几何体，代码同上 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;collision&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;geometry&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;box&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0.5 0.2 0.1&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;geometry&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;origin&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;xyz&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0.0 0.0 0.0&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;rpy&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0.0 0.0 0.0&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;collision&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 设置惯性矩阵 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;inertial&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;origin&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;xyz&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0 0 0&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;  &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 重心的偏移 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;mass&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;6&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;   &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 质量 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;inertia&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;ixx&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;1&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;ixy&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;ixz&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;iyy&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;1&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;iyz&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;0&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;izz&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;1&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;  &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 不同空间维度的惯性参数 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;inertial&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;link&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- gazebo 自己的颜色设置，大写 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;gazebo&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;reference&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;base_link&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;  &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 应用与哪部分连杆 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;material&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;Gazebo/Black&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;material&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;gazebo&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;38&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;39&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;robot&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 launch 目录下新建 11.launch 文档并输入&lt;/p&gt;
+&lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;launch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 将 Urdf 文件的内容加载到参数服务器 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;param&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;robot_description&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;textfile&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;$(find urdf11_gazebo)/urdf/11.urdf&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 启动 gazebo，不做任何修改 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;include&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;$(find gazebo_ros)/launch/empty_world.launch&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;&amp;lt;!-- 在 gazebo 中显示机器人模型，下面命令行的固定 --&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;node&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;pkg&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;gazebo_ros&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;spawn_model&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;model&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;-urdf -model mycar -param robot_description&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;  &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;launch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行命令&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rosrun gazebo_ros spawn_model -urdf -model car -param robot_description&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;roslaunch urdf11_gazebo 11.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;构造机器人模型仅在电脑上实现运行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#构造机器人模型仅在电脑上实现运行&#34;&gt;#&lt;/a&gt; 构造机器人模型 (仅在电脑上实现运行)&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/gazebo3.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;launch 文件夹内容&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E6%96%87%E4%BB%B62.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;urdf 文件夹内容&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E6%96%87%E4%BB%B61.png&#34; alt=&#34;wide&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;机器人运动控制&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#机器人运动控制&#34;&gt;#&lt;/a&gt; 机器人运动控制&lt;/h2&gt;
+&lt;h3 id=&#34;arbotix&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#arbotix&#34;&gt;#&lt;/a&gt; Arbotix&lt;/h3&gt;
+&lt;p&gt;Arbotix 是一款控制电机、舵机的控制板，&lt;strong&gt;并提供相应的 ros 功能包&lt;/strong&gt;，这个功能包的功能不仅可以驱动真实的 Arbotix 控制板，它还提供一个差速控制器，通过接受速度控制指令更新机器人的 joint 状态，从而帮助我们实现机器人在 rviz 中的运动。这个差速控制器在 arbotix_python 程序包中，完整的 arbotix 程序包还包括多种控制器，分别对应 dynamixel 电机、多关节机械臂以及不同形状的夹持器。&lt;/p&gt;
+&lt;h4 id=&#34;实现流程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现流程&#34;&gt;#&lt;/a&gt; 实现流程&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装 Arbotix   noetic (rviz)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git clone https://github.com/vanadiumlabs/arbotix_ros.git&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建新功能包，准备机器人 urdf、xacro 文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加 Arbotix 配置文件 control.yaml&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写 launch 文件配置 Arbotix&lt;/p&gt;
+&lt;figure class=&#34;highlight xml&#34;&gt;&lt;figcaption data-lang=&#34;XML&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;node&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;arbotix&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;pkg&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;arbotix_python&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;arbotix_driver&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;screen&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;     &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;rosparam&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;$(find my_urdf05_rviz)/config/hello.yaml&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;load&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;     &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;param&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;sim&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;true&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;node&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动 launch 文件并控制机器人模型运动&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;​    &lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/rviz4.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;gazebo下流程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#gazebo下流程&#34;&gt;#&lt;/a&gt; gazebo 下流程&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;已经创建完毕的机器人模型，编写一个单独的 xacro 文件，为机器人模型添加传动装置以及控制器&lt;/p&gt;
+&lt;p&gt;下 urdf 目录下新建 gazebo 目录，新建 move.xacro 文档，输入代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将此文件集成进 xacro 文件&lt;/p&gt;
+&lt;p&gt;在集合总代码中加入 move.xacro 的路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动 Gazebo 并发布 /cmd_vel 消息控制机器人运动&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;安装 Generic keyboard teleop for twist robots.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-get install ros-noetic-teleop-twist-keyboard&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;键盘控制&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rosrun teleop_twist_keyboard teleop_twist_keyboard.py &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rosrun teleop_twist_keyboard teleop_twist_keyboard.py  _speed:=0.3 _turn:=0.5&lt;/code&gt;  更改速度&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/gazebo5.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;话题控制&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rostopic pub -r 10 /cmd_vel geometry_msgs/Twist &amp;quot;linear&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/gazebo4.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;a1激光雷达&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#a1激光雷达&#34;&gt;#&lt;/a&gt; a1 激光雷达&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;下载功能包的方法：在你的终端中输入如下命令&lt;br /&gt;
+ &lt;code&gt;cd ~/catkin_ws/src&lt;/code&gt;   //catkin_ws 为你的工作空间名称&lt;br /&gt;
+ &lt;code&gt;git clone  https://github.com/Slamtec/rplidar_ros.git&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;cd ..&lt;/code&gt; /  // 返回上层空间&lt;br /&gt;
+ &lt;code&gt;catkin_make&lt;/code&gt;    // 编译工作空间，或直接访问 github 下载 rplidar_ros 文件后放到 src 文件夹下&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;usb 外接雷达&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ls -l /dev/ttyUSB*    &lt;/code&gt;    查看雷达信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;sudo chmod 666 /dev/ttyUSB0&lt;/code&gt;        赋予权限&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;roslaunch rplidar_ros view_rplidar.launch&lt;/code&gt;      进入 rviz&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;chmod&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#chmod&#34;&gt;#&lt;/a&gt; chmod：&lt;/h5&gt;
+&lt;p&gt;若用 chmod 4755 filename 可使此程序具有 root 的权限&lt;/p&gt;
+&lt;p&gt;sudo chmod 600 ××× （只有所有者有读和写的权限）&lt;/p&gt;
+&lt;p&gt;sudo chmod 644 ××× （所有者有读和写的权限，组用户只有读的权限）&lt;/p&gt;
+&lt;p&gt;sudo chmod 700 ××× （只有所有者有读和写以及执行的权限）&lt;/p&gt;
+&lt;p&gt;sudo chmod 666 ××× （每个人都有读和写的权限）&lt;/p&gt;
+&lt;p&gt;sudo chmod 777 ××× （每个人都有读和写以及执行的权限）&lt;/p&gt;
+&lt;p&gt;安装 ros_arduino_bridge 功能包&lt;/p&gt;
+&lt;p&gt;访问&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hicm9ib3RpY3Mvcm9zX2FyZHVpbm9fYnJpZGdl&#34;&gt; hbrobotics/ros_arduino_bridge: ROS + Arduino = Robot (github.com)&lt;/span&gt; 下载相关文件&lt;/p&gt;
+&lt;p&gt;编译&lt;/p&gt;
+&lt;p&gt;安装 tianbot 的 github 中的 lubot_slam 功能包&lt;/p&gt;
+&lt;p&gt;访问&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3RpYW5ib3QvbHVib3Rfc2xhbQ==&#34;&gt; tianbot/lubot_slam: 使用 Arduino 作为 BaseController 配合 ROS 机器人操作系统，构建具备 SLAM 能力的 luBot 自主导航机器人，也许还有点弱智能（机器视觉与深度学习）。 (github.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;编译&lt;/p&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;p&gt;gamapping 功能包&lt;br /&gt;
+ navigation 功能包&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cd ~/catkin_ws/src&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;git clone https://github.com/ros-planning/navigation.git&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;git clone https://github.com/ros-perception/openslam_gmapping.git &lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;git clone https://github.com/ros-perception/slam_gmapping.git&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;git init&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;git checkout -b kinetic-devel&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;若克隆连接失败，将 https 改为 git&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-get install libbullet-dev&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;sudo apt-get install libsdl1.2-dev&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;sudo apt-get install libsdl-image1.2-dev&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;sudo apt-get install ros-kinetic-geometry2&lt;/code&gt; &lt;br /&gt;
+ &lt;code&gt;sudo apt-get install ros-kinetic-nav-msgs&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;若报错：E：定位软件包失败&lt;/p&gt;
+&lt;p&gt;如 geometry2&lt;/p&gt;
+&lt;p&gt;在 github 中搜索找到 geometry2&lt;/p&gt;
+&lt;p&gt;复制对应网址&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3Jvcy9nZW9tZXRyeTI=&#34;&gt; ros/geometry2: A set of ROS packages for keeping track of coordinate transforms. (github.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;打开终端，进入要放置的位置，输入 &lt;code&gt;git clone git://github.com/ros/geometry2.git&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;继续上述操作&lt;/p&gt;
+&lt;p&gt;编译 &lt;code&gt;catkin_make&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;nfs详解&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nfs详解&#34;&gt;#&lt;/a&gt; NFS 详解&lt;/h4&gt;
+&lt;h3 id=&#34;ssh通信&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ssh通信&#34;&gt;#&lt;/a&gt; ssh 通信&lt;/h3&gt;
+&lt;h4 id=&#34;连接准备&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#连接准备&#34;&gt;#&lt;/a&gt; 连接准备&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ifconfig&lt;/code&gt;  查看 ip 地址，如 192.168.43.128&lt;/li&gt;
+&lt;li&gt;用于连接的两台电脑处于同一局域网内，手机热点&lt;/li&gt;
+&lt;li&gt;查看主机名，终端输入 &lt;code&gt;hostname&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;终端输入 &lt;code&gt;sudo gedit /etc/hosts&lt;/code&gt; , 在文件中第三行输入本机 ip 地址和主机名，第四行输入待连机 ip 地址和主机名（忽略）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo /ect/init.d/networking restart&lt;/code&gt; , 若报错，在 /etc/init.d 中找到 network 文件，将之替换 networking。仍然报错，将 /etc/init.d 改为 service，还报错，hosts 中 ip 地址写错，检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;连接&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#连接&#34;&gt;#&lt;/a&gt; 连接&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;安装 chrony 包和 ssh 服务器&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-get install chrony&lt;/code&gt;   &lt;code&gt;sudo apt-get install openssh-server&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ping 待连机ip地址或主机名&lt;/code&gt; ，建议 ip 地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ssh 待连机用户名@待连机主机名或ip地址&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;连接成功&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;删除冲突ip&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#删除冲突ip&#34;&gt;#&lt;/a&gt; 删除冲突 IP&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;ssh-keygen -f &amp;quot;/home/wlp/.ssh/known_hosts&amp;quot; -R &amp;quot;joul&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;查看系统是否已经安装 ssh 客户端或者服务端：dpkg -l | grep ssh。&lt;br /&gt;
+启动 ssh 服务：sudo /etc/init.d/ssh start&lt;br /&gt;
+ 关闭 ssh 服务：sudo /etc/init.d/ssh stop&lt;br /&gt;
+ 重启 ssh 服务：sudo /etc/init.d/ssh restart&lt;/p&gt;
+&lt;h2 id=&#34;连接控制mini小车1804密码raspberry&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#连接控制mini小车1804密码raspberry&#34;&gt;#&lt;/a&gt; 连接控制 mini 小车（18.04 密码：raspberry）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;打开终端，通过 ssh 连接到小车上的树莓派，192.168.0.100&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ssh -Y wheeltec@192.168.0.100&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;密码：dongguan&lt;/p&gt;
+&lt;p&gt;注：没有 - Y，图形化等功能无法使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;远程登录后： &lt;code&gt;roslaunch turn_on_wheeltec_robot turn_on_wheeltec_robot.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;远程登录后： &lt;code&gt;roslaunch wheeltec_robot_rc keyboard_teleop.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过上述操作可以键盘控制小车移动&lt;/p&gt;
+&lt;h3 id=&#34;启动雷达&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#启动雷达&#34;&gt;#&lt;/a&gt; 启动雷达&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;roslaunch rplidar_ros rplidar.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看雷达发布的话题&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rostopic list&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看数据类型&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rosmsg show sensor_msgs/LaserScan &lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;控制小车雷达建图&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#控制小车雷达建图&#34;&gt;#&lt;/a&gt; 控制小车雷达建图&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;终端 ssh 连接&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;终端输入 &lt;code&gt;roslaunch turn_on_wheeltec_robot mapping.launch &lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新终端输入 &lt;code&gt;rviz&lt;/code&gt; , 使用远程终端较卡，使用本机终端&lt;/p&gt;
+&lt;p&gt;.bushrc 文件加入&lt;/p&gt;
+&lt;p&gt;export ROS_MASTER_URI=http://192.168.0.100:11311&lt;br /&gt;
+export ROS_HOSTNAME=192.168.0.136&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;控制小车走完全场，完成建图&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;保存图形:&lt;/p&gt;
+&lt;p&gt;一键保存： &lt;code&gt;roslaunch turn_on_wheeltec_robot map_saver.launch&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;打开地图路径： &lt;code&gt;cd /home/wheeltec/wheeltec_robot/src/turn_on_wheeltec_robot/map&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;保存地图： &lt;code&gt;rosrun map_server map_saver -f 地图名&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看图形：将远程文件挂载到本机 &lt;code&gt;sudo mount -t nfs 192.168.0.100:/home/wheeltec/wheeltec_robot /mnt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;打开 mnt 文件查看，保存路径在保存图形时终端有显示&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建图&lt;br /&gt;
+ mapping.launch&lt;br /&gt;
+ 小车初始化节点：turn_on_wheeltec_robot.launch&lt;br /&gt;
+ 雷达节点：rplidar.launch&lt;br /&gt;
+gmapping 建图节点：algorithm_gmapping.launch&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;建图算法切换&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#建图算法切换&#34;&gt;#&lt;/a&gt; 建图算法切换&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;修改 mapping.launch 文件开头 &lt;code&gt;&amp;lt;arg name=&amp;quot;mapping_node&amp;quot; default=&amp;quot;gmapping&amp;quot; doc=&amp;quot;opt:gmapping,hector,cartographer,karto&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;雷达跟随&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#雷达跟随&#34;&gt;#&lt;/a&gt; 雷达跟随&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;roslaunch simple_follower laser_follower.launch&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;sublimetext&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#sublimetext&#34;&gt;#&lt;/a&gt; SublimeText&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;小车开机，连接 WIFI，密码：dongguan。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;NFS 挂载 (passoni 密码：raspberry)： &lt;code&gt; &lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ssh 登录到服务端，并修改服务端系统时间为现在： &lt;code&gt;sudo date -s &amp;quot;2021-7-7 00:00:00&amp;quot; &lt;/code&gt; 精确到分即可&lt;/p&gt;
+&lt;p&gt;这一步是因为树莓派 / Nano/TX2/NX/ 工控机的系统时间在没有连接互联网 时，系统时间可能会混乱。同时我们程序修改是需要编译后才能生效的，而编译 规则是只编译最新时间的修改，同时修改时间在未来即大于当前系统时间的不编译。&lt;/p&gt;
+&lt;p&gt;上一次修改时间 &amp;gt; 此次修改时间：不编译&lt;/p&gt;
+&lt;p&gt;此次修改时间 &amp;gt; 当前系统时间：不编译&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;指定编译编译单个功能包：&lt;/p&gt;
+&lt;p&gt;catkin_make -DCATKIN_WHITELIST_PACKAGES=&amp;quot;功能包名&amp;quot;&lt;/p&gt;
+&lt;p&gt;解除指定功能包编译：&lt;/p&gt;
+&lt;p&gt;catkin_make -DCATKIN_WHITELIST_PACKAGES=&amp;quot;&amp;quot;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;源&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#源&#34;&gt;#&lt;/a&gt; 源&lt;/h2&gt;
+&lt;p&gt;export ROS_MASTER_URI=http://192.168.0.100:11311&lt;br /&gt;
+export ROS_HOSTNAME=192.168.0.136&lt;/p&gt;
+&lt;h3 id=&#34;自主导航&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#自主导航&#34;&gt;#&lt;/a&gt; 自主导航&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;运行导航节点&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;roslaunch turn_on_wheeltec_robot navigation.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动 rviz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看里程计传感器（odom）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rostopic echo /odom &lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;摄像头&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#摄像头&#34;&gt;#&lt;/a&gt; 摄像头&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;实现功能&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;视觉巡线&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;物体识别&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;3D 建图&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;颜色跟踪&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;lsusb&lt;/code&gt;  查看摄像头&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/1.png&#34; alt=&#34;wodde&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;0502：rgb 摄像头&lt;/p&gt;
+&lt;p&gt;0403：深度摄像头&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开启摄像头&lt;/p&gt;
+&lt;p&gt;rgb 摄像头： &lt;code&gt;roslaunch usb_cam usb_cam-test.launch &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;深度摄像头： &lt;code&gt;roslaunch astra_camera astra.launch&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;都打开： &lt;code&gt;roslaunch astra_camera astrapro.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;色块跟踪&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#色块跟踪&#34;&gt;#&lt;/a&gt; 色块跟踪&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;根据要跟踪色块颜色，在 visualTracker.launch 更改，shv 格式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行 &lt;code&gt;roalaunch simple_follower visual_follower.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;远程登陆查看话题 &lt;code&gt;rostpic list&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rostopic echo /.......&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;视觉巡线&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#视觉巡线&#34;&gt;#&lt;/a&gt; 视觉巡线&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;roslaunch simple_follower line_follower.launch&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3d建图导航&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3d建图导航&#34;&gt;#&lt;/a&gt; 3D 建图导航&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装 rtabmap&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-get update &lt;/code&gt; (更新软件列表)&lt;br /&gt;
+ &lt;code&gt;sudo apt-get install ros-noetic-rtabmap-ros&lt;/code&gt; （安装 rtabmap）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;跑官方测试包（可选，远程端）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;roslaunch rtabmap_ros demo_robot_mapping.launch rviz:=true rtabmapviz:=false&lt;/code&gt;  （官方测试例程）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rosbag play --clock demo_mapping.bag &lt;/code&gt; （官方测试包，在 /home/wheeltec/ 的路径下执行）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建图&lt;br /&gt;
+ &lt;code&gt;roslaunch turn_on_wheeltec_robot 3d_mapping.launch&lt;/code&gt; （启动 3d 建图）&lt;br /&gt;
+ &lt;code&gt;roslaunch wheeltec_robot_rc keyboard_teleop.launch&lt;/code&gt;   （启动键盘控制节点）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;导航&lt;br /&gt;
+ &lt;code&gt;roslaunch  turn_on_wheeltec_robot 3d_navigation.launch&lt;/code&gt; （启动 3d 导航）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;纯视觉见图导航&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#纯视觉见图导航&#34;&gt;#&lt;/a&gt; 纯视觉见图导航&lt;/h3&gt;
+&lt;p&gt;建图：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;roslaunch  turn_on_wheeltec_robot pure3d_mapping.launch&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;导航：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;roslaunch  turn_on_wheeltec_robot pure3d_navigation.launch&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;kcf跟踪&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#kcf跟踪&#34;&gt;#&lt;/a&gt; KCF 跟踪&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;roslaunch kcf_tracker.launch&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;自主建图&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#自主建图&#34;&gt;#&lt;/a&gt; 自主建图&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;roslaunch turn_on_wheeltec_robot rrt_slam.launch&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;tf坐标&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#tf坐标&#34;&gt;#&lt;/a&gt; TF 坐标&lt;/h2&gt;
+&lt;h3 id=&#34;ros坐标管理系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ros坐标管理系统&#34;&gt;#&lt;/a&gt; ros 坐标管理系统&lt;/h3&gt;
+&lt;h3 id=&#34;tf坐标的基本概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#tf坐标的基本概念&#34;&gt;#&lt;/a&gt; TF 坐标的基本概念&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;TF 树：rqt 可视化工具插件，查看所有 tf 坐标之间的链接关系&lt;/p&gt;
+&lt;p&gt;安装 rqt：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get install ros-%YOUR_ROS_DISTRO%-rqt ros-%YOUR_ROS_DISTRO%-rqt-common-plugins&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get install ros-%YOUR_ROS_DISTRO%-rqt-robot-plugins&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get install ros-%YOUR_ROS_DISTRO%-rqt-pr2-dashboard (only when you need PR2 dashboard feature) &lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get dist-upgrade&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TF 的 brosdcsster：两个坐标的索引关系&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TF 的 frame_id&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TF 的基坐标：如 map&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;TF 的消息数据类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;ar标签识别&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ar标签识别&#34;&gt;#&lt;/a&gt; AR 标签识别&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;roslaunch turn_on_wheeltec_robot ar_label.launch&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;生成 ar 标签&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;相应功能包下 &lt;code&gt;rosrun ar_track_alvar createMarker -s 5 0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
+        <category term="Ubuntu" scheme="https://wlp1231.github.io.git/categories/ROS/Ubuntu/" />
+        <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
+        <category term="Ubuntu" scheme="https://wlp1231.github.io.git/tags/Ubuntu/" />
+        <updated>2022-09-26T15:16:28.661Z</updated>
+    </entry>
+    <entry>
+        <id>https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/%E5%8F%8C%E7%9B%AET265%E4%BD%BF%E7%94%A8/</id>
+        <title>双目T265使用</title>
+        <link rel="alternate" href="https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/%E5%8F%8C%E7%9B%AET265%E4%BD%BF%E7%94%A8/"/>
+        <content type="html">&lt;h1 id=&#34;双目t265使用githublibrealsensedistribution_linuxmd-at-development-intelrealsenselibrealsense-github&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#双目t265使用githublibrealsensedistribution_linuxmd-at-development-intelrealsenselibrealsense-github&#34;&gt;#&lt;/a&gt; 双目 T265 使用 [github](&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0ludGVsUmVhbFNlbnNlL2xpYnJlYWxzZW5zZS9ibG9iL2RldmVsb3BtZW50L2RvYy9kaXN0cmlidXRpb25fbGludXgubWQjaW5zdGFsbGluZy10aGUtcGFja2FnZXM=&#34;&gt;librealsense/distribution_linux.md at development · IntelRealSense/librealsense · GitHub&lt;/span&gt;)&lt;/h1&gt;
+&lt;h2 id=&#34;简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#简介&#34;&gt;#&lt;/a&gt; 简介&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;realsense T265 传感器输出的数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;双目摄像头可以采集到 848X800 分辨率下 30FPS 的鱼眼图像数据；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IMU 数据（包括 6DoF 的 Pose，3DoF 的加速度计，3DoF 的陀螺仪）&lt;br /&gt;
+而且以上数据的出厂时全都进行了标定，并且都保存在传感器中，你可以通过传感器的输出很容易获得内部的标定数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装&#34;&gt;#&lt;/a&gt; 安装&lt;/h2&gt;
+&lt;p&gt;建议按照 github 上的安装&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;若运行后出现公匙问题，则运行 &lt;code&gt;sudo gedit /etc/apt/sources.list&lt;/code&gt;  更新下载源 [源](&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9taXJyb3JzLnVzdGMuZWR1LmNuL3JlcG9nZW4v&#34;&gt;LUG&#39;s repo file generator (ustc.edu.cn)&lt;/span&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ubuntu16   &lt;code&gt;sudo add-apt-repository &amp;quot;deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main&amp;quot; -u&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ubuntu18   &lt;code&gt;sudo add-apt-repository &amp;quot;deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo bionic main&amp;quot; -u&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-get install librealsense2-dkms librealsense2-utils librealsense2-dev librealsense2-dbg&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第五步安装成功了，将你的 realsense T265 连接到电脑 USB（至少 USB3.0）口上，然后终端中输入以下命令就能看到传感器输出的数据了。 &lt;code&gt;realsense-viewer&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;编程使用realsense-t265&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编程使用realsense-t265&#34;&gt;#&lt;/a&gt; 编程使用 realsense T265&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;通过 IMU 积分出位姿&lt;br /&gt;
+当你按照上述 2 中的方法进行了必要程序安装之后，你就已经成功的把 realsense T265 传感器所要用的库文件和头文件都安装到系统中了。所以我们直接编程使用就行了。下面我向你介绍一下如何通过传感器输出的 IMU 信息，计算传感器运动的轨迹。其实就是通过 IMU 的速度和加速度信息积分产生位姿（位置和角度）信息。不废话，直接上代码。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;// License: Apache 2.0. See LICENSE file in root directory.
+// Copyright(c) 2019 Intel Corporation. All Rights Reserved.
+#include &amp;lt;librealsense2/rs.hpp&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;iomanip&amp;gt;
+#include &amp;lt;chrono&amp;gt;
+#include &amp;lt;thread&amp;gt;
+#include &amp;lt;mutex&amp;gt;
+
+#include &amp;lt;math.h&amp;gt;
+#include &amp;lt;float.h&amp;gt;
+
+//欧拉角转四元数，两种不同的旋转表示方法之间转换
+//（如果你不懂的话，不必深究，这里慢慢来，你一时半会估计很难理解啥是四元数）
+inline rs2_quaternion quaternion_exp(rs2_vector v)
+&amp;#123;
+    float x = v.x/2, y = v.y/2, z = v.z/2, th2, th = sqrtf(th2 = x*x + y*y + z*z);
+    float c = cosf(th), s = th2 &amp;lt; sqrtf(120*FLT_EPSILON) ? 1-th2/6 : sinf(th)/th;
+    rs2_quaternion Q = &amp;#123; s*x, s*y, s*z, c &amp;#125;;
+    return Q;
+&amp;#125;
+
+//两个四元素之间进行“乘法”,相当于是旋转之后再旋转
+inline rs2_quaternion quaternion_multiply(rs2_quaternion a, rs2_quaternion b)
+&amp;#123;
+    rs2_quaternion Q = &amp;#123;
+        a.x * b.w + a.w * b.x - a.z * b.y + a.y * b.z,
+        a.y * b.w + a.z * b.x + a.w * b.y - a.x * b.z,
+        a.z * b.w - a.y * b.x + a.x * b.y + a.w * b.z,
+        a.w * b.w - a.x * b.x - a.y * b.y - a.z * b.z,
+    &amp;#125;;
+    return Q;
+&amp;#125;
+
+//通过离散欧拉积分计算出位姿（旋转和位置）
+rs2_pose predict_pose(rs2_pose &amp;amp; pose, float dt_s)
+&amp;#123;
+    rs2_pose P = pose;
+    P.translation.x = dt_s * (dt_s/2 * pose.acceleration.x + pose.velocity.x) + pose.translation.x;
+    P.translation.y = dt_s * (dt_s/2 * pose.acceleration.y + pose.velocity.y) + pose.translation.y;
+    P.translation.z = dt_s * (dt_s/2 * pose.acceleration.z + pose.velocity.z) + pose.translation.z;
+    rs2_vector W = &amp;#123;
+            dt_s * (dt_s/2 * pose.angular_acceleration.x + pose.angular_velocity.x),
+            dt_s * (dt_s/2 * pose.angular_acceleration.y + pose.angular_velocity.y),
+            dt_s * (dt_s/2 * pose.angular_acceleration.z + pose.angular_velocity.z),
+    &amp;#125;;
+    P.rotation = quaternion_multiply(quaternion_exp(W), pose.rotation);
+    return P;
+&amp;#125;
+
+int main(int argc, char * argv[]) try
+&amp;#123;
+  	//声明一个realsense传感器设备
+    rs2::pipeline pipe;
+    // 创建一个配置信息
+    rs2::config cfg;
+    //告诉配置信息，我需要传感器的POSE和6DOF IMU数据
+    cfg.enable_stream(RS2_STREAM_POSE, RS2_FORMAT_6DOF);
+
+    
+    std::mutex mutex;
+    //回调函数
+    auto callback = [&amp;amp;](const rs2::frame&amp;amp; frame)
+    &amp;#123;
+        std::lock_guard&amp;lt;std::mutex&amp;gt; lock(mutex);
+        if (rs2::pose_frame fp = frame.as&amp;lt;rs2::pose_frame&amp;gt;()) &amp;#123;
+            rs2_pose pose_data = fp.get_pose_data();
+            auto now = std::chrono::system_clock::now().time_since_epoch();
+            double now_ms = std::chrono::duration_cast&amp;lt;std::chrono::milliseconds&amp;gt;(now).count();
+            double pose_time_ms = fp.get_timestamp();
+            float dt_s = static_cast&amp;lt;float&amp;gt;(std::max(0., (now_ms - pose_time_ms)/1000.));
+            rs2_pose predicted_pose = predict_pose(pose_data, dt_s);
+            std::cout &amp;lt;&amp;lt; &amp;quot;Predicted &amp;quot; &amp;lt;&amp;lt; std::fixed &amp;lt;&amp;lt; std::setprecision(3) &amp;lt;&amp;lt; dt_s*1000 &amp;lt;&amp;lt; &amp;quot;ms &amp;quot; &amp;lt;&amp;lt;
+                    &amp;quot;Confidence: &amp;quot; &amp;lt;&amp;lt; pose_data.tracker_confidence &amp;lt;&amp;lt; &amp;quot; T: &amp;quot; &amp;lt;&amp;lt;
+                    predicted_pose.translation.x &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt;
+                    predicted_pose.translation.y &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt;
+                    predicted_pose.translation.z &amp;lt;&amp;lt; &amp;quot; (meters)   \r&amp;quot;;
+        &amp;#125;
+    &amp;#125;;
+
+    //开始接收数据，接收数据之后进入回调函数进行处理
+    rs2::pipeline_profile profiles = pipe.start(cfg, callback);
+    std::cout &amp;lt;&amp;lt; &amp;quot;started thread\n&amp;quot;;
+    while(true) &amp;#123;
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    &amp;#125;
+
+    return EXIT_SUCCESS;
+&amp;#125;
+catch (const rs2::error &amp;amp; e)
+&amp;#123;
+    std::cerr &amp;lt;&amp;lt; &amp;quot;RealSense error calling &amp;quot; &amp;lt;&amp;lt; e.get_failed_function() &amp;lt;&amp;lt; &amp;quot;(&amp;quot; &amp;lt;&amp;lt; e.get_failed_args() &amp;lt;&amp;lt; &amp;quot;):\n    &amp;quot; &amp;lt;&amp;lt; e.what() &amp;lt;&amp;lt; std::endl;
+    return EXIT_FAILURE;
+&amp;#125;
+catch (const std::exception&amp;amp; e)
+&amp;#123;
+    std::cerr &amp;lt;&amp;lt; e.what() &amp;lt;&amp;lt; std::endl;
+    return EXIT_FAILURE;
+&amp;#125;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;源文件中牵扯到一些数学，不必深究看过就算过。有了源文件我们还需要 &lt;code&gt;CMakeLists.txt&lt;/code&gt;  文件，这里你直接复制我写的就可以运行。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;cmake_minimum_required(VERSION 3.1.0)
+project(test)
+set(CMAKE_BUILD_TYPE &amp;quot;release&amp;quot;)
+
+add_executable(test main.cpp) #通过main.cpp编译生成可执行文件test
+target_link_libraries(test realsense2) #将realsense2的库文件链接给test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将源文件 &lt;code&gt;main.cpp&lt;/code&gt;  和 &lt;code&gt;CMakeLists.txt&lt;/code&gt;  放在同一个文件夹下，然后顺序执行以下命令就可以编译生成可执行文件了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最后将 realsense T265 连接上电脑（至少 USB3.0），然后运行刚刚生成的程序 &lt;code&gt;test&lt;/code&gt; ，移动移动传感器，就可以得到位姿信息了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果你运行的时候报错：error while loading shared libraries: librealsense2.so.2.34: cannot open shared object file: no such file or directory，那你需要将 CMakeLists.txt 中的 librealsense2 的链接方式改为如下方式：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;find_package(realsense2 REQUIRED)
+include_directories(  $&amp;#123;realsense2_INCLUDE_DIR&amp;#125; )
+target_link_libraries(test $&amp;#123;realsense2_LIBRARY&amp;#125; )
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;用opencv显示双目摄像头的数据&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#用opencv显示双目摄像头的数据&#34;&gt;#&lt;/a&gt; 用&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5jc2RuLm5ldC9zby9zZWFyY2g/ZnJvbT1wY19ibG9nX2hpZ2hsaWdodCZhbXA7cT1vcGVuY3Y=&#34;&gt; opencv&lt;/span&gt; 显示双目摄像头的数据&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;有了 3.1 的基础，这里我就直接上代码了。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include &amp;lt;librealsense2/rs.hpp&amp;gt;
+#include &amp;lt;opencv2/opencv.hpp&amp;gt;
+
+int main()&amp;#123;
+
+    rs2::config cfg;
+    cfg.enable_stream(RS2_STREAM_FISHEYE,1, RS2_FORMAT_Y8);
+    cfg.enable_stream(RS2_STREAM_FISHEYE,2, RS2_FORMAT_Y8);
+    rs2::pipeline pipe;
+    pipe.start(cfg);
+
+    rs2::frameset data;
+
+    while (1)&amp;#123;
+        data = pipe.wait_for_frames();
+        rs2::frame image_left = data.get_fisheye_frame(1);
+        rs2::frame image_right = data.get_fisheye_frame(2);
+
+        if (!image_left || !image_right)
+            break;
+
+        cv::Mat cv_image_left(cv::Size(848, 800), CV_8U, (void*)image_left.get_data(), cv::Mat::AUTO_STEP);
+        cv::Mat cv_image_right(cv::Size(848, 800), CV_8U, (void*)image_right.get_data(), cv::Mat::AUTO_STEP);
+
+        cv::imshow(&amp;quot;left&amp;quot;, cv_image_left);
+        cv::imshow(&amp;quot;right&amp;quot;, cv_image_right);
+        cv::waitKey(1);
+    &amp;#125;
+
+    return 0;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对应的 &lt;code&gt;CMakeLists.txt&lt;/code&gt;  文件内容如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;cmake_minimum_required(VERSION 3.1.0)
+project(test)
+set(CMAKE_BUILD_TYPE &amp;quot;release&amp;quot;)
+
+find_package(OpenCV)
+
+include_directories($&amp;#123;OpenCV_INCLUDE_DIRS&amp;#125;)
+
+add_executable(test main.cpp)
+target_link_libraries(test
+        realsense2
+        $&amp;#123;OpenCV_LIBS&amp;#125;
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
+        <category term="Ubuntu" scheme="https://wlp1231.github.io.git/categories/ROS/Ubuntu/" />
+        <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
+        <category term="Ubuntu" scheme="https://wlp1231.github.io.git/tags/Ubuntu/" />
+        <updated>2022-09-26T15:15:03.616Z</updated>
+    </entry>
+    <entry>
+        <id>https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/ros%E7%AE%80%E4%BB%8B/</id>
+        <title>ROS</title>
+        <link rel="alternate" href="https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/ros%E7%AE%80%E4%BB%8B/"/>
+        <content type="html">&lt;h1 id=&#34;ros&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ros&#34;&gt;#&lt;/a&gt; ros&lt;/h1&gt;
+&lt;h2 id=&#34;ros发展&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ros发展&#34;&gt;#&lt;/a&gt; ROS 发展&lt;/h2&gt;
+&lt;h2 id=&#34;ros核心概念&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ros核心概念&#34;&gt;#&lt;/a&gt; ros 核心概念&lt;/h2&gt;
+&lt;h3 id=&#34;节点与节点管理器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#节点与节点管理器&#34;&gt;#&lt;/a&gt; 节点与节点管理器&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;节点 (node)—— 执行单元&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;节点管理器 (ROS Master)—— 控制中心&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/F4CAF53D748FB9C1BC00BFA845E8137D.jpg&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;话题通讯&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#话题通讯&#34;&gt;#&lt;/a&gt; 话题通讯&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;话题 (Topic)—— 异步通讯机制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;消息 (Message)—— 话题数据&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/DA5B5437595A7C45C4094F420A34B6E8.jpg&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;服务通讯&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#服务通讯&#34;&gt;#&lt;/a&gt; 服务通讯&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;服务 (Service)—— 同步通讯机制&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/198CF5D08B32B6501ED1B27215D2C60B.jpg&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;参数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#参数&#34;&gt;#&lt;/a&gt; 参数&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;参数 (Parameter)—— 全局共享字典&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/F84FDE814DC582200E9F6A6E314D328C.jpg&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;文件系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#文件系统&#34;&gt;#&lt;/a&gt; 文件系统&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;功能包 (Package)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;功能包清单 (Package manifest)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元功能包 (Meta Packages)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/1322E943259F5DEDF02695BF03BE17C1.jpg&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ros命令行工具使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ros命令行工具使用&#34;&gt;#&lt;/a&gt; ROS 命令行工具使用&lt;/h2&gt;
+&lt;h3 id=&#34;常用命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#常用命令&#34;&gt;#&lt;/a&gt; 常用命令&lt;/h3&gt;
+&lt;h3 id=&#34;运行小海龟&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行小海龟&#34;&gt;#&lt;/a&gt; 运行小海龟&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;roscore&lt;/li&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;rosrun turtlesim 双击 tab&lt;/li&gt;
+&lt;li&gt;rosrun turtlesim turtlesim_node&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;rosrun turtlesim turtle_teleop_key&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;命令行控制小海龟&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#命令行控制小海龟&#34;&gt;#&lt;/a&gt; 命令行控制小海龟&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;rqt_graph&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rosnode&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rosnode info /turtlesim&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rostopic&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rostopic pub /turtle1/cmd_vel geometry_msgs/Twist (双击 tab)&lt;/p&gt;
+&lt;p&gt;海龟绕 z 轴转&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rosmsg show geometry_msgs/Twist&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rosservice&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rosservice call /spawn (双击 tab，新加一只海龟)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rosbag record -a -O cmd_record (保存运行数据)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rosbag play cmd_record.bag (按上次数据运行)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/2021-04-24%2010-01-56%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/2021-04-24%2010-00-40%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/2021-04-24%2011-32-43%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/2021-04-24%2011-38-42%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/2021-04-24%2011-39-23%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/2021-04-24%2011-39-34%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/2021-04-24%2011-39-46%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;创建工作空间与功能包&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建工作空间与功能包&#34;&gt;#&lt;/a&gt; 创建工作空间与功能包&lt;/h2&gt;
+&lt;h3 id=&#34;功能空间&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#功能空间&#34;&gt;#&lt;/a&gt; 功能空间&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;src (代码空间)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;build (编译空间)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;devel (开发空间)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;install (安装空间)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/84D8CBC11E2562F75491728479EB1A0D.jpg&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;创建工作空间&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建工作空间&#34;&gt;#&lt;/a&gt; 创建工作空间&lt;/h3&gt;
+&lt;h4 id=&#34;创建工作空间-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建工作空间-2&#34;&gt;#&lt;/a&gt; 创建工作空间&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;mkdir -p ~/catkin_ws/src&lt;/li&gt;
+&lt;li&gt;cd ~/catkin_ws/src&lt;/li&gt;
+&lt;li&gt;catkin_init_workspace&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;编译工作空间&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编译工作空间&#34;&gt;#&lt;/a&gt; 编译工作空间&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;cd ~/catkin_ws/&lt;/li&gt;
+&lt;li&gt;catkin_make&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;设置环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#设置环境变量&#34;&gt;#&lt;/a&gt; 设置环境变量&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;source devel/setup.bash&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;检查环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#检查环境变量&#34;&gt;#&lt;/a&gt; 检查环境变量&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;echo $ROS_PACKAGE_PATH&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;创建功能包&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建功能包&#34;&gt;#&lt;/a&gt; 创建功能包&lt;/h3&gt;
+&lt;h4 id=&#34;创建功能包-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建功能包-2&#34;&gt;#&lt;/a&gt; 创建功能包&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;cd ~/catkin_ws/src&lt;/li&gt;
+&lt;li&gt;catkin_create_pkg test_pkg std_msgs roscpp rospy&lt;/li&gt;
+&lt;li&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/5AD81B88DDB3E851DFEEA2D62E81144D.jpg&#34; alt=&#34;wode&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;编译功能包&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编译功能包&#34;&gt;#&lt;/a&gt; 编译功能包&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;cd ~catkin_ws&lt;/li&gt;
+&lt;li&gt;catkin_make&lt;/li&gt;
+&lt;li&gt;source ~/catkin_ws/devel/setup.bash&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;发布者publisher的编程实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#发布者publisher的编程实现&#34;&gt;#&lt;/a&gt; 发布者 Publisher 的编程实现&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;创建功能包&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在功能包的 src 中创建文档，输入代码 (touch 文档名)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置发布者代码编译规则 (插入到 CM。。。.txt 中 Install 前)&lt;/p&gt;
+&lt;p&gt;add_executable(velocity&lt;/p&gt;
+&lt;p&gt;_publisher src/velocity_publisher.cpp)&lt;/p&gt;
+&lt;p&gt;target_link_libraries(velocity_publisher ${catkin_LIBRARIES})&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;回到工作空间根目录进行 ——catkin_make&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置环境变量 ——source delel/setup.bash (ctrl+h, 找到隐藏文件，固定)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重启终端，启动 ros，海龟，第三个终端 ——rosrun 功能包名&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;订阅者subscriber的编程实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#订阅者subscriber的编程实现&#34;&gt;#&lt;/a&gt; 订阅者 Subscriber 的编程实现&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在功能包的 src 中创建文档，输入代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置发布者代码编译规则 (插入到 CM。。。.txt 中 Install 前)&lt;/p&gt;
+&lt;p&gt;add_executable(pose_subscriber src/pose_subscriber.cpp)&lt;br /&gt;
+target_link_libraries(pose_subscriber ${catkin_LIBRARIES})&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;回到工作空间根目录进行 ——catkin_make&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置环境变量 ——source delel/setup.bash (发布者过程以固定，可忽略)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重启终端，启动 ros，海龟，第三个终端 ——rosrun 功能包名 文档名&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;话题消息的定义与使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#话题消息的定义与使用&#34;&gt;#&lt;/a&gt; 话题消息的定义与使用&lt;/h2&gt;
+&lt;h3 id=&#34;自定义话题消息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#自定义话题消息&#34;&gt;#&lt;/a&gt; 自定义话题消息&lt;/h3&gt;
+&lt;h4 id=&#34;定义msg文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#定义msg文件&#34;&gt;#&lt;/a&gt; 定义 msg 文件&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;touch Person.msg&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据接口的定义&lt;/p&gt;
+&lt;p&gt;string name&lt;br /&gt;
+uint8 sex&lt;br /&gt;
+uint8 age&lt;/p&gt;
+&lt;p&gt;uint8 unknown = 0&lt;br /&gt;
+uint8 male = 1&lt;br /&gt;
+uint8 female = 2&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;在packagexml中添加功能包依赖&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#在packagexml中添加功能包依赖&#34;&gt;#&lt;/a&gt; 在 package.xml 中添加功能包依赖&lt;/h4&gt;
+&lt;p&gt;&amp;lt;build_depend&amp;gt;message_generation&amp;lt;/build_depend&amp;gt;&lt;br /&gt;
+&amp;lt;exec_depend&amp;gt;message_runtime&amp;lt;/exec_depend&amp;gt;&lt;/p&gt;
+&lt;h4 id=&#34;在cmakeliststxt添加编译选项&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#在cmakeliststxt添加编译选项&#34;&gt;#&lt;/a&gt; 在 CMakeLists.txt 添加编译选项&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;find_package( …… message_generation)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;add_message_files(FILES Person.msg)&lt;br /&gt;
+generate_messages(DEPENDENCIES std_msgs)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;catkin_package(…… message_runtime)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;编译生成相关语言文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编译生成相关语言文件&#34;&gt;#&lt;/a&gt; 编译生成相关语言文件&lt;/h4&gt;
+&lt;h4 id=&#34;配置代码编译规则&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#配置代码编译规则&#34;&gt;#&lt;/a&gt; 配置代码编译规则&lt;/h4&gt;
+&lt;p&gt;*/add_executable(person_publisher src/person_publisher.cpp)&lt;br /&gt;
+*/target_link_libraries(person_publisher ${catkin_LIBRARIES})&lt;br /&gt;
+*/add_dependencies(person_publisher ${PROJECT_NAME}_generate_messages_cpp)&lt;/p&gt;
+&lt;p&gt;*/add_executable(person_subscriber src/person_subscriber.cpp)&lt;br /&gt;
+*/target_link_libraries(person_subscriber ${catkin_LIBRARIES})&lt;br /&gt;
+*/add_dependencies(person_subscriber ${PROJECT_NAME}_generate_messages_cpp)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425094112.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;客户端client的编程实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#客户端client的编程实现&#34;&gt;#&lt;/a&gt; 客户端 Client 的编程实现&lt;/h2&gt;
+&lt;h3 id=&#34;创建功能包-3&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建功能包-3&#34;&gt;#&lt;/a&gt; 创建功能包&lt;/h3&gt;
+&lt;p&gt;catkin_create_pkg learning_service roscpp rospy std_msgs geometry_msgs turtlesim&lt;/p&gt;
+&lt;h3 id=&#34;创建客户端代码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建客户端代码&#34;&gt;#&lt;/a&gt; 创建客户端代码&lt;/h3&gt;
+&lt;h3 id=&#34;配置客户端代码编译规则c&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#配置客户端代码编译规则c&#34;&gt;#&lt;/a&gt; 配置客户端代码编译规则 (c++)&lt;/h3&gt;
+&lt;p&gt;add_executable(turtle_spawn src/turtle_spawn.cpp)&lt;br /&gt;
+target_link_libraries(turtle_spawn ${catkin_LIBRARIES})&lt;/p&gt;
+&lt;h3 id=&#34;运行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行&#34;&gt;#&lt;/a&gt; 运行&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425094547.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;服务端service的编程实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#服务端service的编程实现&#34;&gt;#&lt;/a&gt; 服务端 Service 的编程实现&lt;/h2&gt;
+&lt;h3 id=&#34;创建代码并配置编译规则&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建代码并配置编译规则&#34;&gt;#&lt;/a&gt; 创建代码并配置编译规则&lt;/h3&gt;
+&lt;p&gt;add_executable(turtle_command_server src/turtle_command_server.cpp)&lt;br /&gt;
+target_link_libraries(turtle_command_server ${catkin_LIBRARIES})&lt;/p&gt;
+&lt;h3 id=&#34;编译并运行服务器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编译并运行服务器&#34;&gt;#&lt;/a&gt; 编译并运行服务器&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425095204.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425120556.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;服务数据的定义与使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#服务数据的定义与使用&#34;&gt;#&lt;/a&gt; 服务数据的定义与使用&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425095447.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;自定义服务数据&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#自定义服务数据&#34;&gt;#&lt;/a&gt; 自定义服务数据&lt;/h3&gt;
+&lt;h4 id=&#34;定义srv文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#定义srv文件&#34;&gt;#&lt;/a&gt; 定义 srv 文件&lt;/h4&gt;
+&lt;h4 id=&#34;在packagexml中添加功能包依赖-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#在packagexml中添加功能包依赖-2&#34;&gt;#&lt;/a&gt; 在 package.xml 中添加功能包依赖&lt;/h4&gt;
+&lt;p&gt;&amp;lt;build_depend&amp;gt;message_generation&amp;lt;/build_depend&amp;gt;&lt;br /&gt;
+&amp;lt;exec_depend&amp;gt;message_runtime&amp;lt;/exec_depend&amp;gt;&lt;/p&gt;
+&lt;h4 id=&#34;在cmakeliststxt添加编译选项-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#在cmakeliststxt添加编译选项-2&#34;&gt;#&lt;/a&gt; 在 CMakeLists.txt 添加编译选项&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;find_package(...... message_generation)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;add_service_files(FILES Person.srv)&lt;br /&gt;
+generates_message(DEPENDENCIES std_msgs)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;catkin_package(...... message_runtime)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;编译&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编译&#34;&gt;#&lt;/a&gt; 编译&lt;/h4&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425095458.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;创建服务端代码&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建服务端代码&#34;&gt;#&lt;/a&gt; 创建服务端代码&lt;/h3&gt;
+&lt;h3 id=&#34;创建客户端代码-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建客户端代码-2&#34;&gt;#&lt;/a&gt; 创建客户端代码&lt;/h3&gt;
+&lt;h3 id=&#34;配置编译规则&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#配置编译规则&#34;&gt;#&lt;/a&gt; 配置编译规则&lt;/h3&gt;
+&lt;p&gt;add_executable(person_server src/person_server.cpp)&lt;br /&gt;
+target_link_libraries(person_server ${catkin_LIBRARIES})&lt;br /&gt;
+add_dependencies(person_server ${PROJECT_NAME}_gencpp)&lt;/p&gt;
+&lt;p&gt;add_executable(person_client src/person_client.cpp)&lt;br /&gt;
+target_link_libraries(person_client ${catkin_LIBRARIES})&lt;br /&gt;
+add_dependencies(person_client ${PROJECT_NAME}_gencpp)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425095516.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425123046.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参数的使用与编程方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#参数的使用与编程方法&#34;&gt;#&lt;/a&gt; 参数的使用与编程方法&lt;/h2&gt;
+&lt;h3 id=&#34;参数模型&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#参数模型&#34;&gt;#&lt;/a&gt; 参数模型&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425105408.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;创建功能包-4&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建功能包-4&#34;&gt;#&lt;/a&gt; 创建功能包&lt;/h3&gt;
+&lt;p&gt;catkin_create_pkg learning_parameter roscpp rospy std_srvs&lt;/p&gt;
+&lt;h3 id=&#34;参数命令行使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#参数命令行使用&#34;&gt;#&lt;/a&gt; 参数命令行使用&lt;/h3&gt;
+&lt;h4 id=&#34;rosparam&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#rosparam&#34;&gt;#&lt;/a&gt; rosparam&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;列出当前多有参数&lt;/p&gt;
+&lt;p&gt;$ rosparam list&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;显示某个参数值&lt;/p&gt;
+&lt;p&gt;$ rosparam get param_key&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置某个参数值&lt;/p&gt;
+&lt;p&gt;$ rosparam set param_key param_value&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;保存参数到文件&lt;/p&gt;
+&lt;p&gt;$ rosparam dumo file_name&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从文件读取参数&lt;/p&gt;
+&lt;p&gt;$ rosparam delete param_key&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425123758.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425124156.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;编程方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编程方法&#34;&gt;#&lt;/a&gt; 编程方法&lt;/h3&gt;
+&lt;h3 id=&#34;配置代码编译规则-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#配置代码编译规则-2&#34;&gt;#&lt;/a&gt; 配置代码编译规则&lt;/h3&gt;
+&lt;p&gt;add_executable(parameter_config src/parameter_config.cpp)&lt;/p&gt;
+&lt;p&gt;target_link_libraries(parameter_config ${catkin_LISRARAIES})&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210425110535.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;编译并运行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编译并运行&#34;&gt;#&lt;/a&gt; 编译并运行&lt;/h3&gt;
+</content>
+        <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
+        <category term="Ubuntu" scheme="https://wlp1231.github.io.git/categories/ROS/Ubuntu/" />
+        <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
+        <category term="Ubuntu" scheme="https://wlp1231.github.io.git/tags/Ubuntu/" />
+        <updated>2022-09-26T15:14:47.656Z</updated>
+    </entry>
+    <entry>
+        <id>https://wlp1231.github.io.git/2022/09/26/the-tutorial/note/socket%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/</id>
+        <title>socket通信机制详解</title>
+        <link rel="alternate" href="https://wlp1231.github.io.git/2022/09/26/the-tutorial/note/socket%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/"/>
+        <content type="html">&lt;h1 id=&#34;socket通信机制详解&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#socket通信机制详解&#34;&gt;#&lt;/a&gt; socket 通信机制详解&lt;/h1&gt;
+&lt;p&gt;我们深谙信息交流的价值，那网络中进程之间如何通信，如我们每天打开浏览器浏览网页时，浏览器的进程怎么与 web 服务器通信的？当你用 &lt;code&gt;QQ&lt;/code&gt;  聊天时， &lt;code&gt;QQ&lt;/code&gt;  进程怎么与服务器或你好友所在的 &lt;code&gt;QQ&lt;/code&gt;  进程通信？这些都得靠 socket？那什么是 socket？socket 的类型有哪些？还有 socket 的基本函数，这些都是本文想介绍的。本文的主要内容如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1、网络中进程之间如何通信？&lt;/li&gt;
+&lt;li&gt;2、Socket 是什么？&lt;/li&gt;
+&lt;li&gt;3、socket 的基本操作
+&lt;ul&gt;
+&lt;li&gt;3.1、socket () 函数&lt;/li&gt;
+&lt;li&gt;3.2、bind () 函数&lt;/li&gt;
+&lt;li&gt;3.3、listen ()、connect () 函数&lt;/li&gt;
+&lt;li&gt;3.4、accept () 函数&lt;/li&gt;
+&lt;li&gt;3.5、read ()、write () 函数等&lt;/li&gt;
+&lt;li&gt;3.6、close () 函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;4、socket 中 TCP 的三次握手建立连接详解&lt;/li&gt;
+&lt;li&gt;5、socket 中 TCP 的四次握手释放连接详解&lt;/li&gt;
+&lt;li&gt;6、一个例子（实践一下）&lt;/li&gt;
+&lt;li&gt;7、留下一个问题，欢迎大家回帖回答！！！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;1-网络中进程之间如何通信&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-网络中进程之间如何通信&#34;&gt;#&lt;/a&gt; 1、网络中进程之间如何通信？&lt;/h1&gt;
+&lt;p&gt;本地的进程间通信（ &lt;code&gt;IPC&lt;/code&gt; ）有很多种方式，但可以总结为下面 4 类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;消息传递（管道、FIFO、消息队列）&lt;/li&gt;
+&lt;li&gt;同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量）&lt;/li&gt;
+&lt;li&gt;共享内存（匿名的和具名的）&lt;/li&gt;
+&lt;li&gt;远程过程调用（ &lt;code&gt;Solaris&lt;/code&gt;  门和 &lt;code&gt;Sun RPC&lt;/code&gt; ）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但这些都不是本文的主题！我们要讨论的是网络中进程之间如何通信？首要解决的问题是如何唯一标识一个进程，否则通信无从谈起！在本地可以通过进程 &lt;code&gt;PID&lt;/code&gt;  唯一标识一个进程，但是在网络中这是行不通的。其实 &lt;code&gt;TCP/IP&lt;/code&gt;  协议族已经帮我们解决了这个问题，网络层的 “ &lt;code&gt;**ip地址**”&lt;/code&gt;  可以唯一标识网络中的主机，而传输层的 “&lt;strong&gt;协议 + 端口&lt;/strong&gt;” 可以唯一标识主机中的应用程序（进程）。这样利用三元组（ &lt;code&gt;ip&lt;/code&gt;  地址，协议，端口）就可以标识网络的进程了，网络中的进程通信就可以利用这个标志与其它进程进行交互。&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;TCP/IP&lt;/code&gt;  协议的应用程序通常采用应用编程接口：UNIX BSD 的套接字（socket）和 UNIX System V 的 &lt;code&gt;TLI&lt;/code&gt;  已经被淘汰），来实现网络进程之间的通信。就目前而言，几乎所有的应用程序都是采用 socket，而现在又是网络时代，网络中进程通信是无处不在，这就是我为什么说 “一切皆 socket”。&lt;/p&gt;
+&lt;h1 id=&#34;2-什么是socket&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-什么是socket&#34;&gt;#&lt;/a&gt; 2、什么是 Socket？&lt;/h1&gt;
+&lt;p&gt;上面我们已经知道网络中的进程是通过 socket 来通信的，那什么是 socket 呢？socket 起源于 Unix，而 Unix/Linux 基本哲学之一就是 “一切皆文件”，都可以用 “打开 open –&amp;gt; 读写 write/read –&amp;gt; 关闭 close” 模式来操作。我的理解就是 Socket 就是该模式的一个实现，socket 即是一种特殊的文件，一些 socket 函数就是对其进行的操作（读 / 写 IO、打开、关闭），这些函数我们在后面进行介绍。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;socket一词的起源&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#socket一词的起源&#34;&gt;#&lt;/a&gt; socket 一词的起源&lt;/h3&gt;
+&lt;p&gt;在组网领域的首次使用是在 1970 年 2 月 12 日发布的文献&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2RhdGF0cmFja2VyLmlldGYub3JnL2RvYy9yZmMzMy8=&#34;&gt; IETF RFC33&lt;/span&gt; 中发现的，撰写者为 Stephen Carr、Steve Crocker 和 &lt;code&gt;Vint &lt;/code&gt; Cerf。根据美国计算机历史博物馆的记载， &lt;code&gt;Croker&lt;/code&gt;  写道：“命名空间的元素都可称为套接字接口。一个套接字接口构成一个连接的一端，而一个连接可完全由一对套接字接口规定。” 计算机历史博物馆补充道：“这比 BSD 的套接字接口定义早了大约 12 年。”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;3-socket的基本操作&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-socket的基本操作&#34;&gt;#&lt;/a&gt; 3、socket 的基本操作&lt;/h1&gt;
+&lt;p&gt;既然 socket 是 “open—write/read—close” 模式的一种实现，那么 socket 就提供了这些操作对应的函数接口。下面以 TCP 为例，介绍几个基本的 socket 接口函数。&lt;/p&gt;
+&lt;h2 id=&#34;31-socket函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#31-socket函数&#34;&gt;#&lt;/a&gt; 3.1、socket () 函数&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;int socket(int domain, int type, int protocol);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;socket 函数对应于普通文件的打开操作。普通文件的打开操作返回一个文件描述字，而 ****socket ()**** 用于创建一个 socket 描述符（socket descriptor），它唯一标识一个 socket。这个 socket 描述字跟文件描述字一样，后续的操作都有用到它，把它作为参数，通过它来进行一些读写操作。&lt;/p&gt;
+&lt;p&gt;正如可以给 fopen 的传入不同参数值，以打开不同的文件。创建 socket 的时候，也可以指定不同的参数创建不同的 socket 描述符，socket 函数的三个参数分别为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;domain：即协议域，又称为协议族（family）。常用的协议族有， &lt;code&gt;AF_INET、AF_INET6、AF_LOCAL&lt;/code&gt; （或称 AF_UNIX，Unix 域 socket）、AF_ROUTE 等等。协议族决定了 socket 的地址类型，在通信中必须采用对应的地址，如 &lt;code&gt;AF_INET&lt;/code&gt;  决定了要用 &lt;code&gt;ipv4&lt;/code&gt;  地址（32 位的）与端口号（16 位的）的组合、AF_UNIX 决定了要用一个绝对路径名作为地址。&lt;/li&gt;
+&lt;li&gt;type：指定 socket 类型。常用的 socket 类型有， &lt;code&gt;SOCK_STREAM、SOCK_DGRAM、SOCK_RAW、SOCK_PACKET、SOCK_SEQPACKET&lt;/code&gt;  等等（socket 的类型有哪些？）。&lt;/li&gt;
+&lt;li&gt;protocol：故名思意，就是指定协议。常用的协议有， &lt;code&gt;IPPROTO_TCP、IPPTOTO_UDP、IPPROTO_SCTP、IPPROTO_TIPC&lt;/code&gt;  等，它们分别对应 TCP 传输协议、 &lt;code&gt;UDP&lt;/code&gt;  传输协议、 &lt;code&gt;STCP&lt;/code&gt;  传输协议、 &lt;code&gt;TIPC&lt;/code&gt;  传输协议（这个协议我将会单独开篇讨论！）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注意：并不是上面的 type 和 protocol 可以随意组合的，如 SOCK_STREAM 不可以跟 &lt;code&gt;IPPROTO_UDP&lt;/code&gt;  组合。当 protocol 为 0 时，会自动选择 type 类型对应的默认协议。&lt;/p&gt;
+&lt;p&gt;当我们调用 ****socket**** 创建一个 socket 时，返回的 socket 描述字它存在于协议族（address family，AF_XXX）空间中，但没有一个具体的地址。如果想要给它赋值一个地址，就必须调用 bind () 函数，否则就当调用 connect ()、listen () 时系统会自动随机分配一个端口。&lt;/p&gt;
+&lt;h2 id=&#34;32-bind函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#32-bind函数&#34;&gt;#&lt;/a&gt; 3.2、bind () 函数&lt;/h2&gt;
+&lt;p&gt;正如上面所说 bind () 函数把一个地址族中的特定地址赋给 socket。例如对应 &lt;code&gt;AF_INET&lt;/code&gt; 、 &lt;code&gt;AF_INET6&lt;/code&gt;  就是把一个 &lt;code&gt;ipv4&lt;/code&gt;  或 &lt;code&gt;ipv6&lt;/code&gt;  地址和端口号组合赋给 socket。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数的三个参数分别为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;sockfd：即 socket 描述字，它是通过 socket () 函数创建了，唯一标识一个 socket。bind () 函数就是将给这个描述字绑定一个名字。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;addr：一个&lt;/p&gt;
+&lt;p&gt;const&lt;/p&gt;
+&lt;p&gt;struct&lt;/p&gt;
+&lt;p&gt;sockaddr * 指针，指向要绑定给 sockfd 的协议地址。这个地址结构根据地址创建 socket 时的地址协议族的不同而不同，如 ipv4 对应的是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;struct sockaddr_in &amp;#123;
+    sa_family_t    sin_family; /* address family: AF_INET */
+    in_port_t      sin_port;   /* port in network byte order */
+    struct in_addr sin_addr;   /* internet address */
+&amp;#125;;
+
+/* Internet address. */
+struct in_addr &amp;#123;
+    uint32_t       s_addr;     /* address in network byte order */
+&amp;#125;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ipv6 对应的是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;struct sockaddr_in6 &amp;#123; 
+    sa_family_t     sin6_family;   /* AF_INET6 */ 
+    in_port_t       sin6_port;     /* port number */ 
+    uint32_t        sin6_flowinfo; /* IPv6 flow information */ 
+    struct in6_addr sin6_addr;     /* IPv6 address */ 
+    uint32_t        sin6_scope_id; /* Scope ID (new in 2.4) */ 
+&amp;#125;;
+
+struct in6_addr &amp;#123; 
+    unsigned char   s6_addr[16];   /* IPv6 address */ 
+&amp;#125;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Unix 域对应的是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#define UNIX_PATH_MAX    108
+
+struct sockaddr_un &amp;#123; 
+    sa_family_t sun_family;               /* AF_UNIX */ 
+    char        sun_path[UNIX_PATH_MAX];  /* pathname */ 
+&amp;#125;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;addrlen：对应的是地址的长度。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通常服务器在启动的时候都会绑定一个众所周知的地址（如 ip 地址 + 端口号），用于提供服务，客户就可以通过它来接连服务器；而客户端就不用指定，有系统自动分配一个端口号和自身的 ip 地址组合。这就是为什么通常服务器端在 listen 之前会调用 bind ()，而客户端就不会调用，而是在 connect () 时由系统随机生成一个。&lt;/p&gt;
+&lt;h3 id=&#34;网络字节序与主机字节序&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#网络字节序与主机字节序&#34;&gt;#&lt;/a&gt; 网络字节序与主机字节序&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;**** 主机字节序 **** 就是我们平常说的大端和小端模式：不同的 CPU 有不同的字节序类型，这些字节序是指整数在内存中保存的顺序，这个叫做主机序。引用标准的 Big- &lt;code&gt;Endian&lt;/code&gt;  和 &lt;code&gt;Little-Endian&lt;/code&gt;  的定义如下：&lt;/p&gt;
+&lt;p&gt;a)  &lt;code&gt;Little-Endian&lt;/code&gt;  就是低位字节排放在内存的低地址端，高位字节排放在内存的高地址端。&lt;/p&gt;
+&lt;p&gt;b)  &lt;code&gt;Big-Endian&lt;/code&gt;  就是高位字节排放在内存的低地址端，低位字节排放在内存的高地址端。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;* 网络字节序 *&lt;/strong&gt;&lt;/em&gt;：4 个字节的 32 bit 值以下面的次序传输：首先是 &lt;code&gt;0～7bit&lt;/code&gt; ，其次 &lt;code&gt;8～15bit&lt;/code&gt; ，然后 &lt;code&gt;16～23bit&lt;/code&gt; ，最后是 &lt;code&gt;24~31bit&lt;/code&gt; 。这种传输次序称作大端字节序。** 由于 &lt;code&gt;TCP/IP&lt;/code&gt;  首部中所有的二进制整数在网络中传输时都要求以这种次序，因此它又称作网络字节序。** 字节序，顾名思义字节的顺序，就是大于一个字节类型的数据在内存中的存放顺序，一个字节的数据没有顺序的问题了。&lt;/p&gt;
+&lt;p&gt;所以：在将一个地址绑定到 socket 的时候，请先将主机字节序转换成为网络字节序，而不要假定主机字节序跟网络字节序一样使用的是 &lt;code&gt;Big-Endian&lt;/code&gt;  由于这个问题曾引发过血案！公司项目代码中由于存在这个问题，导致了很多莫名其妙的问题，所以请谨记对主机字节序不要做任何假定，务必将其转化为网络字节序再赋给 socket。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;33-listen-connect函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#33-listen-connect函数&#34;&gt;#&lt;/a&gt; 3.3、listen ()、connect () 函数&lt;/h2&gt;
+&lt;p&gt;如果作为一个服务器，在调用 socket ()、bind () 之后就会调用 listen () 来监听这个 socket，如果客户端这时调用 connect () 发出连接请求，服务器端就会接收到这个请求。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int listen(int sockfd, int backlog);
+int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;listen 函数的第一个参数即为要监听的 socket 描述字，第二个参数为相应 socket 可以排队的最大连接个数。socket () 函数创建的 socket 默认是一个主动类型的，listen 函数将 socket 变为被动类型的，等待客户的连接请求。&lt;/p&gt;
+&lt;p&gt;connect 函数的第一个参数即为客户端的 socket 描述字，第二参数为服务器的 socket 地址，第三个参数为 socket 地址的长度。客户端通过调用 connect 函数来建立与 TCP 服务器的连接。&lt;/p&gt;
+&lt;h2 id=&#34;34-accept函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#34-accept函数&#34;&gt;#&lt;/a&gt; 3.4、accept () 函数&lt;/h2&gt;
+&lt;p&gt;TCP 服务器端依次调用 socket ()、bind ()、listen () 之后，就会监听指定的 socket 地址了。TCP 客户端依次调用 socket ()、connect () 之后就想 TCP 服务器发送了一个连接请求。TCP 服务器监听到这个请求之后，就会调用 accept () 函数取接收请求，这样连接就建立好了。之后就可以开始网络 I/O 操作了，即类同于普通文件的读写 I/O 操作。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;accept 函数的第一个参数为服务器的 socket 描述字，第二个参数为指向 struct sockaddr * 的指针，用于返回客户端的协议地址，第三个参数为协议地址的长度。如果 accpet 成功，那么其返回值是由内核自动生成的一个全新的描述字，代表与返回客户的 TCP 连接。&lt;/p&gt;
+&lt;p&gt;注意：accept 的第一个参数为服务器的 socket 描述字，是服务器开始调用 socket () 函数生成的，称为监听 socket 描述字；而 accept 函数返回的是已连接的 socket 描述字。一个服务器通常通常仅仅只创建一个监听 socket 描述字，它在该服务器的生命周期内一直存在。内核为每个由服务器进程接受的客户连接创建了一个已连接 socket 描述字，当服务器完成了对某个客户的服务，相应的已连接 socket 描述字就被关闭。&lt;/p&gt;
+&lt;h2 id=&#34;35-read-write等函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#35-read-write等函数&#34;&gt;#&lt;/a&gt; 3.5、read ()、write () 等函数&lt;/h2&gt;
+&lt;p&gt;万事具备只欠东风，至此服务器与客户已经建立好连接了。可以调用网络 I/O 进行读写操作了，即实现了网咯中不同进程之间的通信！网络 I/O 操作有下面几组：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;read()/write()&lt;/li&gt;
+&lt;li&gt;recv()/send()&lt;/li&gt;
+&lt;li&gt;readv()/writev()&lt;/li&gt;
+&lt;li&gt;recvmsg()/sendmsg()&lt;/li&gt;
+&lt;li&gt;recvfrom()/sendto()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我推荐使用 recvmsg ()/sendmsg () 函数，这两个函数是最通用的 I/O 函数，实际上可以把上面的其它函数都替换成这两个函数。它们的声明如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       #include &amp;lt;unistd.h&amp;gt;
+
+       ssize_t read(int fd, void *buf, size_t count);
+       ssize_t write(int fd, const void *buf, size_t count);
+
+       #include &amp;lt;sys/types.h&amp;gt;
+       #include &amp;lt;sys/socket.h&amp;gt;
+
+       ssize_t send(int sockfd, const void *buf, size_t len, int flags);
+       ssize_t recv(int sockfd, void *buf, size_t len, int flags);
+
+       ssize_t sendto(int sockfd, const void *buf, size_t len, int flags,
+                      const struct sockaddr *dest_addr, socklen_t addrlen);
+       ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags,
+                        struct sockaddr *src_addr, socklen_t *addrlen);
+
+       ssize_t sendmsg(int sockfd, const struct msghdr *msg, int flags);
+       ssize_t recvmsg(int sockfd, struct msghdr *msg, int flags);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;read 函数是负责从 &lt;code&gt;fd&lt;/code&gt;  中读取内容。当读成功时，read 返回实际所读的字节数，如果返回的值是 0 表示已经读到文件的结束了，小于 0 表示出现了错误。如果错误为 &lt;code&gt;EINTR&lt;/code&gt;  说明读是由中断引起的，如果是 &lt;code&gt;ECONNREST&lt;/code&gt;  表示网络连接出了问题。&lt;/p&gt;
+&lt;p&gt;write 函数将 &lt;code&gt;buf&lt;/code&gt;  中的 &lt;code&gt;nbytes&lt;/code&gt;  字节内容写入文件描述符 &lt;code&gt;fd&lt;/code&gt; . 成功时返回写的字节数。失败时返回 - 1，并设置 &lt;code&gt;errno&lt;/code&gt;  变量。 在网络程序中，当我们向套接字文件描述符写时有俩种可能。1) write 的返回值大于 0，表示写了部分或者是全部的数据。2) 返回的值小于 0，此时出现了错误。我们要根据错误类型来处理。如果错误为 &lt;code&gt;EINTR&lt;/code&gt;  表示在写的时候出现了中断错误。如果为 &lt;code&gt;EPIPE&lt;/code&gt;  表示网络连接出现了问题 (对方已经关闭了连接)。&lt;/p&gt;
+&lt;p&gt;其它的我就不一一介绍这几对 I/O 函数了，具体参见 man 文档或者 baidu、Google，下面的例子中将使用到 send/recv。&lt;/p&gt;
+&lt;h2 id=&#34;36-close函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#36-close函数&#34;&gt;#&lt;/a&gt; 3.6、close () 函数&lt;/h2&gt;
+&lt;p&gt;在服务器与客户端建立连接之后，会进行一些读写操作，完成了读写操作就要关闭相应的 socket 描述字，好比操作完打开的文件要调用 fclose 关闭打开的文件。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;unistd.h&amp;gt;
+int close(int fd);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;close 一个 TCP socket 的缺省行为时把该 socket 标记为以关闭，然后立即返回到调用进程。该描述字不能再由调用进程使用，也就是说不能再作为 read 或 write 的第一个参数。&lt;/p&gt;
+&lt;p&gt;注意：close 操作只是使相应 socket 描述字的引用计数 - 1，只有当引用计数为 0 的时候，才会触发 TCP 客户端向服务器发送终止连接请求。&lt;/p&gt;
+&lt;h1 id=&#34;4-socket中tcp的三次握手建立连接详解&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-socket中tcp的三次握手建立连接详解&#34;&gt;#&lt;/a&gt; 4、socket 中 TCP 的三次握手建立连接详解&lt;/h1&gt;
+&lt;p&gt;我们知道 tcp 建立连接要进行 “三次握手”，即交换三个分组。大致流程如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端向服务器发送一个 SYN J&lt;/li&gt;
+&lt;li&gt;服务器向客户端响应一个 SYN K，并对 SYN J 进行确认 &lt;code&gt;ACK J+1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;客户端再想服务器发一个确认 &lt;code&gt;ACK K+1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;只有就完了三次握手，但是这个三次握手发生在 socket 的那几个函数中呢？请看下图：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/skynet/201012/201012122157467258.png&#34;&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/201012122157476286.png&#34; alt=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;图 1、socket 中发送的 TCP 三次握手&lt;/p&gt;
+&lt;p&gt;从图中可以看出，当客户端调用 connect 时，触发了连接请求，向服务器发送了 SYN J 包，这时 connect 进入阻塞状态；服务器监听到连接请求，即收到 SYN J 包，调用 accept 函数接收请求向客户端发送 SYN K ， &lt;code&gt;ACK J+1&lt;/code&gt; ，这时 accept 进入阻塞状态；客户端收到服务器的 SYN K ， &lt;code&gt;ACK J+1&lt;/code&gt;  之后，这时 connect 返回，并对 SYN K 进行确认；服务器收到 &lt;code&gt;ACK K+1&lt;/code&gt;  时，accept 返回，至此三次握手完毕，连接建立。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;总结：客户端的 connect 在三次握手的第二个次返回，而服务器端的 accept 在三次握手的第三次返回。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;5-socket中tcp的四次握手释放连接详解&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5-socket中tcp的四次握手释放连接详解&#34;&gt;#&lt;/a&gt; 5、socket 中 TCP 的四次握手释放连接详解&lt;/h1&gt;
+&lt;p&gt;上面介绍了 socket 中 TCP 的三次握手建立过程，及其涉及的 socket 函数。现在我们介绍 socket 中的四次握手释放连接的过程，请看下图：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/skynet/201012/201012122157487616.png&#34;&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/201012122157494693.png&#34; alt=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;图 2、socket 中发送的 TCP 四次握手&lt;/p&gt;
+&lt;p&gt;图示过程如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;某个应用进程首先调用 close 主动关闭连接，这时 TCP 发送一个 FIN M；&lt;/li&gt;
+&lt;li&gt;另一端接收到 FIN M 之后，执行被动关闭，对这个 FIN 进行确认。它的接收也作为文件结束符传递给应用进程，因为 FIN 的接收意味着应用进程在相应的连接上再也接收不到额外数据；&lt;/li&gt;
+&lt;li&gt;一段时间之后，接收到文件结束符的应用进程调用 close 关闭它的 socket。这导致它的 TCP 也发送一个 FIN N；&lt;/li&gt;
+&lt;li&gt;接收到这个 FIN 的源发送端 TCP 对它进行确认。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样每个方向上都有一个 &lt;code&gt;FIN&lt;/code&gt;  和 &lt;code&gt;ACK&lt;/code&gt; 。&lt;/p&gt;
+</content>
+        <category term="教程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/" />
+        <category term="note" scheme="https://wlp1231.github.io.git/categories/the-tutorial/note/" />
+        <category term="note" scheme="https://wlp1231.github.io.git/tags/note/" />
+        <category term="教程" scheme="https://wlp1231.github.io.git/tags/%E6%95%99%E7%A8%8B/" />
+        <updated>2022-09-26T15:12:10.727Z</updated>
+    </entry>
+    <entry>
+        <id>https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/%E6%96%B0%E5%BB%BAUbuntu%E8%AF%A6%E8%A7%A3/</id>
+        <title>Ubuntu安装教程</title>
+        <link rel="alternate" href="https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/%E6%96%B0%E5%BB%BAUbuntu%E8%AF%A6%E8%A7%A3/"/>
+        <content type="html">&lt;h3 id=&#34;ubuntu安装教程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ubuntu安装教程&#34;&gt;#&lt;/a&gt; Ubuntu 安装教程&lt;/h3&gt;
+&lt;h4 id=&#34;安装vmware&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装vmware&#34;&gt;#&lt;/a&gt; 安装 VMware&lt;/h4&gt;
+&lt;h4 id=&#34;安装ubuntu1804&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装ubuntu1804&#34;&gt;#&lt;/a&gt; 安装 Ubuntu18.04&lt;/h4&gt;
+&lt;h5 id=&#34;更新源&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#更新源&#34;&gt;#&lt;/a&gt; 更新源&lt;/h5&gt;
+&lt;p&gt;在设置找到软件与更新，全选，点击下载自，选择中国，选择清华源&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E6%BA%901.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E6%BA%902.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ctrl+alt+t&lt;/code&gt;  打开终端，输入 &lt;code&gt;sudo apt-get updata&lt;/code&gt;  更新源&lt;/p&gt;
+&lt;h5 id=&#34;设置中文及输入法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#设置中文及输入法&#34;&gt;#&lt;/a&gt; 设置中文及输入法&lt;/h5&gt;
+&lt;p&gt;在终端中直接输入命令 ibus 会出现下图所示界面，说明 Jetson Nano 已经自带了 ibus 输入法环境了。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E4%B8%AD%E6%96%871.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;下面为 ibus 下载拼音输入法，输入命令：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-get install ibus-pinyin&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;安装完成后进入系统配置 System Settings 界面，选择语言支持选项 Language Support ，如下图所示:&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E4%B8%AD%E6%96%872.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后选择 “添加或删除语言” 界面，会系统选择语言支持，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E4%B8%AD%E6%96%873.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  此处选择“中文简体”然后单击Apply即可。这个Apply过程会安装一系列中文语言包，如下图所示：
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E4%B8%AD%E6%96%874.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;安装完成后在语言支持界面将汉语调整到最前面，如下图所示：选中汉语向上拖&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E4%B8%AD%E6%96%875.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后单击 “应用到整个系统”。最后将 “键盘输入法系统” 改为 iBus 即可。&lt;/p&gt;
+&lt;p&gt;重新启动系统（很重要！！！），然后在终端中输入下述命令进入 ibus 配置界面：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E4%B8%AD%E6%96%876.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ibus-setup&lt;/code&gt; &lt;br /&gt;
+ 在配置界面中单击 “添加” 按钮，然后展开 “汉语” 选项，选择 Intelligent Pinyin。这里如果找不到 “汉语” 选项则可以先关机重启，再重新查找。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E4%B8%AD%E6%96%877.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;添加完成后输入下面的命令重启 ibus 即可。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ibus restart&lt;/code&gt; &lt;br /&gt;
+ 最后，将桌面顶任务栏中将输入法切成拼音输入法 Pi，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E4%B8%AD%E6%96%879.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;此时就可以使用中文输入了。&lt;/p&gt;
+&lt;p&gt;如果没有图标，在设置里更改&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E4%B8%AD%E6%96%878.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h5 id=&#34;挂代理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#挂代理&#34;&gt;#&lt;/a&gt; 挂代理&lt;/h5&gt;
+&lt;h6 id=&#34;正文&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文&#34;&gt;#&lt;/a&gt; 正文&lt;/h6&gt;
+&lt;p&gt;首先 我所使用的是 clash 小猫咪，个人觉得这个软件比较好用，虽然英文版开始有点不熟悉.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;执行  &lt;code&gt;cd &amp;amp;&amp;amp; mkdir clash&lt;/code&gt;  在用户目录下创建 clash 文件夹。&lt;/p&gt;
+&lt;p&gt;下载适合的 Clash 二进制文件并解压重命名为  &lt;code&gt;clash&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;一般个人的 64 位电脑下载  &lt;code&gt;clash-linux-amd64.tar.gz &lt;/code&gt; 即可。&lt;/p&gt;
+&lt;p&gt;下载 clash &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0RyZWFtYWNyby9jbGFzaC9yZWxlYXNlcw==&#34;&gt;https://github.com/Dreamacro/clash/releases&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;图片待补充&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解压并运行它代码如下&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;CODE
+sudo gunzip clash-linux-arm64-v1.4.2.gz   
+mv clash-linux-arm64-v1.4.2 clash
+chmod +x clash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对以上代码解释:&lt;/p&gt;
+&lt;p&gt;第一行：解压 &lt;code&gt;gz&lt;/code&gt;  文件&lt;/p&gt;
+&lt;p&gt;第二行：给文件改名为 clash, 文件名太长很麻烦&lt;/p&gt;
+&lt;p&gt;第三行：给文件权限&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在终端  &lt;code&gt;cd&lt;/code&gt;  到 Clash 二进制文件所在的目录，执行  &lt;code&gt;wget -O config.yml *******************************?clash=1&amp;amp;log-level=info&lt;/code&gt;  下载 Clash 配置文件 (上面 * 处是商机给你的链接)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;此时会在 clash 文件下生成 &lt;code&gt;config.yml&lt;/code&gt;  文件，这是配置文件&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在管理员权限下执行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CODE
+./clash -d .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;图片待补充&lt;/p&gt;
+&lt;p&gt;若没有 &lt;code&gt;HTTP proxy listening at:127.0.0.1:7890&lt;/code&gt; , 使用我给的文件替换&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接着使用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CODE
+rm config.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;即删除它自动生成的 &lt;code&gt;config.yaml&lt;/code&gt;  配置文件&lt;/p&gt;
+&lt;p&gt;再把原来商家给你下载的 &lt;code&gt;config.yml&lt;/code&gt;  文件改名为 &lt;code&gt;config.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CODE
+mv config.yml config.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此时只有三个文件，即 clash 和 &lt;code&gt;config.yaml&lt;/code&gt;  和 &lt;code&gt;Country.mmdb&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接着再在管理员权限下执行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CODE
+./clash -d .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果没有警告那就成功了一半&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在系统设置里面设置网络代理，改为手动 改成下图所演示，一点不差&lt;/p&gt;
+&lt;p&gt;图片待补充&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开浏览器，输入 &lt;code&gt;clash.razord.top&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;图片待补充&lt;/p&gt;
+&lt;p&gt;在这里可以测速，和修改节点代理.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;好了，登录谷歌试试吧&lt;/li&gt;
+&lt;li&gt;图片待补充&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果不想代理就把网络代理设置为” 已禁用”.&lt;/p&gt;
+&lt;h5 id=&#34;安装可切割终端&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装可切割终端&#34;&gt;#&lt;/a&gt; 安装可切割终端&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;sudo apt install terminator&lt;/code&gt;&lt;/p&gt;
+&lt;h5 id=&#34;安装python&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装python&#34;&gt;#&lt;/a&gt; 安装 python&lt;/h5&gt;
+&lt;h6 id=&#34;正文-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文-2&#34;&gt;#&lt;/a&gt; 正文&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;下载想要的 Python 版本，本次安装的版本为 Python-3.10.3，下载网址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cucHl0aG9uLm9yZy9kb3dubG9hZHMvc291cmNlLw==&#34;&gt;https://www.python.org/downloads/source/&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解压，放在指定的目录当中，本次的安装目录为  &lt;code&gt;/usr/local/python&lt;/code&gt; , 将 &lt;code&gt;Python-3.10.3&lt;/code&gt;  放在上述的目录当中，可以用 cp 命令复制 &lt;code&gt;Python-3.10.3&lt;/code&gt;  到该文件夹中 &lt;code&gt;sudo cp -r Python-3.10.3 /usr/local/python&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入目录 &lt;code&gt;cd /usr/local/python&lt;/code&gt; , 运行 configure 文件 &lt;code&gt; sudo ./configure&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;出现报错&lt;/p&gt;
+&lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;checking build system type&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt; x86_64&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;pc&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;gnu&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;checking host system type&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt; x86_64&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;pc&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;linux&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;gnu&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;checking &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; python3&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;10.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt; no&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;checking &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; python3&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt; python3&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;checking &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;enable&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;universalsdk&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt; no&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;checking &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;with&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;universal&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;archs&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt; no&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;checking MACHDEP&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;linux&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;checking &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; gcc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt; no&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;checking &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; cc&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt; no&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;checking &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; cl&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;exe&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt; no&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;configure&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; error&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; in `&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;usr&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;local&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;python&#39;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;configure&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; error&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; no acceptable C compiler found in $PATH&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;See `config&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;log&#39; &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; more details&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;解决方法为安装 gcc&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-get install gcc&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装我们想要的 Python 版本&lt;/p&gt;
+&lt;p&gt;运行 configure 文件 &lt;code&gt;sudo ./configure&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行下面的命令安装&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo make&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;若出现报错： &lt;code&gt;sudo: make：找不到命令&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;执行： &lt;code&gt;sudo apt-get install make&lt;/code&gt; , 再重复 &lt;code&gt;sudo make&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;再执行 &lt;code&gt;sudo make install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;若出现 &lt;code&gt;ModuleNotFoundError: No module named ‘_ctypes&lt;/code&gt;  的错误，用下面的方法解决：&lt;/p&gt;
+&lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sudo apt&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;get update&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sudo apt&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;get upgrade&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sudo apt&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;get dist&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;upgrade&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sudo apt&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;get install build&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;essential python&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;dev python&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;setuptools python&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;pip python&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;smbus build&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;essential libncursesw5&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;dev libgdbm&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;dev libc6&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;dev zlib1g&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;dev libsqlite3&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;dev tk&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;dev libssl&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;dev openssl libffi&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;dev&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;再执行 &lt;code&gt;sudo make install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;若出现报错&lt;/p&gt;
+&lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;usr&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;local&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;python&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;Modules&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;_cursesmodule&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;c&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; In function ‘_curses_setupterm_impl’&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;usr&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;local&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;python&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;Modules&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;_cursesmodule&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;c&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;3392&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;35&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; error&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; implicit declaration of function ‘setupterm’&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; did you mean ‘set_term’&lt;span class=&#34;token operator&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;Werror&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;implicit&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;function&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;declaration&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;     &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;!&lt;/span&gt;initialised_setupterm &lt;span class=&#34;token operator&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;setupterm&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;term&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; fd&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt;err&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; ERR&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                                   &lt;span class=&#34;token operator&#34;&gt;^&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;~&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                                   set_term&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;cc1&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; some warnings being treated as errors&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;building &lt;span class=&#34;token char&#34;&gt;&#39;_curses_panel&#39;&lt;/span&gt; extension&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;执行&lt;/p&gt;
+&lt;figure class=&#34;highlight c&#34;&gt;&lt;figcaption data-lang=&#34;c&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sudo sed &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;i &lt;span class=&#34;token string&#34;&gt;&#34;s/Werror=implicit-function-declaration/Wno-error/g&#34;&lt;/span&gt; configure&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sudo make clean&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sudo make&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;sudo make install&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;可能会有警告，忽略即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将 python3 链接到 python，使在终端输入 pyhton 可打开 python3&lt;/p&gt;
+&lt;p&gt;打开终端，输入 &lt;code&gt;sudo gedit .bashrc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在末尾加上 &lt;code&gt;alias python=python3&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;安装ros&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装ros&#34;&gt;#&lt;/a&gt; 安装 ros&lt;/h5&gt;
+&lt;p&gt;挂上代理，按照官网教程步骤即可。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3dpa2kucm9zLm9yZy9yb3NidWlsZA==&#34;&gt;rosbuild - ROS Wiki&lt;/span&gt;&lt;/p&gt;
+&lt;h5 id=&#34;安装opencv&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装opencv&#34;&gt;#&lt;/a&gt; 安装 opencv&lt;/h5&gt;
+&lt;h6 id=&#34;1安装依赖环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1安装依赖环境&#34;&gt;#&lt;/a&gt; 1. 安装依赖环境&lt;/h6&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;sudo apt install cmake&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;sudo apt install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libatlas-base-dev gfortran libgtk2.0-dev libjpeg-dev libpng-dev mlocate&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;h6 id=&#34;2下载opencv-451&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2下载opencv-451&#34;&gt;#&lt;/a&gt; 2. 下载 opencv 4.5.1&lt;/h6&gt;
+&lt;p&gt;下载 Sources&lt;/p&gt;
+&lt;p&gt;git clone &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL29wZW5jdi9vcGVuY3YuZ2l0&#34;&gt;https://github.com/opencv/opencv.git&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;或直接在官网下载压缩包&lt;/p&gt;
+&lt;h6 id=&#34;3编译安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3编译安装&#34;&gt;#&lt;/a&gt; 3. 编译安装&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;将 opencv-4.5.1.zip 拖拽入虚拟机中，并解压&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开解压后的文件夹，并新建文件夹 build&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开终端，进入 build 目录下&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;输入命令&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local .. -DOPENCV_GENERATE_PKGCONFIG=ON&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;sudo make &lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;sudo make install&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;4配置环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4配置环境&#34;&gt;#&lt;/a&gt; 4. 配置环境&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;sudo gedit /etc/ld.so.conf.d/opencv.conf&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在文档中追加&lt;/p&gt;
+&lt;p&gt;/usr/local/lib&lt;/p&gt;
+&lt;p&gt;并保存退出&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;更新动态链接库 ** &lt;code&gt;sudo ldconfig&lt;/code&gt; **&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;sudo gedit /etc/bash.bashrc&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在文档中追加&lt;/p&gt;
+&lt;p&gt;PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig&lt;/p&gt;
+&lt;p&gt;export PKG_CONFIG_PATH&lt;/p&gt;
+&lt;p&gt;并保存退出&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更新环境&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;source /etc/bash.bashrc&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;sudo updatedb&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;sudo gedit /etc/profile&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在文档中追加&lt;/p&gt;
+&lt;p&gt;export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH&lt;/p&gt;
+&lt;p&gt;export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib&lt;/p&gt;
+&lt;p&gt;并保存退出&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;更新环境&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;source /etc/profile&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;h6 id=&#34;5验证安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5验证安装&#34;&gt;#&lt;/a&gt; 5. 验证安装&lt;/h6&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;pkg-config opencv4 --modversion&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; &lt;code&gt;opencv_version&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;h6 id=&#34;6链接python&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#6链接python&#34;&gt;#&lt;/a&gt; 6. 链接 python&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt; &lt;code&gt;sudo apt install python3-pip&lt;/code&gt; &lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt; &lt;code&gt;pip3 install numpy matplotlib&lt;/code&gt; &lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt; &lt;code&gt;pip3 install opencv-python&lt;/code&gt; &lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt; &lt;code&gt;pip3 install opencv-contrib-python&lt;/code&gt; &lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&#34;7验证安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#7验证安装&#34;&gt;#&lt;/a&gt; 7. 验证安装&lt;/h6&gt;
+&lt;p&gt;打开终端，输入 python3，进入 python 的 shell 环境&lt;/p&gt;
+&lt;p&gt;依次输入&lt;/p&gt;
+&lt;p&gt;import cv2&lt;/p&gt;
+&lt;p&gt;print(cv2.&lt;strong&gt;version&lt;/strong&gt;)&lt;/p&gt;
+&lt;h5 id=&#34;安装vscode&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装vscode&#34;&gt;#&lt;/a&gt; 安装 VScode&lt;/h5&gt;
+&lt;p&gt;vscode 下载:&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20vZG9jcz9zdGFydD10cnVl&#34;&gt;https://code.visualstudio.com/docs?start=true&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;vscode 安装与卸载&lt;/p&gt;
+&lt;p&gt;** 方式 1:** 双击安装即可 (或右击选择安装)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方式 2:&lt;/strong&gt; &lt;code&gt;sudo dpkg -i xxxx.deb&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;卸载&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo dpkg --purge  code&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在左下角 “显示应用程序里找到 “vscode，收藏&lt;/p&gt;
+&lt;p&gt;插件安装&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/vs1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;更改字体间距&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/vs2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;在文件首选项里打开设置&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/vs3.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;找到字体，随便选择一个&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/vs4.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</content>
+        <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
+        <category term="Ubuntu" scheme="https://wlp1231.github.io.git/categories/ROS/Ubuntu/" />
+        <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
+        <category term="Ubuntu" scheme="https://wlp1231.github.io.git/tags/Ubuntu/" />
+        <updated>2022-09-26T15:10:45.815Z</updated>
+    </entry>
+    <entry>
+        <id>https://wlp1231.github.io.git/2022/09/26/ROS/Linux/linux%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</id>
+        <title>linux初步学习</title>
+        <link rel="alternate" href="https://wlp1231.github.io.git/2022/09/26/ROS/Linux/linux%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/"/>
+        <content type="html">&lt;h1 id=&#34;linux初步学习&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#linux初步学习&#34;&gt;#&lt;/a&gt; linux 初步学习&lt;/h1&gt;
+&lt;h2 id=&#34;linux系统结构&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#linux系统结构&#34;&gt;#&lt;/a&gt; linux 系统结构&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;linux 是一个倒树型结构，最大的目录是 &#39;/&#39;(根目录)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;linux系统中的二级目录&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#linux系统中的二级目录&#34;&gt;#&lt;/a&gt; linux 系统中的二级目录&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;/bin              ## 二进制可执行文件，系统常规命令&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/boot           ## 启动目录，存放系统自动启动文件，内核，初始化程序&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/dev             ## 系统设备管理文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/etc              ## 大多数系统配置文件存放路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/home          ## 普通用户家目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/lib                ## 函数库（系统内部定义的类似变量的库）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/lib64/          ##64 位函数库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/media         ## 临时挂载点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/mnt              ## 临时挂载点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/run               ## 自动临时设备挂载点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/opt               ## 第三方软件安装路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/proc             ## 系统硬件信息和系统进程信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/root              ## 超级用户家目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/sbin              ## 系统管理命令，通常只有 root 可以执行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/srv                ## 系统数据目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/var                ## 系统数据目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/sys               ## 内核相关数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/tmp              ## 临时文件产生目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/usr/               ## 用户相关信息数据&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;常用命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#常用命令&#34;&gt;#&lt;/a&gt; 常用命令&lt;/h2&gt;
+&lt;h3 id=&#34;快捷键rm&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#快捷键rm&#34;&gt;#&lt;/a&gt; 快捷键 rm&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;打开终端的快捷键： Ctrl + Alt + T&lt;/li&gt;
+&lt;li&gt;停止终端的快捷键： Ctrl + C&lt;/li&gt;
+&lt;li&gt;关闭终端的快捷键： Ctrl + D&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#命令&#34;&gt;#&lt;/a&gt; 命令&lt;/h3&gt;
+&lt;h4 id=&#34;1-新建文件夹&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-新建文件夹&#34;&gt;#&lt;/a&gt; 1.  新建文件夹&lt;/h4&gt;
+&lt;p&gt;mkdir + 文件名&lt;/p&gt;
+&lt;p&gt;mkdir -p + 文件名 1 / 文件名 2 / 文件名 3 (建立递归目录)&lt;/p&gt;
+&lt;p&gt;mkdir text_cpp cd text_cpp/&lt;/p&gt;
+&lt;p&gt;vim hello.cpp (新建源文件并写入代码，: 按 Esc 后输入：wq 保存并退出)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE2021.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;g++ hello.cpp -o hello (编译，gcc 无法使用)&lt;/p&gt;
+&lt;p&gt;ls (查询)&lt;/p&gt;
+&lt;p&gt;./hello (不能存在空格)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20210415000648.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rm - r hwllo.cpp(删除), -r表示递归删除，也就是删除目录本身和里面的所有内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;rm -r -f  (或 rm -rf)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2-新建文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-新建文件&#34;&gt;#&lt;/a&gt; 2. 新建文件&lt;/h4&gt;
+&lt;p&gt;touch + 文档名&lt;/p&gt;
+&lt;p&gt;stat + 文档名 (查询时间)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE2.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;rm + 文档名 (删除文档)&lt;/p&gt;
+&lt;p&gt;rm -f + 文档名 (删除文档，无提示)&lt;/p&gt;
+&lt;h4 id=&#34;3-gedit图形文本编辑器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-gedit图形文本编辑器&#34;&gt;#&lt;/a&gt; 3. gedit 图形文本编辑器 (???????)&lt;/h4&gt;
+&lt;p&gt;gedit file&lt;/p&gt;
+&lt;p&gt;ctrl+s 保存&lt;/p&gt;
+&lt;p&gt;ctrl+n 打开新的编辑界面&lt;/p&gt;
+&lt;p&gt;ctrl+o 打开新文件&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/123.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;4-查看文件内容&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-查看文件内容&#34;&gt;#&lt;/a&gt; 4. 查看文件内容&lt;/h4&gt;
+&lt;p&gt;cat + 文件名&lt;/p&gt;
+&lt;p&gt;cat -b + 文件名 (显示行号)&lt;/p&gt;
+&lt;p&gt;less + 文件名 (分页浏览)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;用法：&lt;/p&gt;
+&lt;p&gt;上 | 下 (逐行移动)&lt;/p&gt;
+&lt;p&gt;pageup|pagedown (逐行移动)&lt;/p&gt;
+&lt;p&gt;/+ 关键字 (高量显示关键字，n 向下匹配，N 向上匹配)&lt;/p&gt;
+&lt;p&gt;v (进入 vim 模式 在 vim 模式中按：wq 退回到 less 模式) --&amp;gt; 实测出现问题，进入 vim 模式就无法退出，需用 ctrl + 命令字母&lt;/p&gt;
+&lt;p&gt;q (退出)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/cat.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;5-查询&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5-查询&#34;&gt;#&lt;/a&gt; 5. 查询&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;ls&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ls -l + 文件名 (文件属性)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ls + 目录名 (目录中包含的内容)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ls -d + 目录名 (目录本身)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ls -a + 目录名 (所有文件包含隐藏的)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ls -S + 目录名 (查看并按照大小排序)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ls -R + 目录名 (查看递归文件目录下所有文件)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/987.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;6切换路径&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#6切换路径&#34;&gt;#&lt;/a&gt; 6. 切换路径&lt;/h4&gt;
+&lt;p&gt;cd  + 目录名 (进入指定目录中)&lt;/p&gt;
+&lt;p&gt;cd -  + 目录名 (当前目录和当前目录之前所在目录之间的切换)&lt;/p&gt;
+&lt;p&gt;cd ~  + 目录名 (进入当前用户家目录)&lt;/p&gt;
+&lt;p&gt;cd ～user (进入 user 家目录)&lt;/p&gt;
+&lt;p&gt;cd ..  (进入当前目录的上集目录)&lt;/p&gt;
+&lt;h4 id=&#34;7-文件大小统计&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#7-文件大小统计&#34;&gt;#&lt;/a&gt; 7. 文件大小统计&lt;/h4&gt;
+&lt;p&gt;wc + 文件名 (显示行数 / 单词数 / 字节数)&lt;/p&gt;
+&lt;p&gt;wc -l + 文件名 (行数)&lt;/p&gt;
+&lt;p&gt;wc -w + 文件名 (单词数)&lt;/p&gt;
+&lt;p&gt;wc -m + 文件名 (字符数)&lt;/p&gt;
+&lt;p&gt;wc -c + 文件名 (字节数，udf-8 1 个中文 3 个字节，gb2312 1 个中文 2 个字节)&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/999.png&#34; alt=&#34;wode&#34; /&gt;&lt;/p&gt;
+</content>
+        <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
+        <category term="Linux" scheme="https://wlp1231.github.io.git/categories/ROS/Linux/" />
+        <category term="Linux" scheme="https://wlp1231.github.io.git/tags/Linux/" />
+        <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
+        <updated>2022-09-26T15:04:22.630Z</updated>
+    </entry>
+    <entry>
+        <id>https://wlp1231.github.io.git/2022/09/23/ROS/Linux/GitHub%E5%91%BD%E4%BB%A4/</id>
+        <title>GitHub命令</title>
+        <link rel="alternate" href="https://wlp1231.github.io.git/2022/09/23/ROS/Linux/GitHub%E5%91%BD%E4%BB%A4/"/>
+        <content type="html">&lt;h2 id=&#34;github命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#github命令&#34;&gt;#&lt;/a&gt; GitHub 命令&lt;/h2&gt;
 &lt;h3 id=&#34;create-a-new-repository-on-the-command-line&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-repository-on-the-command-line&#34;&gt;#&lt;/a&gt; create a new repository on the command line&lt;/h3&gt;
 &lt;p&gt;echo &amp;quot;# blogFiles&amp;quot; &amp;gt;&amp;gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL1JFQURNRS5tZA==&#34;&gt;README.md&lt;/span&gt;&lt;br /&gt;
 git init&lt;br /&gt;
@@ -28,6 +1801,10 @@ git push -u origin main&lt;/p&gt;
 git branch -M main&lt;br /&gt;
 git push -u origin main&lt;/p&gt;
 </content>
+        <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
+        <category term="Linux" scheme="https://wlp1231.github.io.git/categories/ROS/Linux/" />
+        <category term="Linux" scheme="https://wlp1231.github.io.git/tags/Linux/" />
+        <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
         <updated>2022-09-23T12:21:57.035Z</updated>
     </entry>
     <entry>
@@ -132,25 +1909,8 @@ git push -u origin main&lt;/p&gt;
 </content>
         <category term="教程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/" />
         <category term="hexo" scheme="https://wlp1231.github.io.git/categories/the-tutorial/hexo/" />
-        <category term="Hexo" scheme="https://wlp1231.github.io.git/tags/Hexo/" />
         <category term="教程" scheme="https://wlp1231.github.io.git/tags/%E6%95%99%E7%A8%8B/" />
+        <category term="Hexo" scheme="https://wlp1231.github.io.git/tags/Hexo/" />
         <updated>2022-09-22T15:56:05.233Z</updated>
-    </entry>
-    <entry>
-        <id>https://wlp1231.github.io.git/2022/09/22/hello-world/</id>
-        <title>Hello World</title>
-        <link rel="alternate" href="https://wlp1231.github.io.git/2022/09/22/hello-world/"/>
-        <content type="html">&lt;p&gt;Welcome to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvLw==&#34;&gt;Hexo&lt;/span&gt;! This is your very first post. Check &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv&#34;&gt;documentation&lt;/span&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=&#34;&gt;troubleshooting&lt;/span&gt; or you can ask me on &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==&#34;&gt;GitHub&lt;/span&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
-&lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo new &lt;span class=&#34;token string&#34;&gt;&#34;My New Post&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s&#34;&gt;Writing&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;run-server&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#run-server&#34;&gt;#&lt;/a&gt; Run server&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo server&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=&#34;&gt;Server&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;generate-static-files&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#generate-static-files&#34;&gt;#&lt;/a&gt; Generate static files&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo generate&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s&#34;&gt;Generating&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;deploy-to-remote-sites&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#deploy-to-remote-sites&#34;&gt;#&lt;/a&gt; Deploy to remote sites&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo deploy&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s&#34;&gt;Deployment&lt;/span&gt;&lt;/p&gt;
-</content>
-        <updated>2022-09-22T13:37:41.123Z</updated>
     </entry>
 </feed>
