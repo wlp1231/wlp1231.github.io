@@ -19,8 +19,8 @@
             <link>https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BB%BF%E7%9C%9F/</link>
             <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
             <category term="Ubuntu" scheme="https://wlp1231.github.io.git/categories/ROS/Ubuntu/" />
-            <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
             <category term="Ubuntu" scheme="https://wlp1231.github.io.git/tags/Ubuntu/" />
+            <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
             <pubDate>Mon, 26 Sep 2022 23:16:28 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;机器人仿真&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#机器人仿真&#34;&gt;#&lt;/a&gt; 机器人仿真&lt;/h1&gt;
 &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3d3dy5hdXRvbGFib3IuY29tLmNuL2Jvb2svUk9TVHV0b3JpYWxzLw==&#34;&gt;课件&lt;/span&gt;&lt;/p&gt;
@@ -608,8 +608,8 @@ export ROS_HOSTNAME=192.168.0.136&lt;/p&gt;
             <link>https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/%E5%8F%8C%E7%9B%AET265%E4%BD%BF%E7%94%A8/</link>
             <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
             <category term="Ubuntu" scheme="https://wlp1231.github.io.git/categories/ROS/Ubuntu/" />
-            <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
             <category term="Ubuntu" scheme="https://wlp1231.github.io.git/tags/Ubuntu/" />
+            <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
             <pubDate>Mon, 26 Sep 2022 23:15:03 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;双目t265使用githublibrealsensedistribution_linuxmd-at-development-intelrealsenselibrealsense-github&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#双目t265使用githublibrealsensedistribution_linuxmd-at-development-intelrealsenselibrealsense-github&#34;&gt;#&lt;/a&gt; 双目 T265 使用 [github](&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0ludGVsUmVhbFNlbnNlL2xpYnJlYWxzZW5zZS9ibG9iL2RldmVsb3BtZW50L2RvYy9kaXN0cmlidXRpb25fbGludXgubWQjaW5zdGFsbGluZy10aGUtcGFja2FnZXM=&#34;&gt;librealsense/distribution_linux.md at development · IntelRealSense/librealsense · GitHub&lt;/span&gt;)&lt;/h1&gt;
 &lt;h2 id=&#34;简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#简介&#34;&gt;#&lt;/a&gt; 简介&lt;/h2&gt;
@@ -839,8 +839,8 @@ target_link_libraries(test
             <link>https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/ros%E7%AE%80%E4%BB%8B/</link>
             <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
             <category term="Ubuntu" scheme="https://wlp1231.github.io.git/categories/ROS/Ubuntu/" />
-            <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
             <category term="Ubuntu" scheme="https://wlp1231.github.io.git/tags/Ubuntu/" />
+            <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
             <pubDate>Mon, 26 Sep 2022 23:14:47 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;ros&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ros&#34;&gt;#&lt;/a&gt; ros&lt;/h1&gt;
 &lt;h2 id=&#34;ros发展&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ros发展&#34;&gt;#&lt;/a&gt; ROS 发展&lt;/h2&gt;
@@ -1375,8 +1375,8 @@ int close(int fd);
             <link>https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/%E6%96%B0%E5%BB%BAUbuntu%E8%AF%A6%E8%A7%A3/</link>
             <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
             <category term="Ubuntu" scheme="https://wlp1231.github.io.git/categories/ROS/Ubuntu/" />
-            <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
             <category term="Ubuntu" scheme="https://wlp1231.github.io.git/tags/Ubuntu/" />
+            <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
             <pubDate>Mon, 26 Sep 2022 23:10:45 +0800</pubDate>
             <description><![CDATA[ &lt;h3 id=&#34;ubuntu安装教程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ubuntu安装教程&#34;&gt;#&lt;/a&gt; Ubuntu 安装教程&lt;/h3&gt;
 &lt;h4 id=&#34;安装vmware&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装vmware&#34;&gt;#&lt;/a&gt; 安装 VMware&lt;/h4&gt;
@@ -1629,8 +1629,8 @@ mv config.yml config.yaml
             <link>https://wlp1231.github.io.git/2022/09/26/ROS/Linux/linux%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/</link>
             <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
             <category term="Linux" scheme="https://wlp1231.github.io.git/categories/ROS/Linux/" />
-            <category term="Linux" scheme="https://wlp1231.github.io.git/tags/Linux/" />
             <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
+            <category term="Linux" scheme="https://wlp1231.github.io.git/tags/Linux/" />
             <pubDate>Mon, 26 Sep 2022 23:04:22 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;linux初步学习&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#linux初步学习&#34;&gt;#&lt;/a&gt; linux 初步学习&lt;/h1&gt;
 &lt;h2 id=&#34;linux系统结构&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#linux系统结构&#34;&gt;#&lt;/a&gt; linux 系统结构&lt;/h2&gt;
@@ -1792,8 +1792,8 @@ mv config.yml config.yaml
             <link>https://wlp1231.github.io.git/2022/09/23/ROS/Linux/GitHub%E5%91%BD%E4%BB%A4/</link>
             <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
             <category term="Linux" scheme="https://wlp1231.github.io.git/categories/ROS/Linux/" />
-            <category term="Linux" scheme="https://wlp1231.github.io.git/tags/Linux/" />
             <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
+            <category term="Linux" scheme="https://wlp1231.github.io.git/tags/Linux/" />
             <pubDate>Fri, 23 Sep 2022 20:21:57 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;github命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#github命令&#34;&gt;#&lt;/a&gt; GitHub 命令&lt;/h2&gt;
 &lt;h3 id=&#34;create-a-new-repository-on-the-command-line&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-repository-on-the-command-line&#34;&gt;#&lt;/a&gt; create a new repository on the command line&lt;/h3&gt;
