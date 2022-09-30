@@ -1,7 +1,7 @@
 {
     "version": "https://jsonfeed.org/version/1",
     "title": "随笔",
-    "subtitle": "随风",
+    "subtitle": null,
     "icon": "https://wlp1231.github.io.git/images/favicon.ico",
     "description": "个人博客",
     "home_page_url": "https://wlp1231.github.io.git",
