@@ -10,9 +10,920 @@
         </author>
         <description>个人博客</description>
         <language>zh-CN</language>
-        <pubDate>Mon, 26 Sep 2022 23:16:28 +0800</pubDate>
-        <lastBuildDate>Mon, 26 Sep 2022 23:16:28 +0800</lastBuildDate>
+        <pubDate>Wed, 11 Jan 2023 13:38:35 +0800</pubDate>
+        <lastBuildDate>Wed, 11 Jan 2023 13:38:35 +0800</lastBuildDate>
         <category term="随笔" />
+        <item>
+            <guid isPermalink="true">https://wlp1231.github.io.git/2023/01/11/the-tutorial/hexo/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+            <title>博客搭建教程</title>
+            <link>https://wlp1231.github.io.git/2023/01/11/the-tutorial/hexo/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+            <category term="教程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/" />
+            <category term="hexo" scheme="https://wlp1231.github.io.git/categories/the-tutorial/hexo/" />
+            <category term="Hexo" scheme="https://wlp1231.github.io.git/tags/Hexo/" />
+            <category term="教程" scheme="https://wlp1231.github.io.git/tags/%E6%95%99%E7%A8%8B/" />
+            <pubDate>Wed, 11 Jan 2023 13:38:35 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;博客搭建&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#博客搭建&#34;&gt;#&lt;/a&gt; 博客搭建&lt;/h3&gt;
+&lt;h5 id=&#34;框架&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#框架&#34;&gt;#&lt;/a&gt; 框架：&lt;/h5&gt;
+&lt;p&gt;Hexo 是高效的静态站点生成框架，它基于 Node.js。通过 Hexo，你可以直接使用 Markdown 语法来撰写博客。&lt;/p&gt;
+&lt;h4 id=&#34;环境安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#环境安装&#34;&gt;#&lt;/a&gt; 环境安装&lt;/h4&gt;
+&lt;h5 id=&#34;nodejs安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nodejs安装&#34;&gt;#&lt;/a&gt; Node.js 安装&lt;/h5&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGl1cWl5dW4vcC84MTMzOTA0Lmh0bWw=&#34;&gt;参考文章&lt;/span&gt;&lt;/p&gt;
+&lt;h6 id=&#34;全局环境配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#全局环境配置&#34;&gt;#&lt;/a&gt; 全局环境配置&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装的文件夹下创建两个文件夹【node_global】及【node_cache】&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;管理员权限下打开终端执行&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;npm config set prefix &amp;quot;D:\Nodejs\node_global&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;npm config set cache &amp;quot;D:\Nodejs\node_cache&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在【系统变量】下新建【NODE_PATH】&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107142918673.png&#34; alt=&#34;image-20230107142918673&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;将【用户变量】下的【Path】修改为【D:\Nodejs\node_global】&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107143013364.png&#34; alt=&#34;image-20230107143013364&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;在【系统变量】下的【Path】新建添加 node 全局文件夹【D:\Nodejs\node_global】&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107143118535.png&#34; alt=&#34;image-20230107143118535&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;git安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#git安装&#34;&gt;#&lt;/a&gt; Git 安装&lt;/h5&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20veHVld2Vpc3VveW9uZy9wLzExOTE0MDQ1Lmh0bWw=&#34;&gt;参考文章&lt;/span&gt;&lt;/p&gt;
+&lt;h6 id=&#34;下载git-git-downloads-git-scmcom&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载git-git-downloads-git-scmcom&#34;&gt;#&lt;/a&gt; 下载 Git &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXQtc2NtLmNvbS9kb3dubG9hZHM=&#34;&gt;Git - Downloads (git-scm.com)&lt;/span&gt;&lt;/h6&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107143455455.png&#34; alt=&#34;image-20230107143455455&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107143543775.png&#34; alt=&#34;image-20230107143543775&#34; /&gt;&lt;/p&gt;
+&lt;h6 id=&#34;安装git&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装git&#34;&gt;#&lt;/a&gt; 安装 Git&lt;/h6&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107143703388.png&#34; alt=&#34;image-20230107143703388&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107143734295.png&#34; alt=&#34;image-20230107143734295&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107143855795.png&#34; alt=&#34;image-20230107143855795&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107143911133.png&#34; alt=&#34;image-20230107143911133&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107143949585.png&#34; alt=&#34;image-20230107143949585&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107144034041.png&#34; alt=&#34;image-20230107144034041&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107144046740.png&#34; alt=&#34;image-20230107144046740&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107144123237.png&#34; alt=&#34;image-20230107144123237&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107144135211.png&#34; alt=&#34;image-20230107144135211&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107144146185.png&#34; alt=&#34;image-20230107144146185&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107144159086.png&#34; alt=&#34;image-20230107144159086&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107144213513.png&#34; alt=&#34;image-20230107144213513&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107144229929.png&#34; alt=&#34;image-20230107144229929&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107144243337.png&#34; alt=&#34;image-20230107144243337&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/image-20230107144258178.png&#34; alt=&#34;image-20230107144258178&#34; /&gt;&lt;/p&gt;
+&lt;h5 id=&#34;vscode安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vscode安装&#34;&gt;#&lt;/a&gt; Vscode 安装&lt;/h5&gt;
+&lt;p&gt;开源、免费、轻量的代码编辑器，可以通过安装插件增强功能，几乎支持任何语言代码的编写。&lt;/p&gt;
+&lt;p&gt;官网：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v&#34;&gt;https://code.visualstudio.com/&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;支持平台：Windows、macOS、Linux&lt;/p&gt;
+&lt;h5 id=&#34;typora安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#typora安装&#34;&gt;#&lt;/a&gt; Typora 安装&lt;/h5&gt;
+&lt;p&gt;官网：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudHlwb3JhLm5ldC8=&#34;&gt;https://www.typora.net/&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;支持平台：Windows、macOS、Linux&lt;/p&gt;
+&lt;p&gt;Mac 免费激活：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90LnpzeHEuY29tL0JxZllueUI=&#34;&gt;https://t.zsxq.com/BqfYnyB&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Win 免费激活：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90LnpzeHEuY29tLzA0YVl6anVyUg==&#34;&gt;https://t.zsxq.com/04aYzjurR&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Linux 免费激活：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90LnpzeHEuY29tLzA0YVl6anVyUg==&#34;&gt;https://t.zsxq.com/04aYzjurR&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Markdown 写作教程：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90LnpzeHEuY29tL1FKUUptZVU=&#34;&gt;https://t.zsxq.com/QJQJmeU&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;主题包：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90LnpzeHEuY29tLzA0aXFOM2ppRQ==&#34;&gt;https://t.zsxq.com/04iqN3jiE&lt;/span&gt;&lt;/p&gt;
+&lt;h5 id=&#34;github加速器vpn&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#github加速器vpn&#34;&gt;#&lt;/a&gt; Github 加速器（VPN）&lt;/h5&gt;
+&lt;p&gt;一元机场，低价&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly94bi0tNGdxNjJmNTJnZHNzLmNvbS8jL3JlZ2lzdGVyP2NvZGU9dWpmYktOaGk=&#34;&gt;注册链接&lt;/span&gt;&lt;/p&gt;
+&lt;h5 id=&#34;github&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#github&#34;&gt;#&lt;/a&gt; Github&lt;/h5&gt;
+&lt;p&gt;打开 https://github.com/ ，新建一个项目。输入自己的项目名字，后面一定要加 &lt;code&gt;.github.io&lt;/code&gt;  后缀，README 初始化可选可不选，名称一定要和你的 github 名字完全一样，比如你 github 名字叫 &lt;code&gt;abc&lt;/code&gt; ，那么仓库名字一定要是 &lt;code&gt;abc.github.io&lt;/code&gt; 。最后选择 Create 创建，项目就建成功了&lt;/p&gt;
+&lt;h4 id=&#34;hexo搭建与部署&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hexo搭建与部署&#34;&gt;#&lt;/a&gt; Hexo 搭建与部署&lt;/h4&gt;
+&lt;h5 id=&#34;安装hexo&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装hexo&#34;&gt;#&lt;/a&gt; 安装 Hexo&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在你的电脑上任意位置，新建一个文件夹，用来存放自己的博客文件，比如 D:\blog 目录下。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这里最好按照一级目录创建文件夹，然后将项目放里面，如果是二级目录注意后面配置路由的格式即可&lt;/li&gt;
+&lt;li&gt;还有目录路径最好全英文，不要出现特殊符号和中文&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在该目录下，鼠标右击，选择 &lt;code&gt;Git Bash Here&lt;/code&gt; ，打开 git 的控制台窗口 或者 vscode ，输入命令进行安装并启动&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;npm i hexo&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;cli &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;g&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hexo init&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;npm install&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hexo g&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hexo server&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;生成ssh-keys&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#生成ssh-keys&#34;&gt;#&lt;/a&gt; 生成 ssh keys&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在任意文件夹位置，打开 cmd&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 添加 github 信息&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;git config &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;global user&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;name &lt;span class=&#34;token string&#34;&gt;&#34;yourname&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;git config &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;global user&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;email &lt;span class=&#34;token string&#34;&gt;&#34;youremail&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 查看信息是否正确&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;git config user&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;name&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;git config user&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;email&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成 ssh keys：&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ssh&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;keygen &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;t rsa &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;C&lt;/span&gt; “你注册时的邮件地址user&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;email”&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;总共需要敲四次回车。这个时候它会告诉你已经生成了.ssh 的文件夹。在你的电脑中找到这个文件夹。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1663855670162.png&#34; alt=&#34;uTools_1663855670162&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ssh，简单来讲，就是一个秘钥，其中， &lt;code&gt;id_rsa&lt;/code&gt;  是你这台电脑的私人秘钥，不能给别人看的， &lt;code&gt;id_rsa.pub&lt;/code&gt;  是公共秘钥，可以随便给别人看。把这个公钥放在 GitHub 上，这样当你链接 GitHub 自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过 git 上传你的文件到 GitHub 上。而后在 GitHub 的 setting 中，找到 SSH keys 的设置选项，点击 &lt;code&gt;New SSH key&lt;/code&gt; ， 把你的 &lt;code&gt;id_rsa.pub&lt;/code&gt;  里面的信息复制进去。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1663855830037.png&#34; alt=&#34;uTools_1663855830037&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 G it bash 中，查看是否成功&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ssh &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;T&lt;/span&gt; git&lt;span class=&#34;token annotation punctuation&#34;&gt;@github.com&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;将hexo部署到github&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#将hexo部署到github&#34;&gt;#&lt;/a&gt; 将 hexo 部署到 Github&lt;/h5&gt;
+&lt;p&gt;这一步，我们就可以将 hexo 和 GitHub 关联起来，也就是将 hexo 生成的文章部署到 GitHub 上，打开站点配置文件  &lt;code&gt;_config.yml&lt;/code&gt; ，翻到最后，修改 &lt;code&gt;deploy&lt;/code&gt;  部分代码。repo 部分为你 GitHub 仓库链接地址&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;deploy&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  type&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; git&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  repo&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; https&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;github&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;com&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;YourgithubName&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;YourgithubName&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;github&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;io&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;git&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  branch&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; master&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;这个时候需要先安装 deploy-git ，也就是部署的命令，这样你才能用命令部署到 GitHub。在博客文件下打开 cmd 或 gitbash&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;npm install hexo&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;deployer&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;git &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;save&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;生成界面&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hexo generate &lt;span class=&#34;token comment&#34;&gt;// 可缩写为 hexo g&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;上传文件到 GitHub&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hexo deploy &lt;span class=&#34;token comment&#34;&gt;// 可缩写为 hexo d&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h4 id=&#34;博客文件夹&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#博客文件夹&#34;&gt;#&lt;/a&gt; 博客文件夹&lt;/h4&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1663920168029.png&#34; alt=&#34;uTools_1663920168029&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;_config.yml&lt;/code&gt; ：俗称站点配置文件，很多与博客网站的格式、内容相关的设置都需要在里面改。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;node_modules&lt;/code&gt; : 存储 Hexo 插件的文件，可以实现各种扩展功能。一般不需要管。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;package.json&lt;/code&gt; ：别问我，我也不知道干嘛的。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;scaffolds&lt;/code&gt; ：模板文件夹，里面的 &lt;code&gt;post.md&lt;/code&gt;  文件可以设置每一篇博客的模板。具体用起来就知道能干嘛了。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;source&lt;/code&gt; ：非常重要。所有的个人文件都在里面！&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;themes&lt;/code&gt; ：主题文件夹，可以从&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL3RoZW1lcy8=&#34;&gt; Hexo 主题官网&lt;/span&gt;或者网上大神的 Github 主页下载各种各样美观的主题，让自己的网站变得逼格高端的关键！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接下来重点介绍 &lt;code&gt;source&lt;/code&gt;  文件夹。新建的博客中， &lt;code&gt;source&lt;/code&gt;  文件夹下默认只有一个子文件夹 ——&amp;gt; &lt;code&gt;_posts&lt;/code&gt; 。我们写的博客都放在这个子文件夹里面。我们还可以在 &lt;code&gt;source&lt;/code&gt;  里面新建各种子文件夹满足自己的个性化需求，对初学者而言，我们先把精力放在主线任务上，然后再来搞这些细节。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;_config.yml 文件详解&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;严格注意缩进，缩进不对也会报错，所以这里不推荐使用记事本，使用 Vscode 编辑器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;title 部分：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1663934299640.png&#34; alt=&#34;uTools_1663934299640&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;url ：只用配置第一行，其余的都不用动，更换为你的远程地址就可以了&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1663934420106.png&#34; alt=&#34;uTools_1663934420106&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;其他使用默认即可&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;网页的简单美化&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#网页的简单美化&#34;&gt;#&lt;/a&gt; 网页的简单美化&lt;/h4&gt;
+&lt;h5 id=&#34;搜索&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#搜索&#34;&gt;#&lt;/a&gt; 搜索&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;hexo algolia&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://wlp1231.github.io.git/2022/10/14/ROS/Ubuntu/%E5%85%A8%E5%90%91%E8%BD%AE%E5%B0%8F%E8%BD%A6/</guid>
+            <title>全向轮小车</title>
+            <link>https://wlp1231.github.io.git/2022/10/14/ROS/Ubuntu/%E5%85%A8%E5%90%91%E8%BD%AE%E5%B0%8F%E8%BD%A6/</link>
+            <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
+            <category term="Ubuntu" scheme="https://wlp1231.github.io.git/categories/ROS/Ubuntu/" />
+            <category term="Ubuntu" scheme="https://wlp1231.github.io.git/tags/Ubuntu/" />
+            <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
+            <pubDate>Fri, 14 Oct 2022 21:42:44 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;全向轮小车&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#全向轮小车&#34;&gt;#&lt;/a&gt; 全向轮小车&lt;/h1&gt;
+&lt;h2 id=&#34;ssh通信&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#ssh通信&#34;&gt;#&lt;/a&gt; ssh 通信&lt;/h2&gt;
+&lt;h3 id=&#34;连接准备&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#连接准备&#34;&gt;#&lt;/a&gt; 连接准备&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ifconfig&lt;/code&gt;  查看 ip 地址，如 192.168.43.128&lt;/li&gt;
+&lt;li&gt;用于连接的两台电脑处于同一局域网内，手机热点&lt;/li&gt;
+&lt;li&gt;查看主机名，终端输入 &lt;code&gt;hostname&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;终端输入 &lt;code&gt;sudo gedit /etc/hosts&lt;/code&gt; , 在文件中第三行输入本机 ip 地址和主机名，第四行输入待连机 ip 地址和主机名（忽略）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo /ect/init.d/networking restart&lt;/code&gt; , 若报错，在 /etc/init.d 中找到 network 文件，将之替换 networking。仍然报错，将 /etc/init.d 改为 service，还报错，hosts 中 ip 地址写错，检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;连接&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#连接&#34;&gt;#&lt;/a&gt; 连接&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;安装 chrony 包和 ssh 服务器&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-get install chrony&lt;/code&gt;   &lt;code&gt;sudo apt-get install openssh-server&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ping 待连机ip地址或主机名&lt;/code&gt; ，建议 ip 地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ssh 待连机用户名@待连机主机名或ip地址&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;连接成功&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;删除冲突ip&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#删除冲突ip&#34;&gt;#&lt;/a&gt; 删除冲突 IP&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;ssh-keygen -f &amp;quot;/home/wlp/.ssh/known_hosts&amp;quot; -R &amp;quot;joul&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;查看系统是否已经安装 ssh 客户端或者服务端：dpkg -l | grep ssh。&lt;br /&gt;
+启动 ssh 服务：sudo /etc/init.d/ssh start&lt;br /&gt;
+ 关闭 ssh 服务：sudo /etc/init.d/ssh stop&lt;br /&gt;
+ 重启 ssh 服务：sudo /etc/init.d/ssh restart&lt;/p&gt;
+&lt;h2 id=&#34;连接控制mini小车1804密码raspberry&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#连接控制mini小车1804密码raspberry&#34;&gt;#&lt;/a&gt; 连接控制 mini 小车（18.04 密码：raspberry）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;打开终端，通过 ssh 连接到小车上的树莓派，192.168.0.100&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ssh -Y wheeltec@192.168.0.100&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;密码：dongguan&lt;/p&gt;
+&lt;p&gt;注：没有 - Y，图形化等功能无法使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;远程登录后： &lt;code&gt;roslaunch turn_on_wheeltec_robot turn_on_wheeltec_robot.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;远程登录后： &lt;code&gt;roslaunch wheeltec_robot_rc keyboard_teleop.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过上述操作可以键盘控制小车移动&lt;/p&gt;
+&lt;h3 id=&#34;启动雷达&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#启动雷达&#34;&gt;#&lt;/a&gt; 启动雷达&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;roslaunch rplidar_ros rplidar.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看雷达发布的话题&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rostopic list&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看数据类型&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rosmsg show sensor_msgs/LaserScan &lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;控制小车雷达建图&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#控制小车雷达建图&#34;&gt;#&lt;/a&gt; 控制小车雷达建图&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;终端 ssh 连接&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;终端输入 &lt;code&gt;roslaunch turn_on_wheeltec_robot mapping.launch &lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新终端输入 &lt;code&gt;rviz&lt;/code&gt; , 使用远程终端较卡，使用本机终端&lt;/p&gt;
+&lt;p&gt;.bushrc 文件加入&lt;/p&gt;
+&lt;p&gt;export ROS_MASTER_URI=http://192.168.0.100:11311&lt;br /&gt;
+export ROS_HOSTNAME=192.168.0.136&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;控制小车走完全场，完成建图&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;保存图形:&lt;/p&gt;
+&lt;p&gt;一键保存： &lt;code&gt;roslaunch turn_on_wheeltec_robot map_saver.launch&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;打开地图路径： &lt;code&gt;cd /home/wheeltec/wheeltec_robot/src/turn_on_wheeltec_robot/map&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;保存地图： &lt;code&gt;rosrun map_server map_saver -f 地图名&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看图形：将远程文件挂载到本机 &lt;code&gt;sudo mount -t nfs 192.168.0.100:/home/wheeltec/wheeltec_robot /mnt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;打开 mnt 文件查看，保存路径在保存图形时终端有显示&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建图&lt;br /&gt;
+ mapping.launch&lt;br /&gt;
+ 小车初始化节点：turn_on_wheeltec_robot.launch&lt;br /&gt;
+ 雷达节点：rplidar.launch&lt;br /&gt;
+gmapping 建图节点：algorithm_gmapping.launch&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;建图算法切换&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#建图算法切换&#34;&gt;#&lt;/a&gt; 建图算法切换&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;修改 mapping.launch 文件开头 &lt;code&gt;&amp;lt;arg name=&amp;quot;mapping_node&amp;quot; default=&amp;quot;gmapping&amp;quot; doc=&amp;quot;opt:gmapping,hector,cartographer,karto&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;雷达跟随&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#雷达跟随&#34;&gt;#&lt;/a&gt; 雷达跟随&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;roslaunch simple_follower laser_follower.launch&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;源bashrc文件本机终端使用rviz&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#源bashrc文件本机终端使用rviz&#34;&gt;#&lt;/a&gt; 源（.bashrc 文件，本机终端使用 rviz）&lt;/h2&gt;
+&lt;p&gt;export ROS_MASTER_URI=http://192.168.0.100:11311&lt;br /&gt;
+export ROS_HOSTNAME=192.168.0.136&lt;/p&gt;
+&lt;h3 id=&#34;自主导航&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#自主导航&#34;&gt;#&lt;/a&gt; 自主导航&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;运行导航节点&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;roslaunch turn_on_wheeltec_robot navigation.launch&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动 rviz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查看里程计传感器（odom）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rostopic echo /odom &lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3d建图导航&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3d建图导航&#34;&gt;#&lt;/a&gt; 3D 建图导航&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装 rtabmap&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-get update &lt;/code&gt; (更新软件列表)&lt;br /&gt;
+ &lt;code&gt;sudo apt-get install ros-noetic-rtabmap-ros&lt;/code&gt; （安装 rtabmap）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;跑官方测试包（可选，远程端）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;roslaunch rtabmap_ros demo_robot_mapping.launch rviz:=true rtabmapviz:=false&lt;/code&gt;  （官方测试例程）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rosbag play --clock demo_mapping.bag &lt;/code&gt; （官方测试包，在 /home/wheeltec/ 的路径下执行）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建图&lt;br /&gt;
+ &lt;code&gt;roslaunch turn_on_wheeltec_robot 3d_mapping.launch&lt;/code&gt; （启动 3d 建图）&lt;br /&gt;
+ &lt;code&gt;roslaunch wheeltec_robot_rc keyboard_teleop.launch&lt;/code&gt;   （启动键盘控制节点）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;导航&lt;br /&gt;
+ &lt;code&gt;roslaunch  turn_on_wheeltec_robot 3d_navigation.launch&lt;/code&gt; （启动 3d 导航）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;纯视觉建图导航&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#纯视觉建图导航&#34;&gt;#&lt;/a&gt; 纯视觉建图导航&lt;/h3&gt;
+&lt;p&gt;建图：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;roslaunch  turn_on_wheeltec_robot pure3d_mapping.launch&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;导航：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;roslaunch  turn_on_wheeltec_robot pure3d_navigation.launch&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;自主建图&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#自主建图&#34;&gt;#&lt;/a&gt; 自主建图&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;roslaunch turn_on_wheeltec_robot rrt_slam.launch&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;导航参数设置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#导航参数设置&#34;&gt;#&lt;/a&gt; 导航参数设置&lt;/h2&gt;
+&lt;p&gt;如图所示的这些文件定义了一系列导航相关参数，包括膨胀半径、机器人的尺寸、机器人的最大最小速度、加速度等&lt;/p&gt;
+&lt;p&gt;![wode](C:\Users\wlp\Pictures\Camera Roll\ 出征 - 初试 \QQ 截图 20211013231448.png)&lt;/p&gt;
+&lt;p&gt;![wode](C:\Users\wlp\Pictures\Camera Roll\ 出征 - 初试 \QQ 截图 20211013231503.png)&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://wlp1231.github.io.git/2022/10/14/the-tutorial/%E7%BC%96%E7%A8%8B/socket%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/</guid>
+            <title>socket通信机制详解</title>
+            <link>https://wlp1231.github.io.git/2022/10/14/the-tutorial/%E7%BC%96%E7%A8%8B/socket%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/</link>
+            <category term="教程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/" />
+            <category term="编程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/%E7%BC%96%E7%A8%8B/" />
+            <category term="编程" scheme="https://wlp1231.github.io.git/tags/%E7%BC%96%E7%A8%8B/" />
+            <category term="socket" scheme="https://wlp1231.github.io.git/tags/socket/" />
+            <pubDate>Fri, 14 Oct 2022 21:40:14 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;socket通信机制详解&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#socket通信机制详解&#34;&gt;#&lt;/a&gt; socket 通信机制详解&lt;/h1&gt;
+&lt;p&gt;我们深谙信息交流的价值，那网络中进程之间如何通信，如我们每天打开浏览器浏览网页时，浏览器的进程怎么与 web 服务器通信的？当你用 &lt;code&gt;QQ&lt;/code&gt;  聊天时， &lt;code&gt;QQ&lt;/code&gt;  进程怎么与服务器或你好友所在的 &lt;code&gt;QQ&lt;/code&gt;  进程通信？这些都得靠 socket？那什么是 socket？socket 的类型有哪些？还有 socket 的基本函数，这些都是本文想介绍的。本文的主要内容如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1、网络中进程之间如何通信？&lt;/li&gt;
+&lt;li&gt;2、Socket 是什么？&lt;/li&gt;
+&lt;li&gt;3、socket 的基本操作
+&lt;ul&gt;
+&lt;li&gt;3.1、socket () 函数&lt;/li&gt;
+&lt;li&gt;3.2、bind () 函数&lt;/li&gt;
+&lt;li&gt;3.3、listen ()、connect () 函数&lt;/li&gt;
+&lt;li&gt;3.4、accept () 函数&lt;/li&gt;
+&lt;li&gt;3.5、read ()、write () 函数等&lt;/li&gt;
+&lt;li&gt;3.6、close () 函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;4、socket 中 TCP 的三次握手建立连接详解&lt;/li&gt;
+&lt;li&gt;5、socket 中 TCP 的四次握手释放连接详解&lt;/li&gt;
+&lt;li&gt;6、一个例子（实践一下）&lt;/li&gt;
+&lt;li&gt;7、留下一个问题，欢迎大家回帖回答！！！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;1-网络中进程之间如何通信&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-网络中进程之间如何通信&#34;&gt;#&lt;/a&gt; 1、网络中进程之间如何通信？&lt;/h1&gt;
+&lt;p&gt;本地的进程间通信（ &lt;code&gt;IPC&lt;/code&gt; ）有很多种方式，但可以总结为下面 4 类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;消息传递（管道、FIFO、消息队列）&lt;/li&gt;
+&lt;li&gt;同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量）&lt;/li&gt;
+&lt;li&gt;共享内存（匿名的和具名的）&lt;/li&gt;
+&lt;li&gt;远程过程调用（ &lt;code&gt;Solaris&lt;/code&gt;  门和 &lt;code&gt;Sun RPC&lt;/code&gt; ）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但这些都不是本文的主题！我们要讨论的是网络中进程之间如何通信？首要解决的问题是如何唯一标识一个进程，否则通信无从谈起！在本地可以通过进程 &lt;code&gt;PID&lt;/code&gt;  唯一标识一个进程，但是在网络中这是行不通的。其实 &lt;code&gt;TCP/IP&lt;/code&gt;  协议族已经帮我们解决了这个问题，网络层的 “ &lt;code&gt;**ip地址**”&lt;/code&gt;  可以唯一标识网络中的主机，而传输层的 “&lt;strong&gt;协议 + 端口&lt;/strong&gt;” 可以唯一标识主机中的应用程序（进程）。这样利用三元组（ &lt;code&gt;ip&lt;/code&gt;  地址，协议，端口）就可以标识网络的进程了，网络中的进程通信就可以利用这个标志与其它进程进行交互。&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;TCP/IP&lt;/code&gt;  协议的应用程序通常采用应用编程接口：UNIX BSD 的套接字（socket）和 UNIX System V 的 &lt;code&gt;TLI&lt;/code&gt;  已经被淘汰），来实现网络进程之间的通信。就目前而言，几乎所有的应用程序都是采用 socket，而现在又是网络时代，网络中进程通信是无处不在，这就是我为什么说 “一切皆 socket”。&lt;/p&gt;
+&lt;h1 id=&#34;2-什么是socket&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-什么是socket&#34;&gt;#&lt;/a&gt; 2、什么是 Socket？&lt;/h1&gt;
+&lt;p&gt;上面我们已经知道网络中的进程是通过 socket 来通信的，那什么是 socket 呢？socket 起源于 Unix，而 Unix/Linux 基本哲学之一就是 “一切皆文件”，都可以用 “打开 open –&amp;gt; 读写 write/read –&amp;gt; 关闭 close” 模式来操作。我的理解就是 Socket 就是该模式的一个实现，socket 即是一种特殊的文件，一些 socket 函数就是对其进行的操作（读 / 写 IO、打开、关闭），这些函数我们在后面进行介绍。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3 id=&#34;socket一词的起源&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#socket一词的起源&#34;&gt;#&lt;/a&gt; socket 一词的起源&lt;/h3&gt;
+&lt;p&gt;在组网领域的首次使用是在 1970 年 2 月 12 日发布的文献&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2RhdGF0cmFja2VyLmlldGYub3JnL2RvYy9yZmMzMy8=&#34;&gt; IETF RFC33&lt;/span&gt; 中发现的，撰写者为 Stephen Carr、Steve Crocker 和 &lt;code&gt;Vint &lt;/code&gt; Cerf。根据美国计算机历史博物馆的记载， &lt;code&gt;Croker&lt;/code&gt;  写道：“命名空间的元素都可称为套接字接口。一个套接字接口构成一个连接的一端，而一个连接可完全由一对套接字接口规定。” 计算机历史博物馆补充道：“这比 BSD 的套接字接口定义早了大约 12 年。”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;3-socket的基本操作&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-socket的基本操作&#34;&gt;#&lt;/a&gt; 3、socket 的基本操作&lt;/h1&gt;
+&lt;p&gt;既然 socket 是 “open—write/read—close” 模式的一种实现，那么 socket 就提供了这些操作对应的函数接口。下面以 TCP 为例，介绍几个基本的 socket 接口函数。&lt;/p&gt;
+&lt;h2 id=&#34;31-socket函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#31-socket函数&#34;&gt;#&lt;/a&gt; 3.1、socket () 函数&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;int socket(int domain, int type, int protocol);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;socket 函数对应于普通文件的打开操作。普通文件的打开操作返回一个文件描述字，而 ****socket ()**** 用于创建一个 socket 描述符（socket descriptor），它唯一标识一个 socket。这个 socket 描述字跟文件描述字一样，后续的操作都有用到它，把它作为参数，通过它来进行一些读写操作。&lt;/p&gt;
+&lt;p&gt;正如可以给 fopen 的传入不同参数值，以打开不同的文件。创建 socket 的时候，也可以指定不同的参数创建不同的 socket 描述符，socket 函数的三个参数分别为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;domain：即协议域，又称为协议族（family）。常用的协议族有， &lt;code&gt;AF_INET、AF_INET6、AF_LOCAL&lt;/code&gt; （或称 AF_UNIX，Unix 域 socket）、AF_ROUTE 等等。协议族决定了 socket 的地址类型，在通信中必须采用对应的地址，如 &lt;code&gt;AF_INET&lt;/code&gt;  决定了要用 &lt;code&gt;ipv4&lt;/code&gt;  地址（32 位的）与端口号（16 位的）的组合、AF_UNIX 决定了要用一个绝对路径名作为地址。&lt;/li&gt;
+&lt;li&gt;type：指定 socket 类型。常用的 socket 类型有， &lt;code&gt;SOCK_STREAM、SOCK_DGRAM、SOCK_RAW、SOCK_PACKET、SOCK_SEQPACKET&lt;/code&gt;  等等（socket 的类型有哪些？）。&lt;/li&gt;
+&lt;li&gt;protocol：故名思意，就是指定协议。常用的协议有， &lt;code&gt;IPPROTO_TCP、IPPTOTO_UDP、IPPROTO_SCTP、IPPROTO_TIPC&lt;/code&gt;  等，它们分别对应 TCP 传输协议、 &lt;code&gt;UDP&lt;/code&gt;  传输协议、 &lt;code&gt;STCP&lt;/code&gt;  传输协议、 &lt;code&gt;TIPC&lt;/code&gt;  传输协议（这个协议我将会单独开篇讨论！）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注意：并不是上面的 type 和 protocol 可以随意组合的，如 SOCK_STREAM 不可以跟 &lt;code&gt;IPPROTO_UDP&lt;/code&gt;  组合。当 protocol 为 0 时，会自动选择 type 类型对应的默认协议。&lt;/p&gt;
+&lt;p&gt;当我们调用 ****socket**** 创建一个 socket 时，返回的 socket 描述字它存在于协议族（address family，AF_XXX）空间中，但没有一个具体的地址。如果想要给它赋值一个地址，就必须调用 bind () 函数，否则就当调用 connect ()、listen () 时系统会自动随机分配一个端口。&lt;/p&gt;
+&lt;h2 id=&#34;32-bind函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#32-bind函数&#34;&gt;#&lt;/a&gt; 3.2、bind () 函数&lt;/h2&gt;
+&lt;p&gt;正如上面所说 bind () 函数把一个地址族中的特定地址赋给 socket。例如对应 &lt;code&gt;AF_INET&lt;/code&gt; 、 &lt;code&gt;AF_INET6&lt;/code&gt;  就是把一个 &lt;code&gt;ipv4&lt;/code&gt;  或 &lt;code&gt;ipv6&lt;/code&gt;  地址和端口号组合赋给 socket。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数的三个参数分别为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;sockfd：即 socket 描述字，它是通过 socket () 函数创建了，唯一标识一个 socket。bind () 函数就是将给这个描述字绑定一个名字。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;addr：一个&lt;/p&gt;
+&lt;p&gt;const&lt;/p&gt;
+&lt;p&gt;struct&lt;/p&gt;
+&lt;p&gt;sockaddr * 指针，指向要绑定给 sockfd 的协议地址。这个地址结构根据地址创建 socket 时的地址协议族的不同而不同，如 ipv4 对应的是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;struct sockaddr_in &amp;#123;
+    sa_family_t    sin_family; /* address family: AF_INET */
+    in_port_t      sin_port;   /* port in network byte order */
+    struct in_addr sin_addr;   /* internet address */
+&amp;#125;;
+
+/* Internet address. */
+struct in_addr &amp;#123;
+    uint32_t       s_addr;     /* address in network byte order */
+&amp;#125;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ipv6 对应的是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;struct sockaddr_in6 &amp;#123; 
+    sa_family_t     sin6_family;   /* AF_INET6 */ 
+    in_port_t       sin6_port;     /* port number */ 
+    uint32_t        sin6_flowinfo; /* IPv6 flow information */ 
+    struct in6_addr sin6_addr;     /* IPv6 address */ 
+    uint32_t        sin6_scope_id; /* Scope ID (new in 2.4) */ 
+&amp;#125;;
+
+struct in6_addr &amp;#123; 
+    unsigned char   s6_addr[16];   /* IPv6 address */ 
+&amp;#125;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Unix 域对应的是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#define UNIX_PATH_MAX    108
+
+struct sockaddr_un &amp;#123; 
+    sa_family_t sun_family;               /* AF_UNIX */ 
+    char        sun_path[UNIX_PATH_MAX];  /* pathname */ 
+&amp;#125;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;addrlen：对应的是地址的长度。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通常服务器在启动的时候都会绑定一个众所周知的地址（如 ip 地址 + 端口号），用于提供服务，客户就可以通过它来接连服务器；而客户端就不用指定，有系统自动分配一个端口号和自身的 ip 地址组合。这就是为什么通常服务器端在 listen 之前会调用 bind ()，而客户端就不会调用，而是在 connect () 时由系统随机生成一个。&lt;/p&gt;
+&lt;h3 id=&#34;网络字节序与主机字节序&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#网络字节序与主机字节序&#34;&gt;#&lt;/a&gt; 网络字节序与主机字节序&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;**** 主机字节序 **** 就是我们平常说的大端和小端模式：不同的 CPU 有不同的字节序类型，这些字节序是指整数在内存中保存的顺序，这个叫做主机序。引用标准的 Big- &lt;code&gt;Endian&lt;/code&gt;  和 &lt;code&gt;Little-Endian&lt;/code&gt;  的定义如下：&lt;/p&gt;
+&lt;p&gt;a)  &lt;code&gt;Little-Endian&lt;/code&gt;  就是低位字节排放在内存的低地址端，高位字节排放在内存的高地址端。&lt;/p&gt;
+&lt;p&gt;b)  &lt;code&gt;Big-Endian&lt;/code&gt;  就是高位字节排放在内存的低地址端，低位字节排放在内存的高地址端。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;* 网络字节序 *&lt;/strong&gt;&lt;/em&gt;：4 个字节的 32 bit 值以下面的次序传输：首先是 &lt;code&gt;0～7bit&lt;/code&gt; ，其次 &lt;code&gt;8～15bit&lt;/code&gt; ，然后 &lt;code&gt;16～23bit&lt;/code&gt; ，最后是 &lt;code&gt;24~31bit&lt;/code&gt; 。这种传输次序称作大端字节序。** 由于 &lt;code&gt;TCP/IP&lt;/code&gt;  首部中所有的二进制整数在网络中传输时都要求以这种次序，因此它又称作网络字节序。** 字节序，顾名思义字节的顺序，就是大于一个字节类型的数据在内存中的存放顺序，一个字节的数据没有顺序的问题了。&lt;/p&gt;
+&lt;p&gt;所以：在将一个地址绑定到 socket 的时候，请先将主机字节序转换成为网络字节序，而不要假定主机字节序跟网络字节序一样使用的是 &lt;code&gt;Big-Endian&lt;/code&gt;  由于这个问题曾引发过血案！公司项目代码中由于存在这个问题，导致了很多莫名其妙的问题，所以请谨记对主机字节序不要做任何假定，务必将其转化为网络字节序再赋给 socket。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;33-listen-connect函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#33-listen-connect函数&#34;&gt;#&lt;/a&gt; 3.3、listen ()、connect () 函数&lt;/h2&gt;
+&lt;p&gt;如果作为一个服务器，在调用 socket ()、bind () 之后就会调用 listen () 来监听这个 socket，如果客户端这时调用 connect () 发出连接请求，服务器端就会接收到这个请求。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int listen(int sockfd, int backlog);
+int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;listen 函数的第一个参数即为要监听的 socket 描述字，第二个参数为相应 socket 可以排队的最大连接个数。socket () 函数创建的 socket 默认是一个主动类型的，listen 函数将 socket 变为被动类型的，等待客户的连接请求。&lt;/p&gt;
+&lt;p&gt;connect 函数的第一个参数即为客户端的 socket 描述字，第二参数为服务器的 socket 地址，第三个参数为 socket 地址的长度。客户端通过调用 connect 函数来建立与 TCP 服务器的连接。&lt;/p&gt;
+&lt;h2 id=&#34;34-accept函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#34-accept函数&#34;&gt;#&lt;/a&gt; 3.4、accept () 函数&lt;/h2&gt;
+&lt;p&gt;TCP 服务器端依次调用 socket ()、bind ()、listen () 之后，就会监听指定的 socket 地址了。TCP 客户端依次调用 socket ()、connect () 之后就想 TCP 服务器发送了一个连接请求。TCP 服务器监听到这个请求之后，就会调用 accept () 函数取接收请求，这样连接就建立好了。之后就可以开始网络 I/O 操作了，即类同于普通文件的读写 I/O 操作。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;accept 函数的第一个参数为服务器的 socket 描述字，第二个参数为指向 struct sockaddr * 的指针，用于返回客户端的协议地址，第三个参数为协议地址的长度。如果 accpet 成功，那么其返回值是由内核自动生成的一个全新的描述字，代表与返回客户的 TCP 连接。&lt;/p&gt;
+&lt;p&gt;注意：accept 的第一个参数为服务器的 socket 描述字，是服务器开始调用 socket () 函数生成的，称为监听 socket 描述字；而 accept 函数返回的是已连接的 socket 描述字。一个服务器通常通常仅仅只创建一个监听 socket 描述字，它在该服务器的生命周期内一直存在。内核为每个由服务器进程接受的客户连接创建了一个已连接 socket 描述字，当服务器完成了对某个客户的服务，相应的已连接 socket 描述字就被关闭。&lt;/p&gt;
+&lt;h2 id=&#34;35-read-write等函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#35-read-write等函数&#34;&gt;#&lt;/a&gt; 3.5、read ()、write () 等函数&lt;/h2&gt;
+&lt;p&gt;万事具备只欠东风，至此服务器与客户已经建立好连接了。可以调用网络 I/O 进行读写操作了，即实现了网咯中不同进程之间的通信！网络 I/O 操作有下面几组：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;read()/write()&lt;/li&gt;
+&lt;li&gt;recv()/send()&lt;/li&gt;
+&lt;li&gt;readv()/writev()&lt;/li&gt;
+&lt;li&gt;recvmsg()/sendmsg()&lt;/li&gt;
+&lt;li&gt;recvfrom()/sendto()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我推荐使用 recvmsg ()/sendmsg () 函数，这两个函数是最通用的 I/O 函数，实际上可以把上面的其它函数都替换成这两个函数。它们的声明如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;       #include &amp;lt;unistd.h&amp;gt;
+
+       ssize_t read(int fd, void *buf, size_t count);
+       ssize_t write(int fd, const void *buf, size_t count);
+
+       #include &amp;lt;sys/types.h&amp;gt;
+       #include &amp;lt;sys/socket.h&amp;gt;
+
+       ssize_t send(int sockfd, const void *buf, size_t len, int flags);
+       ssize_t recv(int sockfd, void *buf, size_t len, int flags);
+
+       ssize_t sendto(int sockfd, const void *buf, size_t len, int flags,
+                      const struct sockaddr *dest_addr, socklen_t addrlen);
+       ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags,
+                        struct sockaddr *src_addr, socklen_t *addrlen);
+
+       ssize_t sendmsg(int sockfd, const struct msghdr *msg, int flags);
+       ssize_t recvmsg(int sockfd, struct msghdr *msg, int flags);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;read 函数是负责从 &lt;code&gt;fd&lt;/code&gt;  中读取内容。当读成功时，read 返回实际所读的字节数，如果返回的值是 0 表示已经读到文件的结束了，小于 0 表示出现了错误。如果错误为 &lt;code&gt;EINTR&lt;/code&gt;  说明读是由中断引起的，如果是 &lt;code&gt;ECONNREST&lt;/code&gt;  表示网络连接出了问题。&lt;/p&gt;
+&lt;p&gt;write 函数将 &lt;code&gt;buf&lt;/code&gt;  中的 &lt;code&gt;nbytes&lt;/code&gt;  字节内容写入文件描述符 &lt;code&gt;fd&lt;/code&gt; . 成功时返回写的字节数。失败时返回 - 1，并设置 &lt;code&gt;errno&lt;/code&gt;  变量。 在网络程序中，当我们向套接字文件描述符写时有俩种可能。1) write 的返回值大于 0，表示写了部分或者是全部的数据。2) 返回的值小于 0，此时出现了错误。我们要根据错误类型来处理。如果错误为 &lt;code&gt;EINTR&lt;/code&gt;  表示在写的时候出现了中断错误。如果为 &lt;code&gt;EPIPE&lt;/code&gt;  表示网络连接出现了问题 (对方已经关闭了连接)。&lt;/p&gt;
+&lt;p&gt;其它的我就不一一介绍这几对 I/O 函数了，具体参见 man 文档或者 baidu、Google，下面的例子中将使用到 send/recv。&lt;/p&gt;
+&lt;h2 id=&#34;36-close函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#36-close函数&#34;&gt;#&lt;/a&gt; 3.6、close () 函数&lt;/h2&gt;
+&lt;p&gt;在服务器与客户端建立连接之后，会进行一些读写操作，完成了读写操作就要关闭相应的 socket 描述字，好比操作完打开的文件要调用 fclose 关闭打开的文件。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;unistd.h&amp;gt;
+int close(int fd);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;close 一个 TCP socket 的缺省行为时把该 socket 标记为以关闭，然后立即返回到调用进程。该描述字不能再由调用进程使用，也就是说不能再作为 read 或 write 的第一个参数。&lt;/p&gt;
+&lt;p&gt;注意：close 操作只是使相应 socket 描述字的引用计数 - 1，只有当引用计数为 0 的时候，才会触发 TCP 客户端向服务器发送终止连接请求。&lt;/p&gt;
+&lt;h1 id=&#34;4-socket中tcp的三次握手建立连接详解&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-socket中tcp的三次握手建立连接详解&#34;&gt;#&lt;/a&gt; 4、socket 中 TCP 的三次握手建立连接详解&lt;/h1&gt;
+&lt;p&gt;我们知道 tcp 建立连接要进行 “三次握手”，即交换三个分组。大致流程如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端向服务器发送一个 SYN J&lt;/li&gt;
+&lt;li&gt;服务器向客户端响应一个 SYN K，并对 SYN J 进行确认 &lt;code&gt;ACK J+1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;客户端再想服务器发一个确认 &lt;code&gt;ACK K+1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;只有就完了三次握手，但是这个三次握手发生在 socket 的那几个函数中呢？请看下图：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/skynet/201012/201012122157467258.png&#34;&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/201012122157476286.png&#34; alt=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;图 1、socket 中发送的 TCP 三次握手&lt;/p&gt;
+&lt;p&gt;从图中可以看出，当客户端调用 connect 时，触发了连接请求，向服务器发送了 SYN J 包，这时 connect 进入阻塞状态；服务器监听到连接请求，即收到 SYN J 包，调用 accept 函数接收请求向客户端发送 SYN K ， &lt;code&gt;ACK J+1&lt;/code&gt; ，这时 accept 进入阻塞状态；客户端收到服务器的 SYN K ， &lt;code&gt;ACK J+1&lt;/code&gt;  之后，这时 connect 返回，并对 SYN K 进行确认；服务器收到 &lt;code&gt;ACK K+1&lt;/code&gt;  时，accept 返回，至此三次握手完毕，连接建立。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;总结：客户端的 connect 在三次握手的第二个次返回，而服务器端的 accept 在三次握手的第三次返回。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;5-socket中tcp的四次握手释放连接详解&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5-socket中tcp的四次握手释放连接详解&#34;&gt;#&lt;/a&gt; 5、socket 中 TCP 的四次握手释放连接详解&lt;/h1&gt;
+&lt;p&gt;上面介绍了 socket 中 TCP 的三次握手建立过程，及其涉及的 socket 函数。现在我们介绍 socket 中的四次握手释放连接的过程，请看下图：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/skynet/201012/201012122157487616.png&#34;&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/201012122157494693.png&#34; alt=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;图 2、socket 中发送的 TCP 四次握手&lt;/p&gt;
+&lt;p&gt;图示过程如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;某个应用进程首先调用 close 主动关闭连接，这时 TCP 发送一个 FIN M；&lt;/li&gt;
+&lt;li&gt;另一端接收到 FIN M 之后，执行被动关闭，对这个 FIN 进行确认。它的接收也作为文件结束符传递给应用进程，因为 FIN 的接收意味着应用进程在相应的连接上再也接收不到额外数据；&lt;/li&gt;
+&lt;li&gt;一段时间之后，接收到文件结束符的应用进程调用 close 关闭它的 socket。这导致它的 TCP 也发送一个 FIN N；&lt;/li&gt;
+&lt;li&gt;接收到这个 FIN 的源发送端 TCP 对它进行确认。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样每个方向上都有一个 &lt;code&gt;FIN&lt;/code&gt;  和 &lt;code&gt;ACK&lt;/code&gt; 。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://wlp1231.github.io.git/2022/10/14/the-tutorial/%E7%BC%96%E7%A8%8B/socket-2/</guid>
+            <title>socket-2</title>
+            <link>https://wlp1231.github.io.git/2022/10/14/the-tutorial/%E7%BC%96%E7%A8%8B/socket-2/</link>
+            <category term="教程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/" />
+            <category term="编程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/%E7%BC%96%E7%A8%8B/" />
+            <category term="编程" scheme="https://wlp1231.github.io.git/tags/%E7%BC%96%E7%A8%8B/" />
+            <category term="socket" scheme="https://wlp1231.github.io.git/tags/socket/" />
+            <pubDate>Fri, 14 Oct 2022 21:39:15 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;socket简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#socket简介&#34;&gt;#&lt;/a&gt; socket 简介&lt;/h4&gt;
+&lt;p&gt;​		套接字 (Socket)，就是对网络中不同主机上的应用进程之间进行双向通信的端点的抽象。一个套接字就是网络上进程通信的一端，提供了应用层进程利用网络协议交换数据的机制。从所处的地位来讲，套接字上联应用进程，下联网络协议栈，是应用程序通过网络协议进行通信的接口，是应用程序与网络协议栈进行交互的接口。&lt;/p&gt;
+&lt;p&gt;​		套接字是通信的基石，是支持&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9UQ1AlMkZJUCVFNSU4RCU4RiVFOCVBRSVBRS8yMTI5MTU=&#34;&gt; TCP/IP 协议&lt;/span&gt;的路通信的基本操作单元。可以将套接字看作不同主机间的进程进行双间通信的端点，它构成了单个主机内及整个网络间的编程界面。套接字存在于通信域中，通信域是为了处理一般的线程通过套接字通信而引进的一种抽象概念。套接字通常和同一个域中的套接字交换数据 (数据交换也可能穿越域的界限，但这时一定要执行某种解释程序)，各种进程使用这个相同的域互相之间用 Internet 协议簇来进行通信。&lt;/p&gt;
+&lt;p&gt;​		套接字 (Socket) 可以看成是两个网络应用程序进行通信时，各自通信连接中的端点，这是一个逻辑上的概念。它是网络环境中&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTglQkYlOUIlRTclQTglOEIlRTklOTclQjQlRTklODAlOUElRTQlQkYlQTEvMTIzNTkyMw==&#34;&gt;进程间通信&lt;/span&gt;的 &lt;code&gt;API&lt;/code&gt;  (应用程序编程接口)，也是可以被命名和寻址的通信端点，使用中的每一个套接字都有其类型和一个与之相连进程。通信时其中一个网络应用程序将要传输的一段信息写入它所在主机的 Socket 中，该 Socket 通过与&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTclQkQlOTElRTclQkIlOUMlRTYlOEUlQTUlRTUlOEYlQTMlRTUlOEQlQTEvOTc2NDIzMA==&#34;&gt;网络接口卡&lt;/span&gt; ( &lt;code&gt;NIC&lt;/code&gt; ) 相连的传输介质将这段信息送到另外一台主机的 Socket 中，使对方能够接收到这段信息。 Socket 是由 &lt;code&gt;IP&lt;/code&gt;  地址和端口结合的，提供向应用层进程传送数据包的机制 。&lt;/p&gt;
+&lt;h4 id=&#34;表示方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#表示方法&#34;&gt;#&lt;/a&gt; 表示方法&lt;/h4&gt;
+&lt;p&gt;​		套接字 Socket=（ &lt;code&gt;IP&lt;/code&gt;  地址：端口号），套接字的表示方法是点分十进制的 &lt;code&gt;lP&lt;/code&gt;  地址后面写上端口号，中间用冒号或逗号隔开。每一个传输层连接唯一地被通信两端的两个端点（即两个套接字）所确定。例如：如果 &lt;code&gt;IP&lt;/code&gt;  地址是 210.37.145.1，而端口号是 23，那么得到套接字就是 ( &lt;code&gt;210.37.145.1:23&lt;/code&gt; )&lt;/p&gt;
+&lt;h4 id=&#34;主要类型&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#主要类型&#34;&gt;#&lt;/a&gt; 主要类型&lt;/h4&gt;
+&lt;h5 id=&#34;流套接字sock_stream&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#流套接字sock_stream&#34;&gt;#&lt;/a&gt; 流套接字（&lt;strong&gt;SOCK_STREAM&lt;/strong&gt;）&lt;/h5&gt;
+&lt;p&gt;​		流套接字用于提供面向连接、可靠的数据传输服务。该服务将保证数据能够实现无差错、无重复送，并按顺序接收。流套接字之所以能够实现可靠的数据服务，原因在于其使用了&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTQlQkMlQTAlRTglQkUlOTMlRTYlOEUlQTclRTUlODglQjYlRTUlOEQlOEYlRTglQUUlQUUvOTcyNzc0MQ==&#34;&gt;传输控制协议&lt;/span&gt;，即 TCP (The Transmission Control Protocol) 协议&lt;/p&gt;
+&lt;h5 id=&#34;数据报套接字sock_dgram&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#数据报套接字sock_dgram&#34;&gt;#&lt;/a&gt; 数据报套接字（&lt;strong&gt; &lt;code&gt;SOCK_DGRAM&lt;/code&gt; &lt;/strong&gt;）&lt;/h5&gt;
+&lt;p&gt;​		数据报套接字提供一种无连接的服务。该服务并不能保证数据传输的可靠性，数据有可能在传输过程中丢失或出现数据重复，且无法保证顺序地接收到数据。数据报套接字使用 &lt;code&gt;UDP( User DatagramProtocol)&lt;/code&gt;  协议进行数据的传输。由于数据报套接字不能保证数据传输的可靠性，对于有可能出现的数据丢失情况，需要在程序中做相应的处理&lt;/p&gt;
+&lt;h5 id=&#34;原始套接字sock_raw&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#原始套接字sock_raw&#34;&gt;#&lt;/a&gt; 原始套接字（&lt;strong&gt;SOCK_RAW&lt;/strong&gt;）&lt;/h5&gt;
+&lt;p&gt;​		原始套接字与标准套接字 (标准套接字指的是前面介绍的流套接字和数据报套接字) 的区别在于：原始套接字可以读写内核没有处理的 IP 数据包，而流套接字只能读取 TCP 协议的数据，数据报套接字只能读取 UDP 协议的数据。因此，如果要访问其他协议发送的数据必须使用原始套接&lt;/p&gt;
+&lt;h4 id=&#34;工作流程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#工作流程&#34;&gt;#&lt;/a&gt; 工作流程&lt;/h4&gt;
+&lt;p&gt;​		要通过互联网进行通信，至少需要一对套接字，其中一个运行于客户端，我们称之为 Client Socket，另一个运行于服务器端，我们称之为 Server Socket 。&lt;/p&gt;
+&lt;p&gt;根据连接启动的方式以及本地套接字要连接的目标，套接字之间的连接过程可以分为三个步骤  ：&lt;/p&gt;
+&lt;p&gt;(1) 服务器监听。&lt;/p&gt;
+&lt;p&gt;(2) 客户端请求。&lt;/p&gt;
+&lt;p&gt;(3) 连接确认。&lt;/p&gt;
+&lt;h5 id=&#34;1服务器监听&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1服务器监听&#34;&gt;#&lt;/a&gt; &lt;strong&gt;1. 服务器监听&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;​		所谓服务器监听，是指服务器端套接字并不定位具体的客户端套接字，而是处于等待连接的状态，实时监控网络状态 。&lt;/p&gt;
+&lt;h5 id=&#34;2客户端请求&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2客户端请求&#34;&gt;#&lt;/a&gt; &lt;strong&gt;2. 客户端请求&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;​		所谓客户端请求，是指由客户端的套接字提出连接请求，要连接的目标是服务器端的套接字。为此，客户端的套接字必须首先描述它要连接的服务器的套接字，指出服务器端套接字的地址和端口号，然后就向服务器端接字提出连接请求 。&lt;/p&gt;
+&lt;h5 id=&#34;3连接确认&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3连接确认&#34;&gt;#&lt;/a&gt; &lt;strong&gt;3. 连接确认&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;​		所谓连接确认，是指当服务器端套接字监听到或者说接收到客户端套接字的连接请求，就会响应客户端套接字的请求，建立一个新的线程，并把服务器端套接字的描述发送给客户端。一旦客户端确认了此描述，连接就建立好了。而服务器端套接字继续处于监听状态，接收其他客户端套接字的连接请求&lt;/p&gt;
+&lt;h4 id=&#34;使用方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用方法&#34;&gt;#&lt;/a&gt; 使用方法&lt;/h4&gt;
+&lt;h5 id=&#34;1创建一个socket&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1创建一个socket&#34;&gt;#&lt;/a&gt; 1. 创建一个 socket&lt;/h5&gt;
+&lt;p&gt;​		&lt;mark&gt;创建函数&lt;/mark&gt;： &lt;code&gt;int socket(int family, int type, int protocol)&lt;/code&gt; ;&lt;br /&gt;
+​		socket () 打开一个网络通讯端口，如果成功的话，就像 open () 一样返回一个文件描述符，应用程序可以像读写文件一样用 read/write 在网络上收发数据，&lt;mark&gt;如果 socket () 调用出错则返回 - 1&lt;/mark&gt;。对于 &lt;code&gt;IPv4&lt;/code&gt; ，family 参数指定为 &lt;code&gt;AF_INET&lt;/code&gt; 。对于 TCP 协议，type 参数指定为 SOCK_STREAM，表示面向流的传输协议。如果是 &lt;code&gt;UDP&lt;/code&gt;  协议，则 type 参数指定为 &lt;code&gt;SOCK_DGRAM&lt;/code&gt; ，表示面向数据报的传输协议。protocol 参数的介绍从略，指定为 0 即可。&lt;/p&gt;
+&lt;h5 id=&#34;2绑定本机ip端口&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2绑定本机ip端口&#34;&gt;#&lt;/a&gt; 2. 绑定本机 &lt;code&gt;IP&lt;/code&gt;  端口&lt;/h5&gt;
+&lt;h5 id=&#34;3bind绑定&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3bind绑定&#34;&gt;#&lt;/a&gt; 3. &lt;code&gt;bind()&lt;/code&gt;  绑定&lt;/h5&gt;
+&lt;p&gt;​		&lt;mark&gt;bind () 函数&lt;/mark&gt;： &lt;code&gt;int bind(int sockfd, const struct sockaddr *myaddr, socklen_t addrlen)&lt;/code&gt; ;&lt;br /&gt;
+​		服务器程序所监听的网络地址和端口号通常是固定不变的，客户端程序得知服务器程序的地址和端口号后就可以向服务器发起连接，因此服务器需要调用 bind 绑定一个固定的网络地址和端口号。&lt;mark&gt;bind () 成功返回 0，失败返回 - 1&lt;/mark&gt;。&lt;/p&gt;
+&lt;p&gt;​		bind () 的作用是将参数 &lt;code&gt;sockfd&lt;/code&gt;  和 &lt;code&gt;myaddr&lt;/code&gt;  绑定在一起，使 &lt;code&gt;sockfd&lt;/code&gt;  这个用于网络通讯的文件描述符 (&lt;mark&gt;创建 socket 时的返回值&lt;/mark&gt;) 监听 &lt;code&gt;myaddr&lt;/code&gt;  所描述的&lt;mark&gt;地址和端口号&lt;/mark&gt; (对结构体初始化时所赋值)。 &lt;code&gt;struct sockaddr&lt;/code&gt;  * 是一个通用指针类型，&lt;mark&gt; &lt;code&gt;myaddr&lt;/code&gt;  参数实际上可以接受多种协议的 &lt;code&gt;sockaddr&lt;/code&gt;  结构体&lt;/mark&gt;，而它们的长度各不相同，所以需要第三个参数 &lt;code&gt;addrlen&lt;/code&gt; &lt;mark&gt; 指定结构体的长度&lt;/mark&gt;。&lt;/p&gt;
+&lt;p&gt;​		程序中对 &lt;code&gt;myaddr&lt;/code&gt;  参数是这样初始化的：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;memset(&amp;amp;servaddr, 0, sizeof(servaddr));
+servaddr.sin_family = AF_INET;
+servaddr.sin_port = htons(5188);
+servaddr.sin_addr.s_addr = htonl(INADDR_ANY); 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​		首先将整个结构体清零（也可以用 &lt;code&gt;bzero&lt;/code&gt;  函数），然后设置地址类型为 &lt;code&gt;AF_INET&lt;/code&gt; ，网络地址为 &lt;code&gt;INADDR_ANY&lt;/code&gt; ，这个宏表示本地的任意 &lt;code&gt;IP&lt;/code&gt;  地址，因为服务器可能有多个网卡，每个网卡也可能绑定多个 &lt;code&gt;IP&lt;/code&gt;  地址，这样设置可以在所有的 &lt;code&gt;IP&lt;/code&gt;  地址上监听，直到与某个客户端建立了连接时才确定下来到底用哪个 &lt;code&gt;IP&lt;/code&gt;  地址，端口号为 5188，可以自行定义，范围是从 1024 到 65535。&lt;/p&gt;
+&lt;h5 id=&#34;4等待客户端的连接接收客户端数据&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4等待客户端的连接接收客户端数据&#34;&gt;#&lt;/a&gt; 4. 等待客户端的连接，接收客户端数据&lt;/h5&gt;
+&lt;p&gt;​		&lt;mark&gt;监听函数&lt;/mark&gt;： &lt;code&gt;int listen(int sockfd, int backlog)&lt;/code&gt; ;&lt;br /&gt;
+​		典型的服务器程序可以同时服务于多个客户端，当有客户端发起连接时，服务器调用的 &lt;code&gt;accept()&lt;/code&gt;  返回并接受这个连接，如果有大量的客户端发起连接而服务器来不及处理，尚未 &lt;code&gt;accept&lt;/code&gt;  的客户端就处于连接等待状态，listen () 声明 &lt;code&gt;sockfd&lt;/code&gt;  处于监听状态，并且最多允许有 &lt;code&gt;backlog&lt;/code&gt;  个客户端处于连接等待状态，如果接收到更多的连接请求就忽略。 &lt;code&gt;listen()&lt;/code&gt;  成功返回 0，失败返回 - 1。&lt;/p&gt;
+&lt;p&gt;​		&lt;mark&gt;接受连接&lt;/mark&gt;： &lt;code&gt;int accept(int sockfd, struct sockaddr *cliaddr, socklen_t *addrlen)&lt;/code&gt; ;&lt;br /&gt;
+​		三方握手完成后，服务器调用 accept () 接受连接，如果服务器调用 &lt;code&gt;accept()&lt;/code&gt;  时还没有客户端的连接请求，就阻塞等待直到有客户端连接上来。 &lt;code&gt;cliaddr&lt;/code&gt;  是一个传出参数， &lt;code&gt;accept()&lt;/code&gt;  返回时传出客户端的地址和端口号。 &lt;code&gt;addrlen&lt;/code&gt;  参数是一个传入传出参数（ &lt;code&gt;value-result argument&lt;/code&gt; ），传入的是调用者提供的缓冲区 &lt;code&gt;cliaddr&lt;/code&gt;  的长度以避免缓冲区溢出问题，传出的是客户端地址结构体的实际长度（有可能没有占满调用者提供的缓冲区）。如果给 &lt;code&gt;cliaddr&lt;/code&gt;  和 &lt;code&gt;addrlen&lt;/code&gt;  参数传 NULL，表示不关心客户端的地址。&lt;/p&gt;
+&lt;h5 id=&#34;5数据接受与发送&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5数据接受与发送&#34;&gt;#&lt;/a&gt; 5. 数据接受与发送&lt;/h5&gt;
+&lt;p&gt;调用网络 I/O 进行读写操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;read()/write()&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;recv()/send()&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;readv()/writev()&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;recvmsg()/sendmsg()&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;recvfrom()/sendto()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;recv()/send()&lt;/code&gt;  详解&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;函数&lt;/mark&gt;： &lt;code&gt;int recv( SOCKET s, char FAR *buf, int len, int flags )&lt;/code&gt; ;&lt;/p&gt;
+&lt;p&gt;不论是客户还是服务器应用程序都用 recv 函数从 TCP 连接的另一端接收数据。&lt;/p&gt;
+&lt;p&gt;（1）第一个参数指定接收端套接字描述符；&lt;/p&gt;
+&lt;p&gt;（2）第二个参数指明一个缓冲区，该缓冲区用来存放 recv 函数接收到的数据；&lt;/p&gt;
+&lt;p&gt;（3）第三个参数指明 &lt;code&gt;buf&lt;/code&gt;  的长度；&lt;/p&gt;
+&lt;p&gt;（4）第四个参数一般置 0。&lt;/p&gt;
+&lt;p&gt;​		这里只描述同步 Socket 的 &lt;code&gt;recv&lt;/code&gt;  函数的执行流程。当应用程序调用 &lt;code&gt;recv&lt;/code&gt;  函数时， &lt;code&gt;recv&lt;/code&gt;  先等待 s 的发送缓冲中的数据被协议传送完毕，如果协议在传送 s 的发送缓冲中的数据时出现网络错误，那么 &lt;code&gt;recv&lt;/code&gt;  函数返回 SOCKET_ERROR，如果 s 的发送缓冲中没有数据或者数据被协议成功发送完毕后， &lt;code&gt;recv&lt;/code&gt;  先检查套接字 s 的接收缓冲区，如果 s 接收缓冲区中没有数据或者协议正在接收数据，那么 &lt;code&gt;recv&lt;/code&gt;  就一直等待，只到协议把数据接收完毕。当协议把数据接收完毕， &lt;code&gt;recv&lt;/code&gt;  函数就把 s 的接收缓冲中的数据 copy 到 &lt;code&gt;buf&lt;/code&gt;  中（注意协议接收到的数据可能大于 &lt;code&gt;buf&lt;/code&gt;  的长度，所以在这种情况下要调用几次 &lt;code&gt;recv&lt;/code&gt;  函数才能把 s 的接收缓冲中的数据 copy 完。 &lt;code&gt;recv&lt;/code&gt;  函数仅仅是 copy 数据，真正的接收数据是协议来完成的）， &lt;code&gt;recv&lt;/code&gt;  函数返回其实际 copy 的字节数。如果 &lt;code&gt;recv&lt;/code&gt;  在 copy 时出错，那么它返回 SOCKET_ERROR；如果 &lt;code&gt;recv&lt;/code&gt;  函数在等待协议接收数据时网络中断了，那么它返回 0。&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;函数&lt;/mark&gt;： &lt;code&gt;int send( SOCKET s, const char FAR *buf, int len, int flags )&lt;/code&gt; ;&lt;/p&gt;
+&lt;p&gt;​		不论是客户还是服务器应用程序都用 send 函数来向 TCP 连接的另一端发送数据。&lt;/p&gt;
+&lt;p&gt;​		客户程序一般用 send 函数向服务器发送请求，而服务器则通常用 send 函数来向客户程序发送应答。&lt;/p&gt;
+&lt;p&gt;（1）第一个参数指定发送端&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zby5jc2RuLm5ldC9zby9zZWFyY2g/cT0lRTUlQTUlOTclRTYlOEUlQTUlRTUlQUQlOTc=&#34;&gt;套接字&lt;/span&gt;描述符；&lt;/p&gt;
+&lt;p&gt;（2）第二个参数指明一个存放应用程序要发送数据的缓冲区；&lt;/p&gt;
+&lt;p&gt;（3）第三个参数指明实际要发送的数据的字节数；&lt;/p&gt;
+&lt;p&gt;（4）第四个参数一般置 0。&lt;/p&gt;
+&lt;p&gt;这里只描述同步 Socket 的 send 函数的执行流程。当调用该函数时，send 先比较待发送数据的长度 &lt;code&gt;len&lt;/code&gt;  和套接字 s 的发送缓冲的长度， 如果 &lt;code&gt;len&lt;/code&gt;  大于 s 的发送缓冲区的长度，该函数返回 SOCKET_ERROR；如果 &lt;code&gt;len&lt;/code&gt;  小于或者等于 s 的发送缓冲区的长度，那么 send 先检查协议是否正在发送 s 的发送缓冲中的数据，如果是就等待协议把数据发送完，如果协议还没有开始发送 s 的发送缓冲中的数据或者 s 的发送缓冲中没有数据，那么 send 就比较 s 的发送缓冲区的剩余空间和 &lt;code&gt;len&lt;/code&gt; ，如果 &lt;code&gt;len&lt;/code&gt;  大于剩余空间大小 send 就一直等待协议把 s 的发送缓冲中的数据发送完，如果 &lt;code&gt;len&lt;/code&gt;  小于剩余空间大小 send 就仅仅把 &lt;code&gt;buf&lt;/code&gt;  中的数据 copy 到剩余空间里（注意并不是 send 把 s 的发送缓冲中的数据传到连接的另一端的，而是协议的，send 仅仅是把 &lt;code&gt;buf&lt;/code&gt;  中的数据 copy 到 s 的发送缓冲区的剩余空间里）。&lt;/p&gt;
+&lt;p&gt;如果 send 函数 copy 数据成功，就返回实际 copy 的字节数，如果 send 在 copy 数据时出现错误，那么 send 就返回 SOCKET_ERROR；如果 send 在等待协议传送数据时网络断开的话，那么 send 函数也返回 SOCKET_ERROR。&lt;/p&gt;
+&lt;p&gt;要注意 send 函数把 &lt;code&gt;buf&lt;/code&gt;  中的数据成功 copy 到 s 的发送缓冲的剩余空间里后它就返回了，但是此时这些数据并不一定马上被传到连接的另一端。如果协议在后续的传送过程中出现网络错误的话，那么下一个 Socket 函数就会返回 SOCKET_ERROR。（每一个除 send 外的 Socket 函数在执行的最开始总要先等待套接字的发送缓冲中的数据被协议传送完毕才能继续，如果在等待时出现网络错误，那么该 Socket 函数就返回 SOCKET_ERROR）。&lt;/p&gt;
+&lt;p&gt;使用声明：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include 
+
+       ssize_t read(int fd, void *buf, size_t count);
+       ssize_t write(int fd, const void *buf, size_t count);
+
+       #include 
+       #include 
+
+       ssize_t send(int sockfd, const void *buf, size_t len, int flags);
+       ssize_t recv(int sockfd, void *buf, size_t len, int flags);
+
+       ssize_t sendto(int sockfd, const void *buf, size_t len, int flags,
+                      const struct sockaddr *dest_addr, socklen_t addrlen);
+       ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags,
+                        struct sockaddr *src_addr, socklen_t *addrlen);
+
+       ssize_t sendmsg(int sockfd, const struct msghdr *msg, int flags);
+       ssize_t recvmsg(int sockfd, struct msghdr *msg, int flags);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​		read 函数是负责从 &lt;code&gt;fd&lt;/code&gt;  中读取内容。当读成功时，read 返回实际所读的字节数，如果返回的值是 0 表示已经读到文件的结束了，小于 0 表示出现了错误。如果错误为 &lt;code&gt;EINTR&lt;/code&gt;  说明读是由中断引起的，如果是 &lt;code&gt;ECONNREST&lt;/code&gt;  表示网络连接出了问题。&lt;/p&gt;
+&lt;p&gt;​		write 函数将 &lt;code&gt;buf&lt;/code&gt;  中的 &lt;code&gt;nbytes&lt;/code&gt;  字节内容写入文件描述符 &lt;code&gt;fd.&lt;/code&gt;  成功时返回写的字节 数。失败时返回 - 1，并设置 &lt;code&gt;errno&lt;/code&gt;  变量。在网络程序中，当我们向套接字文件描述符写时有俩种可能。1) write 的返回值大于 0，表示写了部分或者是 全部的数据。2) 返回的值小于 0，此时出现了错误。我们要根据错误类型来处理。如果错误为 &lt;code&gt;EINTR&lt;/code&gt;  表示在写的时候出现了中断错误。如果为 &lt;code&gt;EPIPE&lt;/code&gt;  表示 网络连接出现了问题 (对方已经关闭了连接)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;socket中tcp的三次握手建立连接详解&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#socket中tcp的三次握手建立连接详解&#34;&gt;#&lt;/a&gt; socket 中 TCP 的三次握手建立连接详解&lt;/h4&gt;
+&lt;p&gt;tcp 建立连接要进行 “三次握手”，即交换三个分组。大致流程如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端向服务器发送一个 &lt;code&gt;SYN J&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;服务器向客户端响应一个 &lt;code&gt;SYN K&lt;/code&gt; ，并对 SYN J 进行确认 &lt;code&gt;ACK J+1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;客户端再想服务器发一个确认 &lt;code&gt;ACK K+1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;只有就完了三次握手，但是这个三次握手发生在 socket 的那几个函数中呢？请看下图：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://images.cnblogs.com/cnblogs_com/skynet/201012/201012122157467258.png&#34;&gt;&lt;img data-src=&#34;https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMuY25ibG9ncy5jb20vY25ibG9nc19jb20vc2t5bmV0LzIwMTAxMi8yMDEwMTIxMjIxNTc0NzYyODYucG5n&#34; alt=&#34;image&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://wlp1231.github.io.git/2022/10/14/the-tutorial/%E7%BC%96%E7%A8%8B/socket-1/</guid>
+            <title>socket-1</title>
+            <link>https://wlp1231.github.io.git/2022/10/14/the-tutorial/%E7%BC%96%E7%A8%8B/socket-1/</link>
+            <category term="教程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/" />
+            <category term="编程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/%E7%BC%96%E7%A8%8B/" />
+            <category term="编程" scheme="https://wlp1231.github.io.git/tags/%E7%BC%96%E7%A8%8B/" />
+            <category term="socket" scheme="https://wlp1231.github.io.git/tags/socket/" />
+            <pubDate>Fri, 14 Oct 2022 21:37:14 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;套接字&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#套接字&#34;&gt;#&lt;/a&gt; 套接字&lt;/h1&gt;
+&lt;h4 id=&#34;socket&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#socket&#34;&gt;#&lt;/a&gt; socket&lt;/h4&gt;
+&lt;p&gt;所谓套接字 (Socket)，就是对网络中不同主机上的应用进程之间进行双向通信的端点的抽象。一个套接字就是网络上进程通信的一端，提供了应用层进程利用网络协议交换数据的机制。从所处的地位来讲，套接字上联应用进程，下联网络协议栈，是应用程序通过网络协议进行通信的接口，是应用程序与网络协议栈进行交互的接口。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;中文名&lt;/p&gt;
+&lt;p&gt;套接字&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;外文名&lt;/p&gt;
+&lt;p&gt;socket&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实  质&lt;/p&gt;
+&lt;p&gt;两个网络各自通信连接中的端点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类  型&lt;/p&gt;
+&lt;p&gt;流式套接字、数据报套接字和原始套接字&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作  用&lt;/p&gt;
+&lt;p&gt;完成两个应用程序之间的数据传输&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;学  科&lt;/p&gt;
+&lt;p&gt;计算机网络&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;目录&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#目录&#34;&gt;#&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;1 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTUlQTUlOTclRTYlOEUlQTUlRTUlQUQlOTcvOTYzNzYwNj9mcm9tdGl0bGU9c29ja2V0JmFtcDtmcm9taWQ9MjgxMTUwJmFtcDtmcj1hbGFkZGluIzE=&#34;&gt;简介&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;2 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTUlQTUlOTclRTYlOEUlQTUlRTUlQUQlOTcvOTYzNzYwNj9mcm9tdGl0bGU9c29ja2V0JmFtcDtmcm9taWQ9MjgxMTUwJmFtcDtmcj1hbGFkZGluIzI=&#34;&gt;表示方法&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;3 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTUlQTUlOTclRTYlOEUlQTUlRTUlQUQlOTcvOTYzNzYwNj9mcm9tdGl0bGU9c29ja2V0JmFtcDtmcm9taWQ9MjgxMTUwJmFtcDtmcj1hbGFkZGluIzM=&#34;&gt;主要类型&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;4 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTUlQTUlOTclRTYlOEUlQTUlRTUlQUQlOTcvOTYzNzYwNj9mcm9tdGl0bGU9c29ja2V0JmFtcDtmcm9taWQ9MjgxMTUwJmFtcDtmcj1hbGFkZGluIzQ=&#34;&gt;工作流程&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;5 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTUlQTUlOTclRTYlOEUlQTUlRTUlQUQlOTcvOTYzNzYwNj9mcm9tdGl0bGU9c29ja2V0JmFtcDtmcm9taWQ9MjgxMTUwJmFtcDtmcj1hbGFkZGluIzU=&#34;&gt;主要特点&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;6 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTUlQTUlOTclRTYlOEUlQTUlRTUlQUQlOTcvOTYzNzYwNj9mcm9tdGl0bGU9c29ja2V0JmFtcDtmcm9taWQ9MjgxMTUwJmFtcDtmcj1hbGFkZGluIzY=&#34;&gt;套接字的引入&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#简介&#34;&gt;#&lt;/a&gt; 简介&lt;/h2&gt;
+&lt;p&gt;套接字是通信的基石，是支持&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9UQ1AlMkZJUCVFNSU4RCU4RiVFOCVBRSVBRS8yMTI5MTU=&#34;&gt; TCP/IP 协议&lt;/span&gt;的路通信的基本操作单元。可以将套接字看作不同主机间的进程进行双间通信的端点，它构成了单个主机内及整个网络间的编程界面。套接字存在于通信域中，通信域是为了处理一般的线程通过套接字通信而引进的一种抽象概念。套接字通常和同一个域中的套接字交换数据 (数据交换也可能穿越域的界限，但这时一定要执行某种解释程序)，各种进程使用这个相同的域互相之间用 Internet 协议簇来进行通信。&lt;/p&gt;
+&lt;p&gt;Socket (套接字) 可以看成是两个网络应用程序进行通信时，各自通信连接中的端点，这是一个逻辑上的概念。它是网络环境中&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTglQkYlOUIlRTclQTglOEIlRTklOTclQjQlRTklODAlOUElRTQlQkYlQTEvMTIzNTkyMw==&#34;&gt;进程间通信&lt;/span&gt;的 &lt;code&gt;API&lt;/code&gt;  (应用程序编程接口)，也是可以被命名和寻址的通信端点，使用中的每一个套接字都有其类型和一个与之相连进程。通信时其中一个网络应用程序将要传输的一段信息写入它所在主机的 Socket 中，该 Socket 通过与&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTclQkQlOTElRTclQkIlOUMlRTYlOEUlQTUlRTUlOEYlQTMlRTUlOEQlQTEvOTc2NDIzMA==&#34;&gt;网络接口卡&lt;/span&gt; ( &lt;code&gt;NIC&lt;/code&gt; ) 相连的传输介质将这段信息送到另外一台主机的 Socket 中，使对方能够接收到这段信息。 Socket 是由 &lt;code&gt;IP&lt;/code&gt;  地址和端口结合的，提供向应用层进程传送数据包的机制  。&lt;/p&gt;
+&lt;h2 id=&#34;表示方法&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#表示方法&#34;&gt;#&lt;/a&gt; 表示方法&lt;/h2&gt;
+&lt;p&gt;套接字 Socket=（ &lt;code&gt;IP&lt;/code&gt;  地址：端口号），套接字的表示方法是点分十进制的 &lt;code&gt;lP&lt;/code&gt;  地址后面写上端口号，中间用冒号或逗号隔开。每一个传输层连接唯一地被通信两端的两个端点（即两个套接字）所确定。例如：如果 &lt;code&gt;IP&lt;/code&gt;  地址是 210.37.145.1，而端口号是 23，那么得到套接字就是 ( &lt;code&gt;210.37.145.1:23&lt;/code&gt; )。&lt;/p&gt;
+&lt;h2 id=&#34;主要类型&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#主要类型&#34;&gt;#&lt;/a&gt; 主要类型&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1. 流套接字 (SOCK_STREAM)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;流套接字用于提供面向连接、可靠的数据传输服务。该服务将保证数据能够实现无差错、无重复送，并按顺序接收。流套接字之所以能够实现可靠的数据服务，原因在于其使用了&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTQlQkMlQTAlRTglQkUlOTMlRTYlOEUlQTclRTUlODglQjYlRTUlOEQlOEYlRTglQUUlQUUvOTcyNzc0MQ==&#34;&gt;传输控制协议&lt;/span&gt;，即 TCP (The Transmission Control Protocol) 协议  。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. 数据报套接字 ( &lt;code&gt;SOCK_DGRAM&lt;/code&gt; )&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;数据报套接字提供一种无连接的服务。该服务并不能保证数据传输的可靠性，数据有可能在传输过程中丢失或出现数据重复，且无法保证顺序地接收到数据。数据报套接字使用 &lt;code&gt;UDP&lt;/code&gt; (  &lt;code&gt;User DatagramProtocol&lt;/code&gt; ) 协议进行数据的传输。由于数据报套接字不能保证数据传输的可靠性，对于有可能出现的数据丢失情况，需要在程序中做相应的处理  。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. 原始套接字 (SOCK_RAW)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;原始套接字与标准套接字 (标准套接字指的是前面介绍的流套接字和数据报套接字) 的区别在于：原始套接字可以读写内核没有处理的 &lt;code&gt;IP&lt;/code&gt;  数据包，而流套接字只能读取 TCP 协议的数据，数据报套接字只能读取 &lt;code&gt;UDP&lt;/code&gt;  协议的数据。因此，如果要访问其他协议发送的数据必须使用原始套接  。&lt;/p&gt;
+&lt;h2 id=&#34;工作流程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#工作流程&#34;&gt;#&lt;/a&gt; 工作流程&lt;/h2&gt;
+&lt;p&gt;要通过互联网进行通信，至少需要一对套接字，其中一个运行于客户端，我们称之为 Client Socket，另一个运行于服务器端，我们称之为 Server Socket 。&lt;/p&gt;
+&lt;p&gt;根据连接启动的方式以及本地套接字要连接的目标，套接字之间的连接过程可以分为三个步骤 ：&lt;/p&gt;
+&lt;p&gt;(1) 服务器监听。&lt;/p&gt;
+&lt;p&gt;(2) 客户端请求。&lt;/p&gt;
+&lt;p&gt;(3) 连接确认 。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 服务器监听&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所谓服务器监听，是指服务器端套接字并不定位具体的客户端套接字，而是处于等待连接的状态，实时监控网络状态 。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. 客户端请求&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所谓客户端请求，是指由客户端的套接字提出连接请求，要连接的目标是服务器端的套接字。为此，客户端的套接字必须首先描述它要连接的服务器的套接字，指出服务器端套接字的地址和端口号，然后就向服务器端接字提出连接请求 。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. 连接确认&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所谓连接确认，是指当服务器端套接字监听到或者说接收到客户端套接字的连接请求，就会响应客户端套接字的请求，建立一个新的线程，并把服务器端套接字的描述发送给客户端。一旦客户端确认了此描述，连接就建立好了。而服务器端套接字继续处于监听状态，接收其他客户端套接字的连接请求 。&lt;/p&gt;
+&lt;h2 id=&#34;主要特点&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#主要特点&#34;&gt;#&lt;/a&gt; 主要特点&lt;/h2&gt;
+&lt;p&gt;根据套接字的不同类型，可以将套接字调用分为面向连接服务和无连接服务 。&lt;/p&gt;
+&lt;p&gt;面向连接服务的主要特点如下：&lt;/p&gt;
+&lt;p&gt;(1) 数据传输过程必须经过建立连接、维护连接和释放连接 3 个阶段 ；&lt;/p&gt;
+&lt;p&gt;(2) 在传输过程中，各分组不需要携带目的主机的地址  ；&lt;/p&gt;
+&lt;p&gt;(3) 可靠性好，但由于协议复杂，通信效率不高 。&lt;/p&gt;
+&lt;p&gt;面向无连接服务的主要特点如下：&lt;/p&gt;
+&lt;p&gt;(1) 不需要连接的各个阶段  ；&lt;/p&gt;
+&lt;p&gt;(2) 每个分组都携带完整的目的主机地址，在系统中独立传送  ；&lt;/p&gt;
+&lt;p&gt;(3) 由于没有顺序控制，所以接收方的分组可能出现乱序、重复和丢失现象 ；&lt;/p&gt;
+&lt;p&gt;(4) 通信效率高，但可靠性不能确保 。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://wlp1231.github.io.git/2022/10/14/ROS/Ubuntu/Clash%E6%95%99%E7%A8%8B/</guid>
+            <title>Clash教程</title>
+            <link>https://wlp1231.github.io.git/2022/10/14/ROS/Ubuntu/Clash%E6%95%99%E7%A8%8B/</link>
+            <category term="ROS" scheme="https://wlp1231.github.io.git/categories/ROS/" />
+            <category term="Ubuntu" scheme="https://wlp1231.github.io.git/categories/ROS/Ubuntu/" />
+            <category term="Ubuntu" scheme="https://wlp1231.github.io.git/tags/Ubuntu/" />
+            <category term="ROS" scheme="https://wlp1231.github.io.git/tags/ROS/" />
+            <pubDate>Fri, 14 Oct 2022 21:21:46 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;clash教程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#clash教程&#34;&gt;#&lt;/a&gt; Clash 教程&lt;/h3&gt;
+&lt;h4 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h4&gt;
+&lt;p&gt;由于最近在 &lt;code&gt;Ubuntu&lt;/code&gt;  下编程，但是要用到 Google 搜索，毕竟我是面向浏览器编程，所以解决问题全都要 Google, 而且进入 &lt;code&gt;github&lt;/code&gt;  也需要翻墙.&lt;/p&gt;
+&lt;h4 id=&#34;正文&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文&#34;&gt;#&lt;/a&gt; 正文&lt;/h4&gt;
+&lt;p&gt;使用的是 clash, 个人觉得这个软件比较好用&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;执行  &lt;code&gt;cd &amp;amp;&amp;amp; mkdir clash&lt;/code&gt;  在用户目录下创建 clash 文件夹。&lt;/p&gt;
+&lt;p&gt;下载适合的 Clash 二进制文件并解压重命名为  &lt;code&gt;clash&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;一般个人的 64 位电脑下载  &lt;code&gt;clash-linux-amd64.tar.gz &lt;/code&gt; 即可。&lt;/p&gt;
+&lt;p&gt;下载 clash &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0RyZWFtYWNyby9jbGFzaC9yZWxlYXNlcw==&#34;&gt;https://github.com/Dreamacro/clash/releases&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解压并运行它代码如下&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo gunzip clash-linux-arm64-v1.4.2.gz   
+mv clash-linux-arm64-v1.4.2 clash
+chmod +x clash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对以上代码解释:&lt;/p&gt;
+&lt;p&gt;第一行：解压 &lt;code&gt;gz&lt;/code&gt;  文件&lt;/p&gt;
+&lt;p&gt;第二行：给文件改名为 clash, 文件名太长很麻烦&lt;/p&gt;
+&lt;p&gt;第三行：给文件权限&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在终端  &lt;code&gt;cd&lt;/code&gt;  到 Clash 二进制文件所在的目录，执行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget -O config.yml 订阅链接
+wget -O Country.mmdb https://www.sub-speeder.com/client-download/Country.mmdb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;若 &lt;code&gt;Country.mmdb&lt;/code&gt;  连接失败，可在 Windows 下打开网址下载后复制粘贴&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;订阅链接获取：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly94bi0tNGdxNjJmNTJnZHNzLmNvbS8jL3JlZ2lzdGVyP2NvZGU9dWpmYktOaGk=&#34;&gt;一元机场&lt;/span&gt;，一年 11&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly94bi0tZ21xejgzYXdqaC5jby9hdXRoL3JlZ2lzdGVyP2NvZGU9NDFzbA==&#34;&gt;少数人&lt;/span&gt;，略贵&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;此时会在 clash 文件下生成 &lt;code&gt;config.yml&lt;/code&gt;  文件，这是配置文件&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;rm config.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;即删除它自动生成的 &lt;code&gt;config.yaml&lt;/code&gt;  配置文件&lt;/p&gt;
+&lt;p&gt;再把原来商家给你下载的 &lt;code&gt;config.yml&lt;/code&gt;  文件改名为 &lt;code&gt;config.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mv config.yml config.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此时只有三个文件，即 clash 和 &lt;code&gt;config.yaml&lt;/code&gt;  和 &lt;code&gt;Country.mmdb&lt;/code&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;在系统设置里面设置网络代理，改为手动 改成下图所演示&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665752805487.png&#34; alt=&#34;uTools_1665752805487&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接着再在管理员权限下执行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo ./clash -d .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开浏览器，输入 &lt;code&gt;clash.razord.top&lt;/code&gt;  在这里可以测速，和修改节点代理.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果不想代理就把网络代理设置为” 已禁用”.&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://wlp1231.github.io.git/2022/10/08/the-tutorial/%E7%BC%96%E7%A8%8B/vscode%20c++%20%E9%85%8D%E7%BD%AE%20Windows/</guid>
+            <title>vscode c++ 配置 Windows</title>
+            <link>https://wlp1231.github.io.git/2022/10/08/the-tutorial/%E7%BC%96%E7%A8%8B/vscode%20c++%20%E9%85%8D%E7%BD%AE%20Windows/</link>
+            <category term="教程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/" />
+            <category term="编程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/%E7%BC%96%E7%A8%8B/" />
+            <category term="编程" scheme="https://wlp1231.github.io.git/tags/%E7%BC%96%E7%A8%8B/" />
+            <category term="vscode" scheme="https://wlp1231.github.io.git/tags/vscode/" />
+            <pubDate>Sat, 08 Oct 2022 20:28:50 +0800</pubDate>
+            <description><![CDATA[ &lt;h4 id=&#34;vscode-c-配置-windows&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vscode-c-配置-windows&#34;&gt;#&lt;/a&gt; vscode c++ 配置 Windows&lt;/h4&gt;
+&lt;h5 id=&#34;vscode安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vscode安装&#34;&gt;#&lt;/a&gt; vscode 安装&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v&#34;&gt;vscode 官网下载&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;安装位置可自定义&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;vscode配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vscode配置&#34;&gt;#&lt;/a&gt; vscode 配置&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;插件安装&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;汉化&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665229009280.png&#34; alt=&#34;uTools_1665229009280&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;c++&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665230054513.png&#34; alt=&#34;uTools_1665230054513&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;code run&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665230109604.png&#34; alt=&#34;uTools_1665230109604&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建新文件夹，创建 cpp 文件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665230392381.png&#34; alt=&#34;uTools_1665230392381&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MinGW 安装&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zb3VyY2Vmb3JnZS5uZXQvcHJvamVjdHMvbWluZ3ctdzY0L2ZpbGVzL21pbmd3LXc2NC9taW5ndy13NjQtcmVsZWFzZS8=&#34;&gt;MinGW 官网下载&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665230644695.png&#34; alt=&#34;uTools_1665230644695&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在自己想要存放的位置解压，复制存放路径，需进入到 bin 目录，如 D:\code\sdk\mingw64\bin&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665230771519.png&#34; alt=&#34;uTools_1665230771519&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置路径，进入此电脑，鼠标右键，点击属性&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665230911995.png&#34; alt=&#34;uTools_1665230911995&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;高级属性设置，环境变量&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665230996267.png&#34; alt=&#34;uTools_1665230996267&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;系统变量，path，编辑&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665231084586.png&#34; alt=&#34;uTools_1665231084586&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新建，把复制的路径保存好&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665231156959.png&#34; alt=&#34;uTools_1665231156959&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cmd 验证安装 gcc - v&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1665231290607.png&#34; alt=&#34;uTools_1665231290607&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;运行cpp&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行cpp&#34;&gt;#&lt;/a&gt; 运行 cpp&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;重启 vscode&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入 cpp 代码界面，鼠标右键，run code&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;按 F5 调试，一直选第一个，配置文件生成成功&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20221008202202.png&#34; alt=&#34;QQ截图20221008202202&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20221008202252.png&#34; alt=&#34;QQ截图20221008202252&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/QQ%E6%88%AA%E5%9B%BE20221008202323.png&#34; alt=&#34;QQ截图20221008202323&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;vscode设置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vscode设置&#34;&gt;#&lt;/a&gt; vscode 设置&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;输出到终端&lt;/p&gt;
+&lt;p&gt;文件 --&amp;gt; 首选项 --&amp;gt; 设置，输入 run in terminal ，勾选 Whether to run code in Integrated Terminal&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;​&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://wlp1231.github.io.git/2022/09/26/ROS/Ubuntu/%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BB%BF%E7%9C%9F/</guid>
             <title>机器人仿真</title>
@@ -1367,6 +2278,7 @@ int close(int fd);
 &lt;li&gt;接收到这个 FIN 的源发送端 TCP 对它进行确认。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;这样每个方向上都有一个 &lt;code&gt;FIN&lt;/code&gt;  和 &lt;code&gt;ACK&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;jio&lt;/p&gt;
  ]]></description>
         </item>
         <item>
@@ -1413,83 +2325,10 @@ int close(int fd);
 &lt;p&gt;此时就可以使用中文输入了。&lt;/p&gt;
 &lt;p&gt;如果没有图标，在设置里更改&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/%E4%B8%AD%E6%96%878.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;h5 id=&#34;挂代理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#挂代理&#34;&gt;#&lt;/a&gt; 挂代理&lt;/h5&gt;
-&lt;h6 id=&#34;正文&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文&#34;&gt;#&lt;/a&gt; 正文&lt;/h6&gt;
-&lt;p&gt;首先 我所使用的是 clash 小猫咪，个人觉得这个软件比较好用，虽然英文版开始有点不熟悉.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;执行  &lt;code&gt;cd &amp;amp;&amp;amp; mkdir clash&lt;/code&gt;  在用户目录下创建 clash 文件夹。&lt;/p&gt;
-&lt;p&gt;下载适合的 Clash 二进制文件并解压重命名为  &lt;code&gt;clash&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;一般个人的 64 位电脑下载  &lt;code&gt;clash-linux-amd64.tar.gz &lt;/code&gt; 即可。&lt;/p&gt;
-&lt;p&gt;下载 clash &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL0RyZWFtYWNyby9jbGFzaC9yZWxlYXNlcw==&#34;&gt;https://github.com/Dreamacro/clash/releases&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;图片待补充&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;解压并运行它代码如下&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;CODE
-sudo gunzip clash-linux-arm64-v1.4.2.gz   
-mv clash-linux-arm64-v1.4.2 clash
-chmod +x clash
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;对以上代码解释:&lt;/p&gt;
-&lt;p&gt;第一行：解压 &lt;code&gt;gz&lt;/code&gt;  文件&lt;/p&gt;
-&lt;p&gt;第二行：给文件改名为 clash, 文件名太长很麻烦&lt;/p&gt;
-&lt;p&gt;第三行：给文件权限&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;在终端  &lt;code&gt;cd&lt;/code&gt;  到 Clash 二进制文件所在的目录，执行  &lt;code&gt;wget -O config.yml *******************************?clash=1&amp;amp;log-level=info&lt;/code&gt;  下载 Clash 配置文件 (上面 * 处是商机给你的链接)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;此时会在 clash 文件下生成 &lt;code&gt;config.yml&lt;/code&gt;  文件，这是配置文件&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;在管理员权限下执行&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;CODE
-./clash -d .
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;图片待补充&lt;/p&gt;
-&lt;p&gt;若没有 &lt;code&gt;HTTP proxy listening at:127.0.0.1:7890&lt;/code&gt; , 使用我给的文件替换&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;接着使用&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;CODE
-rm config.yaml
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;即删除它自动生成的 &lt;code&gt;config.yaml&lt;/code&gt;  配置文件&lt;/p&gt;
-&lt;p&gt;再把原来商家给你下载的 &lt;code&gt;config.yml&lt;/code&gt;  文件改名为 &lt;code&gt;config.yaml&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;CODE
-mv config.yml config.yaml
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;此时只有三个文件，即 clash 和 &lt;code&gt;config.yaml&lt;/code&gt;  和 &lt;code&gt;Country.mmdb&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;接着再在管理员权限下执行&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;CODE
-./clash -d .
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;如果没有警告那就成功了一半&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;在系统设置里面设置网络代理，改为手动 改成下图所演示，一点不差&lt;/p&gt;
-&lt;p&gt;图片待补充&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;打开浏览器，输入 &lt;code&gt;clash.razord.top&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;图片待补充&lt;/p&gt;
-&lt;p&gt;在这里可以测速，和修改节点代理.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;好了，登录谷歌试试吧&lt;/li&gt;
-&lt;li&gt;图片待补充&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;如果不想代理就把网络代理设置为” 已禁用”.&lt;/p&gt;
 &lt;h5 id=&#34;安装可切割终端&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装可切割终端&#34;&gt;#&lt;/a&gt; 安装可切割终端&lt;/h5&gt;
 &lt;p&gt;&lt;code&gt;sudo apt install terminator&lt;/code&gt;&lt;/p&gt;
 &lt;h5 id=&#34;安装python&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装python&#34;&gt;#&lt;/a&gt; 安装 python&lt;/h5&gt;
-&lt;h6 id=&#34;正文-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文-2&#34;&gt;#&lt;/a&gt; 正文&lt;/h6&gt;
+&lt;h6 id=&#34;正文&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#正文&#34;&gt;#&lt;/a&gt; 正文&lt;/h6&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;下载想要的 Python 版本，本次安装的版本为 Python-3.10.3，下载网址：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cucHl0aG9uLm9yZy9kb3dubG9hZHMvc291cmNlLw==&#34;&gt;https://www.python.org/downloads/source/&lt;/span&gt;&lt;/p&gt;
@@ -1808,112 +2647,6 @@ git push -u origin main&lt;/p&gt;
 &lt;p&gt;git remote add origin &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3dscDEyMzEvYmxvZ0ZpbGVzLmdpdA==&#34;&gt;https://github.com/wlp1231/blogFiles.git&lt;/span&gt;&lt;br /&gt;
 git branch -M main&lt;br /&gt;
 git push -u origin main&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://wlp1231.github.io.git/2022/09/22/the-tutorial/hexo/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
-            <title>博客搭建教程</title>
-            <link>https://wlp1231.github.io.git/2022/09/22/the-tutorial/hexo/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
-            <category term="教程" scheme="https://wlp1231.github.io.git/categories/the-tutorial/" />
-            <category term="hexo" scheme="https://wlp1231.github.io.git/categories/the-tutorial/hexo/" />
-            <category term="Hexo" scheme="https://wlp1231.github.io.git/tags/Hexo/" />
-            <category term="教程" scheme="https://wlp1231.github.io.git/tags/%E6%95%99%E7%A8%8B/" />
-            <pubDate>Thu, 22 Sep 2022 23:56:05 +0800</pubDate>
-            <description><![CDATA[ &lt;h3 id=&#34;博客搭建&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#博客搭建&#34;&gt;#&lt;/a&gt; 博客搭建&lt;/h3&gt;
-&lt;h5 id=&#34;框架deef&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#框架deef&#34;&gt;#&lt;/a&gt; 框架：deef&lt;/h5&gt;
-&lt;p&gt;Hexo 是高效的静态站点生成框架，它基于 Node.js。通过 Hexo，你可以直接使用 Markdown 语法来撰写博客。&lt;/p&gt;
-&lt;h4 id=&#34;环境安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#环境安装&#34;&gt;#&lt;/a&gt; 环境安装&lt;/h4&gt;
-&lt;h5 id=&#34;nodejs安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#nodejs安装&#34;&gt;#&lt;/a&gt; Node.js 安装&lt;/h5&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGl1cWl5dW4vcC84MTMzOTA0Lmh0bWw=&#34;&gt;参考文章&lt;/span&gt;&lt;/p&gt;
-&lt;h5 id=&#34;git安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#git安装&#34;&gt;#&lt;/a&gt; Git 安装&lt;/h5&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20veHVld2Vpc3VveW9uZy9wLzExOTE0MDQ1Lmh0bWw=&#34;&gt;参考文章&lt;/span&gt;&lt;/p&gt;
-&lt;h5 id=&#34;vscode安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vscode安装&#34;&gt;#&lt;/a&gt; Vscode 安装&lt;/h5&gt;
-&lt;p&gt;开源、免费、轻量的代码编辑器，可以通过安装插件增强功能，几乎支持任何语言代码的编写。&lt;/p&gt;
-&lt;p&gt;官网：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v&#34;&gt;https://code.visualstudio.com/&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;支持平台：Windows、macOS、Linux&lt;/p&gt;
-&lt;h5 id=&#34;typora安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#typora安装&#34;&gt;#&lt;/a&gt; Typora 安装&lt;/h5&gt;
-&lt;p&gt;官网：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cudHlwb3JhLm5ldC8=&#34;&gt;https://www.typora.net/&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;支持平台：Windows、macOS、Linux&lt;/p&gt;
-&lt;p&gt;Mac 免费激活：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90LnpzeHEuY29tL0JxZllueUI=&#34;&gt;https://t.zsxq.com/BqfYnyB&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Win 免费激活：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90LnpzeHEuY29tLzA0YVl6anVyUg==&#34;&gt;https://t.zsxq.com/04aYzjurR&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Linux 免费激活：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90LnpzeHEuY29tLzA0YVl6anVyUg==&#34;&gt;https://t.zsxq.com/04aYzjurR&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Markdown 写作教程：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90LnpzeHEuY29tL1FKUUptZVU=&#34;&gt;https://t.zsxq.com/QJQJmeU&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;主题包：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly90LnpzeHEuY29tLzA0aXFOM2ppRQ==&#34;&gt;https://t.zsxq.com/04iqN3jiE&lt;/span&gt;&lt;/p&gt;
-&lt;h5 id=&#34;github加速器vpn&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#github加速器vpn&#34;&gt;#&lt;/a&gt; Github 加速器（VPN）&lt;/h5&gt;
-&lt;p&gt;一元机场，低价&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly94bi0tNGdxNjJmNTJnZHNzLmNvbS8jL3JlZ2lzdGVyP2NvZGU9dWpmYktOaGk=&#34;&gt;注册链接&lt;/span&gt;&lt;/p&gt;
-&lt;h5 id=&#34;github&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#github&#34;&gt;#&lt;/a&gt; Github&lt;/h5&gt;
-&lt;p&gt;打开 https://github.com/ ，新建一个项目。输入自己的项目名字，后面一定要加 &lt;code&gt;.github.io&lt;/code&gt;  后缀，README 初始化可选可不选，名称一定要和你的 github 名字完全一样，比如你 github 名字叫 &lt;code&gt;abc&lt;/code&gt; ，那么仓库名字一定要是 &lt;code&gt;abc.github.io&lt;/code&gt; 。最后选择 Create 创建，项目就建成功了&lt;/p&gt;
-&lt;h4 id=&#34;hexo搭建与部署&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hexo搭建与部署&#34;&gt;#&lt;/a&gt; Hexo 搭建与部署&lt;/h4&gt;
-&lt;h5 id=&#34;安装hexo&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装hexo&#34;&gt;#&lt;/a&gt; 安装 Hexo&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;在你的电脑上任意位置，新建一个文件夹，用来存放自己的博客文件，比如 D:\blog 目录下。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;这里最好按照一级目录创建文件夹，然后将项目放里面，如果是二级目录注意后面配置路由的格式即可&lt;/li&gt;
-&lt;li&gt;还有目录路径最好全英文，不要出现特殊符号和中文&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;在该目录下，鼠标右击，选择 &lt;code&gt;Git Bash Here&lt;/code&gt; ，打开 git 的控制台窗口 或者 vscode ，输入命令进行安装并启动&lt;/p&gt;
-&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;npm i hexo&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;cli &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;g&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hexo init&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;npm install&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hexo g&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hexo server&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&#34;生成ssh-keys&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#生成ssh-keys&#34;&gt;#&lt;/a&gt; 生成 ssh keys&lt;/h5&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;在任意文件夹位置，打开 cmd&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 添加 github 信息&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;git config &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;global user&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;name &lt;span class=&#34;token string&#34;&gt;&#34;yourname&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;git config &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;global user&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;email &lt;span class=&#34;token string&#34;&gt;&#34;youremail&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;// 查看信息是否正确&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;git config user&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;name&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;git config user&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;email&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;生成 ssh keys：&lt;/p&gt;
-&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ssh&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;keygen &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;t rsa &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;C&lt;/span&gt; “你注册时的邮件地址user&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;email”&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;总共需要敲四次回车。这个时候它会告诉你已经生成了.ssh 的文件夹。在你的电脑中找到这个文件夹。&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1663855670162.png&#34; alt=&#34;uTools_1663855670162&#34; /&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;ssh，简单来讲，就是一个秘钥，其中， &lt;code&gt;id_rsa&lt;/code&gt;  是你这台电脑的私人秘钥，不能给别人看的， &lt;code&gt;id_rsa.pub&lt;/code&gt;  是公共秘钥，可以随便给别人看。把这个公钥放在 GitHub 上，这样当你链接 GitHub 自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过 git 上传你的文件到 GitHub 上。而后在 GitHub 的 setting 中，找到 SSH keys 的设置选项，点击 &lt;code&gt;New SSH key&lt;/code&gt; ， 把你的 &lt;code&gt;id_rsa.pub&lt;/code&gt;  里面的信息复制进去。&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1663855830037.png&#34; alt=&#34;uTools_1663855830037&#34; /&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;在 G it bash 中，查看是否成功&lt;/p&gt;
-&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;ssh &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;T&lt;/span&gt; git&lt;span class=&#34;token annotation punctuation&#34;&gt;@github.com&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&#34;将hexo部署到github&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#将hexo部署到github&#34;&gt;#&lt;/a&gt; 将 hexo 部署到 Github&lt;/h5&gt;
-&lt;p&gt;这一步，我们就可以将 hexo 和 GitHub 关联起来，也就是将 hexo 生成的文章部署到 GitHub 上，打开站点配置文件  &lt;code&gt;_config.yml&lt;/code&gt; ，翻到最后，修改 &lt;code&gt;deploy&lt;/code&gt;  部分代码。repo 部分为你 GitHub 仓库链接地址&lt;/p&gt;
-&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;deploy&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  type&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; git&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  repo&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; https&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;github&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;com&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;YourgithubName&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;YourgithubName&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;github&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;io&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;git&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  branch&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; master&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;这个时候需要先安装 deploy-git ，也就是部署的命令，这样你才能用命令部署到 GitHub。在博客文件下打开 cmd 或 gitbash&lt;/p&gt;
-&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;npm install hexo&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;deployer&lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt;git &lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;save&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;生成界面&lt;/p&gt;
-&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hexo generate &lt;span class=&#34;token comment&#34;&gt;// 可缩写为 hexo g&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;上传文件到 GitHub&lt;/p&gt;
-&lt;figure class=&#34;highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;hexo deploy &lt;span class=&#34;token comment&#34;&gt;// 可缩写为 hexo d&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h4 id=&#34;博客文件夹&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#博客文件夹&#34;&gt;#&lt;/a&gt; 博客文件夹&lt;/h4&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1663920168029.png&#34; alt=&#34;uTools_1663920168029&#34; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;_config.yml&lt;/code&gt; ：俗称站点配置文件，很多与博客网站的格式、内容相关的设置都需要在里面改。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;node_modules&lt;/code&gt; : 存储 Hexo 插件的文件，可以实现各种扩展功能。一般不需要管。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;package.json&lt;/code&gt; ：别问我，我也不知道干嘛的。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;scaffolds&lt;/code&gt; ：模板文件夹，里面的 &lt;code&gt;post.md&lt;/code&gt;  文件可以设置每一篇博客的模板。具体用起来就知道能干嘛了。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;source&lt;/code&gt; ：非常重要。所有的个人文件都在里面！&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;themes&lt;/code&gt; ：主题文件夹，可以从&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL3RoZW1lcy8=&#34;&gt; Hexo 主题官网&lt;/span&gt;或者网上大神的 Github 主页下载各种各样美观的主题，让自己的网站变得逼格高端的关键！&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;接下来重点介绍 &lt;code&gt;source&lt;/code&gt;  文件夹。新建的博客中， &lt;code&gt;source&lt;/code&gt;  文件夹下默认只有一个子文件夹 ——&amp;gt; &lt;code&gt;_posts&lt;/code&gt; 。我们写的博客都放在这个子文件夹里面。我们还可以在 &lt;code&gt;source&lt;/code&gt;  里面新建各种子文件夹满足自己的个性化需求，对初学者而言，我们先把精力放在主线任务上，然后再来搞这些细节。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;_config.yml 文件详解&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;严格注意缩进，缩进不对也会报错，所以这里不推荐使用记事本，使用 Vscode 编辑器&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;title 部分：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1663934299640.png&#34; alt=&#34;uTools_1663934299640&#34; /&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;url ：只用配置第一行，其余的都不用动，更换为你的远程地址就可以了&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/5625/uTools_1663934420106.png&#34; alt=&#34;uTools_1663934420106&#34; /&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;其他使用默认即可&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;网页的简单美化&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#网页的简单美化&#34;&gt;#&lt;/a&gt; 网页的简单美化&lt;/h4&gt;
  ]]></description>
         </item>
     </channel>
