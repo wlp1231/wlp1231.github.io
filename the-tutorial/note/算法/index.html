@@ -1,0 +1,209 @@
+<!-- build time:Thu Sep 05 2024 10:38:19 GMT+0800 (中国标准时间) --><!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="随笔" href="https://wlp1231.com/rss.xml"><link rel="alternate" type="application/atom+xml" title="随笔" href="https://wlp1231.com/atom.xml"><link rel="alternate" type="application/json" title="随笔" href="https://wlp1231.com/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="/css/app.css?v=0.2.5"><meta name="keywords" content="note"><link rel="canonical" href="https://wlp1231.com/the-tutorial/note/%E7%AE%97%E6%B3%95/"><title>算法 - note - 教程 | wlp-blog = 随笔</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">算法</h1><div class="meta"><span class="item" title="创建时间：2023-09-13 00:06:39"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2023-09-13T00:06:39+08:00">2023-09-13</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>4.4k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>4 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">wlp-blog</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/d757e4c9c546cd7dba16ee5e23dc2d9d.md.jpg"></li><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/6edf0eae0c5c58dadd09198c6c3c9f6d.md.jpg"></li><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/f85e0c5cc31d609ad0b6e48a88040ecb.md.jpg"></li><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/43d42ed802c921c4e8af87cbe3ff2906.md.jpg"></li><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/84792bda8699365f11e183429da41a63.md.jpg"></li><li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/86a28095f8e05aa07544b454ec6f01f6.md.jpg"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/the-tutorial/" itemprop="item" rel="index" title="分类于 教程"><span itemprop="name">教程</span></a><meta itemprop="position" content="1"></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/the-tutorial/note/" itemprop="item" rel="index" title="分类于 note"><span itemprop="name">note</span></a><meta itemprop="position" content="2"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://wlp1231.com/the-tutorial/note/%E7%AE%97%E6%B3%95/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="wlp"><meta itemprop="description" content=", 个人博客"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="随笔"></span><div class="body md" itemprop="articleBody"><h4 id="算法"><a class="anchor" href="#算法">#</a> 算法</h4><h5 id="链表"><a class="anchor" href="#链表">#</a> 链表</h5><pre><code class="language-Java">1. 链表倒序
+非递归
+ArrayList 的 add方法可以指定插入位置
+顺序查询ListNode.next，存入ArrayList的第一个位置，返回ArrayList
+递归
+首先传入待倒序链表
+对链表判空
+对ListNode.next调用倒序函数
+把ListNode.val传给ArrayList
+    
+2. 链表反转——双链表
+    创建新链表 ListNode newnode = null
+    对反转链表head判空
+    存temp = head.next
+    把head.next指向newNode // 成为了新的链表
+    把head给newNode
+    head = temp //变回原来的链表
+    
+3. 合并排序列表——哨兵节点
+    ListNode a = new ListNode(0);
+	ListNode b = a;
+
+4. 公共节点——历遍所有节点，有公共节点必然会同时到达公共节点
+        ListNode l1 = pHead1;
+        ListNode l2 = pHead2;
+历遍所有节点，直到l1 = l2
+    三元运算符
+    
+5. 链表中环的入口
+    快链表和慢链表，有环会相遇，无环快链表指向null
+    有环，初始化快链表，以相同的速度历遍，再次相遇的点为环入口
+    
+6. 倒数第K个节点
+    先行一步，快链表比快链表先走K步
+    
+7. 删除重复节点
+    Map&lt;Integer,Integer&gt; mp = new HashMap&lt;&gt;()
+    使用put和get方法
+    历遍，使用哈希表记录每个值出现的次数
+    再次历遍，删除次数不等于1的节点
+    
+
+</code></pre><h5 id="其他算法"><a class="anchor" href="#其他算法">#</a> 其他算法</h5><pre><code class="language-JAVA">字符串：
+    工具：
+    charAt（） 比较使用 == ''
+    HashMap&lt;Character,Integer&gt;
+    StringBuilder
+    StringBuffer
+    equalsIgnoreCase // 不缺分大小写
+    toUpperCase() // 转大写
+    toLowerCase() // 转小写
+    char转换为String String.valueOf()
+    cahr 通过 -32 转小写 +32 转大写
+    cahr 也可通过Character 的toUpperCase() 和 toLowerCase() 妆花大小写
+    String.substring(i) // 截取i及之后的字符串
+    String.substring(i,j) // 截取i 到j-1间的字符串
+    a.CompareTo(b) // 比较字符串大小,拼接时shi'y，&gt;0 a &gt; b; &lt;0 a &lt; b 
+数组：
+    工具：
+    
+</code></pre><h5 id="输入输出"><a class="anchor" href="#输入输出">#</a> 输入输出</h5><pre><code class="language-JAVA">System.in
+    Scanner in = new Scanner(System.in)
+    in.next() // 读取到下一个非空字符
+    in.nextLine() // 读取一整行，直到有换行符（回车），包括空格和换行符
+    in.nextInt // 整数输入
+    in.next(),charAt(0) // 字符的输入
+    in.nextFloat() // 浮点型的输入
+    in.hasNext() // 以空格
+    in.hasNextLine() // 以回车作为结束标志
+    
+</code></pre><h5 id="进制转换"><a class="anchor" href="#进制转换">#</a> 进制转换：</h5><pre><code class="language-JAVA">//10进制转换 16进制
+ System.out.println(Integer.toHexString(val));
+ System.out.println(String.format(&quot;%x&quot;, val));
+ //10进制转换 8进制
+ System.out.println(Integer.toOctalString(val));
+ System.out.println(String.format(&quot;%o&quot;, val));
+ //10进制转换 2进制
+ System.out.println(Integer.toBinaryString(val));
+ 
+ //16进制转换 10进制
+ System.out.println(Integer.valueOf(&quot;f&quot;, 16));
+ //8进制转换 10进制
+ System.out.println(Integer.valueOf(&quot;11&quot;, 8));
+ //2进制转换 10进制
+ System.out.println(Integer.valueOf(&quot;0101&quot;, 2));
+
+</code></pre><h5 id="递归-回溯"><a class="anchor" href="#递归-回溯">#</a> 递归 + 回溯</h5><p>递归：</p><p>把一个大型问题层层转化为一个与原问题相似的小问题</p><p>如果是线性递归，子问题直接回到父问题，不需要回溯</p><p>如果是树形递归，父问题有很多分支，需要从子问题回到父问题，进入另一个子问题，需要回溯父问题的状态，才能进入下一个子问题</p><pre><code class="language-JAVA">1. 没有重复项数字的全排列
+    全排列：对数组元素进行元素交换，时每一种排列都可能出现
+    思路：每个元素都放到第一位进行历遍排序
+    递归条件：
+    1. 终止条件：要交换位置的下标到了数组最后一位，结束本次排序
+    2. 返回值：把前面已经确认好位置的元素返回给父问题
+    3. 本级任务：历遍从它开始的后续元素
+    
+    全排列：
+    1. 当待排序数被取完时结束
+    2. 对每一个数进行标记，取出作为第一个元素单独存放，inedx
+    3. 执行递归，依次把剩余的数取出放到标记数后面
+    4. 在删除的位置恢复被取出的数
+    5. 删除上一次被标记数 index.size-1
+    
+有重复数，递归+回溯+hashmap  
+import java.util.*;
+
+
+public class Solution &#123;
+    ArrayList&lt;ArrayList&lt;Integer&gt;&gt; ans = new ArrayList&lt;&gt;();
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     * 
+     * @param num int整型一维数组 
+     * @return int整型ArrayList&lt;ArrayList&lt;&gt;&gt;
+     */
+    public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; permuteUnique (int[] num) &#123;
+        // write code here
+        Arrays.sort(num);
+        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        for(int n : num)&#123;
+            list.add(n);
+        &#125;
+        ArrayList&lt;Integer&gt; index = new ArrayList&lt;&gt;();
+        recursion(list,index);
+        LinkedHashMap&lt;ArrayList&lt;Integer&gt;, Integer&gt; map = new LinkedHashMap&lt;&gt;();
+        for(int i = 0; i &lt; ans.size(); i++)&#123;
+            map.put(ans.get(i),map.getOrDefault(ans.get(i),0)+1);
+        &#125;
+        
+        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; newans = new ArrayList&lt;&gt;();
+        Set&lt;Map.Entry&lt;ArrayList&lt;Integer&gt;,Integer&gt;&gt; en = map.entrySet();
+        for(Map.Entry&lt;ArrayList&lt;Integer&gt;,Integer&gt; e : en)&#123;
+            newans.add(e.getKey());
+        &#125;
+        return newans;
+        // return ans;
+    &#125;
+
+    public void recursion(ArrayList&lt;Integer&gt; list,ArrayList&lt;Integer&gt; index)&#123;
+        if(list.isEmpty())&#123;
+            ans.add(new ArrayList&lt;Integer&gt;(index));
+        &#125;else&#123;
+            for(int i = 0; i &lt; list.size(); i++)&#123;
+                Integer temp = list.remove(i);
+                index.add(temp);
+                recursion(list,index);
+                list.add(i,temp);
+                index.remove(index.size()-1);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre><h5 id="dfs-深度优先搜索算法"><a class="anchor" href="#dfs-深度优先搜索算法">#</a> DFS 深度优先搜索算法</h5><pre><code class="language-JAVA">1. 矩阵路径
+    回溯 + 递归
+    1. 确认结束条件
+    2. 取出当前路径节点，防止回退路径
+    3. 分别查询当前路径节点的四个方向，看是否符合要求
+    4. 恢复当前路径节点
+    5，返回
+import java.util.*;
+
+
+public class Solution &#123;
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     * 
+     * @param matrix char字符型二维数组 
+     * @param word string字符串 
+     * @return bool布尔型
+     */
+    public boolean hasPath (char[][] matrix, String word) &#123;
+        // write code here
+        char[] words = word.toCharArray();
+        for(int i = 0; i &lt; matrix.length; i++)&#123;
+            for(int j = 0; j &lt; matrix[0].length; j++)&#123;
+                if(dfs(matrix,words,i,j,0))&#123;
+                    return true;
+                &#125;
+            &#125;
+        &#125;
+        return false;
+    &#125;
+
+    public boolean dfs(char[][] matrix, char[] words, int i, int j, int index)&#123;
+         
+        if(index == words.length - 1)&#123;
+            return true;
+        &#125;
+        char temp = matrix[i][j];
+        matrix[i][j] = '.';
+        boolean res = dfs(matrix,words,i+1,j,index+1)||dfs(matrix,words,i-1,j,index+1)||dfs(matrix,words,i,j+1,index+1)||dfs(matrix,words,i,j-1,index+1);
+        matrix[i][j] = temp;
+        return res;
+
+
+    &#125;
+&#125;
+</code></pre><h5 id="栈-stack"><a class="anchor" href="#栈-stack">#</a> 栈 Stack</h5><h5 id="队列-deque"><a class="anchor" href="#队列-deque">#</a> 队列 Deque</h5><h5 id="双向队列-arraydeque"><a class="anchor" href="#双向队列-arraydeque">#</a> 双向队列 ArrayDeque</h5><pre><code class="language-JAVA">1. 栈的压入弹出序列
+    栈顶元素等于当前需要弹出的元素，则弹出，否则继续进栈
+    第一个元素必须先进栈
+    进栈次数要等于待进栈元素个数
+</code></pre><h5 id="动态规划"><a class="anchor" href="#动态规划">#</a> 动态规划</h5><pre><code class="language-JAVA">思想：
+    将待求解问题分解成若干个相互关联的小问题，先求解小问题，然后从这些小问题的解得到原问题的解
+    
+1. 连续子数组的最大和
+    如果加上后面一个元素，反而小于刚加上的元素，那么直接使用刚加上的元素作为新的子数组头
+    若要输出最大和对应的子数组，则添加标记位 lift 和 right
+    添加最大区间标记位
+</code></pre><div class="tags"><a href="/tags/note/" rel="tag"><i class="ic i-tag"></i> note</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i> </span><span class="text">更新于</span> <time title="修改时间：2023-09-13 00:20:28" itemprop="dateModified" datetime="2023-09-13T00:20:28+08:00">2023-09-13</time> </span><span id="the-tutorial/note/算法/" class="item leancloud_visitors" data-flag-title="算法" title="阅读次数"><span class="icon"><i class="ic i-eye"></i> </span><span class="text">阅读次数</span> <span class="leancloud-visitors-count"></span> <span class="text">次</span></span></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>wlp <i class="ic i-at"><em>@</em></i>随笔</li><li class="link"><strong>本文链接：</strong> <a href="https://wlp1231.com/the-tutorial/note/%E7%AE%97%E6%B3%95/" title="算法">https://wlp1231.com/the-tutorial/note/算法/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/the-tutorial/note/idea%20%E5%B0%8F%E7%9F%A5%E8%AF%86/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;1818747d7085ab0d1d6f610f61a7296b.md.jpg" title="小知识"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> note</span><h3>小知识</h3></a></div><div class="item right"><a href="/the-tutorial/note/oj%E5%88%A4%E9%A2%98%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;50d682207f8e6513884d523e2e0895f7.md.jpg" title="OJ 判题"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> note</span><h3>OJ 判题</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text">链表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">其他算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">1.3.</span> <span class="toc-text">输入输出</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.4.</span> <span class="toc-text">进制转换：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%92%E5%BD%92-%E5%9B%9E%E6%BA%AF"><span class="toc-number">1.5.</span> <span class="toc-text">递归 + 回溯</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#dfs-%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">DFS 深度优先搜索算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%88-stack"><span class="toc-number">1.7.</span> <span class="toc-text">栈 Stack</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%98%9F%E5%88%97-deque"><span class="toc-number">1.8.</span> <span class="toc-text">队列 Deque</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E9%98%9F%E5%88%97-arraydeque"><span class="toc-number">1.9.</span> <span class="toc-text">双向队列 ArrayDeque</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">1.10.</span> <span class="toc-text">动态规划</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li><a href="/the-tutorial/note/socket%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/" rel="bookmark" title="socket通信机制详解">socket通信机制详解</a></li><li><a href="/the-tutorial/note/idea%20%E5%B0%8F%E7%9F%A5%E8%AF%86/" rel="bookmark" title="小知识">小知识</a></li><li class="active"><a href="/the-tutorial/note/%E7%AE%97%E6%B3%95/" rel="bookmark" title="算法">算法</a></li><li><a href="/the-tutorial/note/oj%E5%88%A4%E9%A2%98%E7%B3%BB%E7%BB%9F/" rel="bookmark" title="OJ 判题">OJ 判题</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="wlp" data-src="/images/avatar.jpg"><p class="name" itemprop="name">wlp</p><div class="description" itemprop="description">个人博客</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">19</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">7</span> <span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">10</span> <span class="name">标签</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dscDEyMzE=" title="https:&#x2F;&#x2F;github.com&#x2F;wlp1231"><i class="ic i-github"></i></span> <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span> <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></ul></li><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/the-tutorial/note/idea%20%E5%B0%8F%E7%9F%A5%E8%AF%86/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/the-tutorial/note/oj%E5%88%A4%E9%A2%98%E7%B3%BB%E7%BB%9F/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/ROS/" title="分类于 ROS">ROS</a></div><span><a href="/ROS/Ubuntu/%E5%AE%9A%E7%82%B9%E8%B7%91%E5%8A%A8/" title="定点跑动">定点跑动</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/the-tutorial/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/the-tutorial/programming/" title="分类于 编程">编程</a></div><span><a href="/the-tutorial/programming/socket-2/" title="socket-2">socket-2</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ROS/" title="分类于 ROS">ROS</a> <i class="ic i-angle-right"></i> <a href="/categories/ROS/Ubuntu/" title="分类于 Ubuntu">Ubuntu</a></div><span><a href="/ROS/Ubuntu/Clash%E6%95%99%E7%A8%8B/" title="Clash教程">Clash教程</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ROS/" title="分类于 ROS">ROS</a> <i class="ic i-angle-right"></i> <a href="/categories/ROS/Ubuntu/" title="分类于 Ubuntu">Ubuntu</a></div><span><a href="/ROS/Ubuntu/ros%E7%AE%80%E4%BB%8B/" title="ROS">ROS</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/the-tutorial/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/the-tutorial/hexo/" title="分类于 hexo">hexo</a></div><span><a href="/the-tutorial/hexo/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="博客搭建教程">博客搭建教程</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/the-tutorial/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/the-tutorial/programming/" title="分类于 编程">编程</a></div><span><a href="/the-tutorial/programming/socket-1/" title="socket-1">socket-1</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/the-tutorial/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/the-tutorial/programming/" title="分类于 编程">编程</a></div><span><a href="/the-tutorial/programming/socket%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/" title="socket通信机制详解">socket通信机制详解</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/the-tutorial/note/typora%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%A4%A7%E5%85%A8/" title="未命名">未命名</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/the-tutorial/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/the-tutorial/note/" title="分类于 note">note</a></div><span><a href="/the-tutorial/note/oj%E5%88%A4%E9%A2%98%E7%B3%BB%E7%BB%9F/" title="OJ 判题">OJ 判题</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/the-tutorial/" title="分类于 教程">教程</a> <i class="ic i-angle-right"></i> <a href="/categories/the-tutorial/note/" title="分类于 note">note</a></div><span><a href="/the-tutorial/note/socket%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/" title="socket通信机制详解">socket通信机制详解</a></span></li></ul></div><div><h2>最新评论</h2><ul class="leancloud-recent-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2021 – <span itemprop="copyrightYear">2024</span> <span class="with-love"><i class="ic i-sakura rotate"></i> </span><span class="author" itemprop="copyrightHolder">wlp @ wlp-blog</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">84k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">1:16</span></div><div class="police"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbi8=">陕ICP备2023006409号-1</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"the-tutorial/note/算法/",favicon:{show:"欢迎回来",hide:"再见"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="/js/app.js?v=0.2.5"></script></body></html><!-- rebuild by hrmmi -->
