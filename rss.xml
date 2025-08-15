@@ -18,8 +18,10 @@
             <guid isPermalink="true">https://wlp1231.cn/embedded/esp32/ESP32-S3/</guid>
             <title>ESP32-S3</title>
             <link>https://wlp1231.cn/embedded/esp32/ESP32-S3/</link>
-            <category term="嵌入式，esp32" scheme="https://wlp1231.cn/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%EF%BC%8Cesp32/" />
-            <category term="ESP32-S3" scheme="https://wlp1231.cn/tags/ESP32-S3/" />
+            <category term="嵌入式" scheme="https://wlp1231.cn/categories/embedded/" />
+            <category term="编程" scheme="https://wlp1231.cn/categories/embedded/programming/" />
+            <category term="socket" scheme="https://wlp1231.cn/tags/socket/" />
+            <category term="esp32" scheme="https://wlp1231.cn/tags/esp32/" />
             <pubDate>Fri, 15 Aug 2025 09:32:34 +0800</pubDate>
             <description><![CDATA[ &lt;h3 align = center&gt;ESP32-S3&lt;/h3&gt;
 &lt;h4 id=&#34;资料整理自正点原子自用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#资料整理自正点原子自用&#34;&gt;#&lt;/a&gt; 资料整理自正点原子，自用&lt;/h4&gt;

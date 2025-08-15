@@ -84,8 +84,10 @@
 &lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250815091743578.png&#34; alt=&#34;image-20250815091743578&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250815091848815.png&#34; alt=&#34;image-20250815091848815&#34; /&gt;&lt;/p&gt;
 </content>
-        <category term="嵌入式，esp32" scheme="https://wlp1231.cn/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%EF%BC%8Cesp32/" />
-        <category term="ESP32-S3" scheme="https://wlp1231.cn/tags/ESP32-S3/" />
+        <category term="嵌入式" scheme="https://wlp1231.cn/categories/embedded/" />
+        <category term="编程" scheme="https://wlp1231.cn/categories/embedded/programming/" />
+        <category term="socket" scheme="https://wlp1231.cn/tags/socket/" />
+        <category term="esp32" scheme="https://wlp1231.cn/tags/esp32/" />
         <updated>2025-08-15T01:32:34.649Z</updated>
     </entry>
     <entry>
