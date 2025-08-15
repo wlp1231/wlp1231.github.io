@@ -10,10 +10,94 @@
         </author>
         <description>个人博客</description>
         <language>zh-CN</language>
-        <pubDate>Fri, 20 Oct 2023 21:57:23 +0800</pubDate>
-        <lastBuildDate>Fri, 20 Oct 2023 21:57:23 +0800</lastBuildDate>
+        <pubDate>Fri, 15 Aug 2025 09:32:34 +0800</pubDate>
+        <lastBuildDate>Fri, 15 Aug 2025 09:32:34 +0800</lastBuildDate>
         <category term="随笔" />
         <category term="wlp" />
+        <item>
+            <guid isPermalink="true">https://wlp1231.com/enbedded/esp32/ESP32-S3/</guid>
+            <title></title>
+            <link>https://wlp1231.com/enbedded/esp32/ESP32-S3/</link>
+            <pubDate>Fri, 15 Aug 2025 09:32:34 +0800</pubDate>
+            <description><![CDATA[ &lt;hr /&gt;
+&lt;p&gt;title：ESP32-S3&lt;br /&gt;
+categories：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[嵌入式，ESP32]&lt;br /&gt;
+tags：&lt;/li&gt;
+&lt;li&gt;ESP32-S3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h3 align = center&gt;ESP32-S3&lt;/h3&gt;
+&lt;h4 id=&#34;资料整理自正点原子自用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#资料整理自正点原子自用&#34;&gt;#&lt;/a&gt; 资料整理自正点原子，自用&lt;/h4&gt;
+&lt;h4 id=&#34;开发环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#开发环境&#34;&gt;#&lt;/a&gt; 开发环境：&lt;/h4&gt;
+&lt;p&gt;vscode + platformio + arduino + esp32&lt;/p&gt;
+&lt;h4 id=&#34;arduino-语言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#arduino-语言&#34;&gt;#&lt;/a&gt; Arduino 语言&lt;/h4&gt;
+&lt;p&gt;Arduino 语言是指的是 Arduino 核心库文件提供的各种应用程序编程接口 (API) 集合。这些 API 是对更底层的单片机支持库进行二次封装。使用 C 和 C++ 混合编写。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814145418526.png&#34; alt=&#34;image-20250814145418526&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;gpio-函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#gpio-函数&#34;&gt;#&lt;/a&gt; GPIO 函数&lt;/h4&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814145757131.png&#34; alt=&#34;image-20250814145757131&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814145836371.png&#34; alt=&#34;image-20250814145836371&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814145911441.png&#34; alt=&#34;image-20250814145911441&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814145944036.png&#34; alt=&#34;image-20250814145944036&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814150013506.png&#34; alt=&#34;image-20250814150013506&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814150032446.png&#34; alt=&#34;image-20250814150032446&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;外部中断函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#外部中断函数&#34;&gt;#&lt;/a&gt; 外部中断函数&lt;/h4&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814150902033.png&#34; alt=&#34;image-20250814150902033&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814150916136.png&#34; alt=&#34;image-20250814150916136&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814151007813.png&#34; alt=&#34;image-20250814151007813&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814151109846.png&#34; alt=&#34;image-20250814151109846&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;串口函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#串口函数&#34;&gt;#&lt;/a&gt; 串口函数&lt;/h4&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814152433030.png&#34; alt=&#34;image-20250814152433030&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814152553861.png&#34; alt=&#34;image-20250814152553861&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814152940239.png&#34; alt=&#34;image-20250814152940239&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814153038674.png&#34; alt=&#34;image-20250814153038674&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814153102472.png&#34; alt=&#34;image-20250814153102472&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814153259882.png&#34; alt=&#34;image-20250814153259882&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814153336514.png&#34; alt=&#34;image-20250814153336514&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814153353471.png&#34; alt=&#34;image-20250814153353471&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814153500947.png&#34; alt=&#34;image-20250814153500947&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814153527610.png&#34; alt=&#34;image-20250814153527610&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;定时器函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#定时器函数&#34;&gt;#&lt;/a&gt; 定时器函数&lt;/h4&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814153829790.png&#34; alt=&#34;image-20250814153829790&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814153846878.png&#34; alt=&#34;image-20250814153846878&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814153940630.png&#34; alt=&#34;image-20250814153940630&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814153959322.png&#34; alt=&#34;image-20250814153959322&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814154022182.png&#34; alt=&#34;image-20250814154022182&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814154107107.png&#34; alt=&#34;image-20250814154107107&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;pwm-函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#pwm-函数&#34;&gt;#&lt;/a&gt; PWM 函数&lt;/h4&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814154530885.png&#34; alt=&#34;image-20250814154530885&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814154809968.png&#34; alt=&#34;image-20250814154809968&#34; /&gt;&lt;/p&gt;
+&lt;h5 id=&#34;led-pwm-函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#led-pwm-函数&#34;&gt;#&lt;/a&gt; LED-PWM 函数&lt;/h5&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814172633922.png&#34; alt=&#34;image-20250814172633922&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814172654096.png&#34; alt=&#34;image-20250814172654096&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814172854454.png&#34; alt=&#34;image-20250814172854454&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814172921172.png&#34; alt=&#34;image-20250814172921172&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;adc-模拟数字转换器函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#adc-模拟数字转换器函数&#34;&gt;#&lt;/a&gt; ADC 模拟数字转换器函数&lt;/h4&gt;
+&lt;p&gt;模拟 - 数字转换器，可将模拟信号转换为数字信号。&lt;/p&gt;
+&lt;p&gt;模拟信号：模拟信号是连续的信号，其数值在一定范围内可取任意值。&lt;/p&gt;
+&lt;p&gt;数字信号：数字信号是离散的信号，其数值只能取有限的离散值。通常用二进制表示，包含 0 和 1 两种状态。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814173848747.png&#34; alt=&#34;image-20250814173848747&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814174359447.png&#34; alt=&#34;image-20250814174359447&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814174429637.png&#34; alt=&#34;image-20250814174429637&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814174450142.png&#34; alt=&#34;image-20250814174450142&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814174509803.png&#34; alt=&#34;image-20250814174509803&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;iic-串行通信协议函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#iic-串行通信协议函数&#34;&gt;#&lt;/a&gt; IIC 串行通信协议函数&lt;/h4&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814174956132.png&#34; alt=&#34;image-20250814174956132&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814175322989.png&#34; alt=&#34;image-20250814175322989&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814175421839.png&#34; alt=&#34;image-20250814175421839&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814175733437.png&#34; alt=&#34;image-20250814175733437&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814175850127.png&#34; alt=&#34;image-20250814175850127&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814175917833.png&#34; alt=&#34;image-20250814175917833&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814175942311.png&#34; alt=&#34;image-20250814175942311&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250814175958788.png&#34; alt=&#34;image-20250814175958788&#34; /&gt;&lt;/p&gt;
+&lt;h4 id=&#34;rtc-实时时钟函数&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#rtc-实时时钟函数&#34;&gt;#&lt;/a&gt; RTC 实时时钟函数&lt;/h4&gt;
+&lt;p&gt;ESP32Time 库：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250815091644636.png&#34; alt=&#34;image-20250815091644636&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250815091743578.png&#34; alt=&#34;image-20250815091743578&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://wlp1231-1316469392.cos.ap-chongqing.myqcloud.com/bolg/image-20250815091848815.png&#34; alt=&#34;image-20250815091848815&#34; /&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://wlp1231.com/the-tutorial/note/typora%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%A4%A7%E5%85%A8/</guid>
             <title></title>
