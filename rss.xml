@@ -19,8 +19,7 @@
             <title>ESP32-S3</title>
             <link>https://wlp1231.cn/embedded/esp32/ESP32-S3/</link>
             <category term="嵌入式" scheme="https://wlp1231.cn/categories/embedded/" />
-            <category term="编程" scheme="https://wlp1231.cn/categories/embedded/programming/" />
-            <category term="socket" scheme="https://wlp1231.cn/tags/socket/" />
+            <category term="esp32" scheme="https://wlp1231.cn/categories/embedded/esp32/" />
             <category term="esp32" scheme="https://wlp1231.cn/tags/esp32/" />
             <pubDate>Fri, 15 Aug 2025 09:32:34 +0800</pubDate>
             <description><![CDATA[ &lt;h3 align = center&gt;ESP32-S3&lt;/h3&gt;
